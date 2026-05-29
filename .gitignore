@@ -1,0 +1,9 @@
+# General (OS-specific)
+[Dd]esktop.ini
+.DS_Store
+
+# Project-specific ignores
+builds/
+
+# Godot 4+ specific ignores
+.godot/
