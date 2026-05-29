@@ -1,3 +1,31 @@
 [gd_scene format=3 uid="uid://fn42vyv1hxlq"]
 
+[ext_resource type="PackedScene" uid="uid://bjjyd6apwtscb" path="res://scenes/sealskater.tscn" id="1_o5qli"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_sgp6g"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_o5qli"]
+size = Vector3(100, 1.25, 100)
+
+[sub_resource type="BoxMesh" id="BoxMesh_sgp6g"]
+size = Vector3(100, 1, 100)
+
 [node name="Node3D" type="Node3D" unique_id=1409937124]
+
+[node name="Florr" type="StaticBody3D" parent="." unique_id=330852359]
+physics_material_override = SubResource("PhysicsMaterial_sgp6g")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Florr" unique_id=448233773]
+shape = SubResource("BoxShape3D_o5qli")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Florr" unique_id=1876577474]
+mesh = SubResource("BoxMesh_sgp6g")
+
+[node name="Sealskater" parent="." unique_id=1529588113 instance=ExtResource("1_o5qli")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.0279617, 0)
+
+[node name="Camera3D" type="Camera3D" parent="Sealskater" unique_id=714791074]
+transform = Transform3D(1, 0, 0, 0, 0.9853871, 0.17032988, 0, -0.17032988, 0.9853871, 0, 3.3363717, 5.614624)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=72175676]
+transform = Transform3D(0.36489025, 0.42124525, 0.83030576, -0.3436225, -0.7679052, 0.54059714, 0.86532, -0.48257032, -0.13545173, 37.260403, 25.59762, -8.981766)
