@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://bahem50vx1k2y"]
+
+[ext_resource type="Texture2D" uid="uid://7cshfl85f1va" path="res://assets/paintingMinigame/backdrop.jpg" id="1_dta0m"]
+[ext_resource type="Script" uid="uid://7i0fdm1vah4f" path="res://scenes/mouseDraw.gd" id="1_sv35t"]
+
+[node name="Node2D" type="Node2D" unique_id=973804300]
+script = ExtResource("1_sv35t")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=695328604]
+offset_right = 1515.0
+offset_bottom = 860.0
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=845880016]
+position = Vector2(962, 540.25)
+scale = Vector2(1.19875, 1.2433527)
+texture = ExtResource("1_dta0m")

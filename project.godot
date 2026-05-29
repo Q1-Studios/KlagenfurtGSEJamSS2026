@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="KlagenfurtGSEJamSS2026"
+run/main_scene="uid://fn42vyv1hxlq"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://assets/sprites/icon.svg"
 
