@@ -1,17 +1,20 @@
 [gd_scene format=3 uid="uid://bjjyd6apwtscb"]
 
-[ext_resource type="PackedScene" uid="uid://dry6f4nwbpwbw" path="res://assets/skateboard/skateboard.glb" id="1_205dp"]
 [ext_resource type="Script" uid="uid://bkyou3m2ics3d" path="res://scripts/sealskater.gd" id="1_vef6s"]
-[ext_resource type="PackedScene" uid="uid://c6mad0mwcbdsj" path="res://assets/sealplush/seal.glb" id="2_u21eb"]
 [ext_resource type="Script" uid="uid://dgnaomu2hn4qf" path="res://scripts/movement_controller.gd" id="3_6give"]
 [ext_resource type="Script" uid="uid://ch2f2vldy5q0l" path="res://scripts/grinding_controller.gd" id="4_xwg03"]
 [ext_resource type="Script" uid="uid://cgkvem2x6eets" path="res://scripts/trick_mode_controller.gd" id="6_n4d43"]
 [ext_resource type="PackedScene" uid="uid://dwvfoe6b1lusu" path="res://scenes/FuelBarScene2.tscn" id="6_vuft4"]
+[ext_resource type="PackedScene" uid="uid://bpj7o4myywyq7" path="res://scenes/bertmodel.tscn" id="7_n4d43"]
 [ext_resource type="PackedScene" uid="uid://beikiclpngb51" path="res://scenes/trick_sequence_display.tscn" id="8_ew7ux"]
 
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_n4d43"]
+radius = 1.1640625
+height = 3.2219238
+
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_xwg03"]
-radius = 0.979
-height = 4.871
+radius = 0.7006836
+height = 4.1962657
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_u21eb"]
 size = Vector3(1.5, 1, 4.5)
@@ -58,13 +61,12 @@ viewport_path = NodePath("TrickInputSubviewPort")
 [node name="Sealskater" type="CharacterBody3D" unique_id=833053730]
 script = ExtResource("1_vef6s")
 
-[node name="skateboard" parent="." unique_id=747438127 instance=ExtResource("1_205dp")]
+[node name="SkaterCollisionShape" type="CollisionShape3D" parent="." unique_id=832542508]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7928467, 0)
+shape = SubResource("CapsuleShape3D_n4d43")
 
-[node name="seal" parent="." unique_id=1311813028 instance=ExtResource("2_u21eb")]
-transform = Transform3D(-2.6226832e-09, 0, 0.06, 0, 0.06, 0, -0.06, 0, -2.6226832e-09, 0.070656896, 1.1358153, -0.20509052)
-
-[node name="SkaterCollisionShape" type="CollisionShape3D" parent="." unique_id=1524801059]
-transform = Transform3D(1, 0, 0, 0, -4.3711385e-08, -0.9999999, 0, 0.9999999, -4.3711385e-08, 0, 1.0054126, 0)
+[node name="SkateboardCollisionShape" type="CollisionShape3D" parent="." unique_id=1524801059]
+transform = Transform3D(1, 0, 0, 0, -4.3711385e-08, -0.9999999, 0, 0.9999999, -4.3711385e-08, -0.03683877, 0.6632509, 0.012218952)
 shape = SubResource("CapsuleShape3D_xwg03")
 
 [node name="GrindShapeCast" type="ShapeCast3D" parent="." unique_id=1047026119]
@@ -90,13 +92,12 @@ environment = SubResource("Environment_6w6d5")
 unique_name_in_owner = true
 script = ExtResource("3_6give")
 
-[node name="GrindingController" type="Node" parent="Controller" unique_id=1515660716 node_paths=PackedStringArray("grind_ray", "player", "player_model", "skateboard_model")]
+[node name="GrindingController" type="Node" parent="Controller" unique_id=1515660716 node_paths=PackedStringArray("grind_ray", "player", "player_model")]
 unique_name_in_owner = true
 script = ExtResource("4_xwg03")
 grind_ray = NodePath("../../GrindShapeCast")
 player = NodePath("../..")
-player_model = NodePath("../../seal")
-skateboard_model = NodePath("../../skateboard")
+player_model = NodePath("../../Bertmodel")
 
 [node name="TrickModeController" type="Node" parent="Controller" unique_id=643593822]
 unique_name_in_owner = true
@@ -147,6 +148,9 @@ visible = false
 [node name="TrickInput" type="Sprite3D" parent="." unique_id=1088902191]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7.0944757)
 texture = SubResource("ViewportTexture_ew7ux")
+
+[node name="Bertmodel" parent="." unique_id=966477376 instance=ExtResource("7_n4d43")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
 
 [connection signal="toggle_grinding" from="Controller/GrindingController" to="." method="_on_toggle_grinding"]
 [connection signal="toggle_grinding" from="Controller/GrindingController" to="Controller/MovementController" method="_on_toggle_grinding"]

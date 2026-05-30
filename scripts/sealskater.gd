@@ -19,6 +19,7 @@ signal spray_can_amount_updated(amount: float)
 
 var slow_mo = false
 var slow_mo_factor: float = 4.0
+var is_grinding: bool = false
 
 func _ready() -> void:
 	spray_can_amount_updated.emit(spray_can_amount)
@@ -33,7 +34,7 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	
 func _process(delta: float) -> void:
-	if Input.is_action_pressed("spray") and spray_can_amount > 0.0:
+	if _can_spray_paint():
 		FloorPainter.paint(global_position, spray_color, spray_brush_radius)
 		spray_can_amount = max(0.0, spray_can_amount - spray_drain_per_second * delta)
 		spray_can_amount_updated.emit(spray_can_amount)
@@ -47,7 +48,11 @@ func _process(delta: float) -> void:
 		else:
 			_on_exit_slow_mode()
 
+func _can_spray_paint() -> bool:
+	return Input.is_action_pressed("spray") and !is_grinding and is_on_floor() and spray_can_amount > 0.0
+
 func _on_toggle_grinding(_is_grinding: bool) -> void:
+	is_grinding = _is_grinding
 	if _is_grinding:
 		grind_update_timer.start()
 	else:

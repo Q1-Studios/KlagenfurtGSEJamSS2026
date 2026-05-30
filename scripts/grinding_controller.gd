@@ -11,10 +11,8 @@ class_name GrindingController
 @export var grind_ray: ShapeCast3D
 @export var player: CharacterBody3D
 @export var player_model: Node3D
-@export var skateboard_model: Node3D
 
 var initial_player_model_transform: Transform3D
-var initial_skateboard_model_transform: Transform3D
 var initial_camera_pivot_rotation: Vector3
 
 var grinding: bool = false
@@ -59,7 +57,6 @@ func should_start_grinding() -> bool:
 
 func start_grinding():
 	initial_player_model_transform = player_model.transform
-	initial_skateboard_model_transform = skateboard_model.transform
 	initial_camera_pivot_rotation = camera_pivot.rotation
 	grinding = true
 	
@@ -92,17 +89,13 @@ func start_grinding():
 func rotate_player_for_grinding():
 	# Turn player 45 degrees to the rail
 	var path_forward: Vector3 = -rail_grind_node.global_transform.basis.z
-	var rotation_angle = (PI / 2) * rail_grind_node.progress_direction
+	var rotation_angle = 0.0 if rail_grind_node.progress_direction < 0.0 else PI
 	var perpendicular = path_forward.rotated(Vector3.UP, rotation_angle) 
 	
 	var model_scale := player_model.scale
 	player_model.global_transform = player_model.global_transform.looking_at(player_model.global_position + perpendicular, Vector3.UP)
 	# must reset model_scale if it is not 1.0 by default 
 	player_model.scale = model_scale
-
-	var board_scale := skateboard_model.scale
-	skateboard_model.global_transform = skateboard_model.global_transform.looking_at(skateboard_model.global_position + perpendicular, Vector3.UP)
-	skateboard_model.scale = board_scale
 	
 	# rotate particle emitter
 	var part_rot_angle = (PI / 2) if rail_grind_node.progress_direction < 0.0 else (3 * PI / 2)
@@ -124,7 +117,6 @@ func detach_from_rail():
 	rail_grind_node.chosen = false
 	rail_grind_node.detach = false
 	player_model.transform = initial_player_model_transform
-	skateboard_model.transform = initial_skateboard_model_transform
 	camera_pivot.rotation = initial_camera_pivot_rotation
 	emit_signal("toggle_grinding", false)
 	
