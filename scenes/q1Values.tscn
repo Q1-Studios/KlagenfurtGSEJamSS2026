@@ -1,0 +1,126 @@
+[gd_scene format=3 uid="uid://blik7aq8v1gco"]
+
+[ext_resource type="Texture2D" uid="uid://drjkie6c4if3i" path="res://assets/paintingMinigame/q1.jpg" id="1_c78je"]
+[ext_resource type="Script" uid="uid://dovtoigoy3jel" path="res://scripts/paintingMinigame/q_1_values.gd" id="1_faasn"]
+[ext_resource type="Texture2D" uid="uid://7cshfl85f1va" path="res://assets/paintingMinigame/backdrop.jpg" id="2_faasn"]
+
+[node name="Node2D" type="Node2D" unique_id=1509871067]
+script = ExtResource("1_faasn")
+
+[node name="FollowLine" type="Sprite2D" parent="." unique_id=181988608]
+self_modulate = Color(1, 1, 1, 0.23137255)
+z_index = -1
+position = Vector2(960.5, 538.25)
+scale = Vector2(1.199375, 1.234104)
+texture = ExtResource("1_c78je")
+
+[node name="markerContainer" type="Node2D" parent="." unique_id=1388844791]
+position = Vector2(962, 540.25)
+scale = Vector2(1.19875, 1.2433527)
+
+[node name="Marker2D" type="Marker2D" parent="markerContainer" unique_id=528075743]
+position = Vector2(-199.37436, -136.92815)
+scale = Vector2(0.8342025, 0.8042773)
+
+[node name="Marker2D2" type="Marker2D" parent="markerContainer" unique_id=643879560]
+position = Vector2(-186.02713, -16.286613)
+scale = Vector2(0.8342025, 0.8042774)
+
+[node name="Marker2D3" type="Marker2D" parent="markerContainer" unique_id=1984257426]
+position = Vector2(-131.804, -140.14526)
+scale = Vector2(0.8342025, 0.8042775)
+
+[node name="Marker2D4" type="Marker2D" parent="markerContainer" unique_id=1378221037]
+position = Vector2(-69.2388, -164.27359)
+scale = Vector2(0.8342025, 0.8042776)
+
+[node name="Marker2D5" type="Marker2D" parent="markerContainer" unique_id=139730149]
+position = Vector2(-28.36287, -108.77848)
+scale = Vector2(0.8342025, 0.8042774)
+
+[node name="Marker2D6" type="Marker2D" parent="markerContainer" unique_id=2082691389]
+position = Vector2(-31.699738, -51.674812)
+scale = Vector2(0.8342025, 0.8042775)
+
+[node name="Marker2D7" type="Marker2D" parent="markerContainer" unique_id=45069217]
+position = Vector2(-112.61729, -25.937948)
+scale = Vector2(0.6958939, 0.6468622)
+
+[node name="Marker2D8" type="Marker2D" parent="markerContainer" unique_id=1216085285]
+position = Vector2(-155.16164, -87.867256)
+scale = Vector2(0.8342025, 0.8042773)
+
+[node name="Marker2D9" type="Marker2D" parent="markerContainer" unique_id=1659422681]
+position = Vector2(-29.197083, -21.112276)
+scale = Vector2(0.8342025, 0.8042774)
+
+[node name="Marker2D10" type="Marker2D" parent="markerContainer" unique_id=2052577013]
+position = Vector2(66.73616, 20.710125)
+scale = Vector2(0.8342025, 0.8042775)
+
+[node name="Marker2D11" type="Marker2D" parent="markerContainer" unique_id=1932107380]
+position = Vector2(139.3118, 64.94536)
+scale = Vector2(0.8342025, 0.8042776)
+
+[node name="Marker2D12" type="Marker2D" parent="markerContainer" unique_id=441391251]
+position = Vector2(251.92914, 76.20525)
+scale = Vector2(0.8342025, 0.8042774)
+
+[node name="Marker2D13" type="Marker2D" parent="markerContainer" unique_id=1360833478]
+position = Vector2(-81.75182, -10.656679)
+scale = Vector2(0.8342025, 0.8042775)
+
+[node name="Marker2D14" type="Marker2D" parent="markerContainer" unique_id=1100563237]
+position = Vector2(-38.37329, 50.468376)
+scale = Vector2(0.6958939, 0.6468622)
+
+[node name="Marker2D15" type="Marker2D" parent="markerContainer" unique_id=493967139]
+position = Vector2(66.736206, 119.636215)
+scale = Vector2(0.8342025, 0.8042774)
+
+[node name="Marker2D16" type="Marker2D" parent="markerContainer" unique_id=1010078096]
+position = Vector2(171.01144, 159.85007)
+scale = Vector2(0.8342025, 0.8042775)
+
+[node name="Marker2D17" type="Marker2D" parent="markerContainer" unique_id=1668843079]
+position = Vector2(40.327057, -152.17502)
+scale = Vector2(0.6958939, 0.6468622)
+
+[node name="Marker2D18" type="Marker2D" parent="markerContainer" unique_id=593807258]
+position = Vector2(49.21795, -90.28009)
+scale = Vector2(0.8342025, 0.8042774)
+
+[node name="Marker2D19" type="Marker2D" parent="markerContainer" unique_id=2058722923]
+position = Vector2(23.35762, -33.98071)
+scale = Vector2(0.8342025, 0.8042775)
+
+[node name="Marker2D20" type="Marker2D" parent="markerContainer" unique_id=1022120846]
+position = Vector2(142.6486, -58.109016)
+scale = Vector2(0.6958939, 0.6468622)
+
+[node name="Marker2D21" type="Marker2D" parent="markerContainer" unique_id=980913614]
+position = Vector2(164.33786, -10.656662)
+scale = Vector2(0.8342025, 0.8042774)
+
+[node name="Marker2D22" type="Marker2D" parent="markerContainer" unique_id=332559348]
+position = Vector2(157.66425, 36.795666)
+scale = Vector2(0.8342025, 0.8042775)
+
+[node name="Marker2D23" type="Marker2D" parent="markerContainer" unique_id=1862562096]
+position = Vector2(200.20857, -79.82449)
+scale = Vector2(0.6958939, 0.6468622)
+
+[node name="Marker2D24" type="Marker2D" parent="markerContainer" unique_id=2028607748]
+position = Vector2(197.70596, -13.069489)
+scale = Vector2(0.8342025, 0.8042774)
+
+[node name="Marker2D25" type="Marker2D" parent="markerContainer" unique_id=115610050]
+position = Vector2(201.87697, 34.38284)
+scale = Vector2(0.8342025, 0.8042775)
+
+[node name="Backdrop" type="Sprite2D" parent="." unique_id=2037333360]
+visible = false
+z_index = -2
+position = Vector2(961.99994, 540.25006)
+scale = Vector2(1.1987501, 1.2433527)
+texture = ExtResource("2_faasn")

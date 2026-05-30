@@ -1,7 +1,10 @@
 [gd_scene format=3 uid="uid://fn42vyv1hxlq"]
 
-[ext_resource type="Script" uid="uid://b27t6mnfpjkxb" path="res://scripts/paintingMinigame/cursorTracker.gd" id="1_0wfyh"]
+[ext_resource type="Script" uid="uid://b6i2qqvv0tcf0" path="res://scripts/paintingMinigame/sub_viewport.gd" id="1_0wfyh"]
 [ext_resource type="PackedScene" uid="uid://bahem50vx1k2y" path="res://scenes/paintMinigame.tscn" id="1_o5qli"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_0wfyh"]
+viewport_path = NodePath("Node3D/SubViewport")
 
 [node name="Node3D" type="Node3D" unique_id=1409937124]
 
@@ -9,5 +12,16 @@
 script = ExtResource("1_0wfyh")
 
 [node name="SubViewport" type="SubViewport" parent="Node3D" unique_id=1269488665]
+size = Vector2i(1920, 1080)
 
 [node name="PaintingOverlay" parent="Node3D/SubViewport" unique_id=973804300 instance=ExtResource("1_o5qli")]
+
+[node name="TextureRect" type="TextureRect" parent="Node3D" unique_id=1686758063]
+anchors_preset = -1
+anchor_right = 1.0040001
+anchor_bottom = 1.0
+offset_right = 0.31982422
+offset_bottom = -1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = SubResource("ViewportTexture_0wfyh")
