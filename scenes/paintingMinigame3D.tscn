@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://cml2l7cnog0uw"]
+
+[ext_resource type="Script" uid="uid://b6i2qqvv0tcf0" path="res://scripts/paintingMinigame/painting_minigame_pass_controls.gd" id="1_kfm0t"]
+[ext_resource type="PackedScene" uid="uid://bahem50vx1k2y" path="res://scenes/paintMinigame.tscn" id="2_6rywf"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_rtkdy"]
+viewport_path = NodePath("PaintingMinigame/SubViewport")
+
+[node name="Node3D" type="Node3D" unique_id=1264809958]
+script = ExtResource("1_kfm0t")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=100925195]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = SubResource("ViewportTexture_rtkdy")
+metadata/_edit_use_anchors_ = true
+
+[node name="Node2D" parent="." unique_id=973804300 instance=ExtResource("2_6rywf")]
+
+[connection signal="drawingPhaseOver" from="Node2D" to="." method="_on_node_2d_drawing_phase_over"]
