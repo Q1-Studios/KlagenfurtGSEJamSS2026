@@ -59,10 +59,10 @@ skateboard_model = NodePath("../../skateboard")
 
 [node name="TrickModeController" type="Node" parent="Controller" unique_id=643593822]
 
-[node name="GrindUpdateGraffitiTimer" type="Timer" parent="." unique_id=498531919]
+[node name="GrindUpdateSprayCanTimer" type="Timer" parent="." unique_id=498531919]
 unique_name_in_owner = true
 wait_time = 0.3
 
 [connection signal="toggle_grinding" from="Controller/GrindingController" to="." method="_on_toggle_grinding"]
 [connection signal="toggle_grinding" from="Controller/GrindingController" to="Controller/MovementController" method="_on_toggle_grinding"]
-[connection signal="timeout" from="GrindUpdateGraffitiTimer" to="." method="_on_grind_update_graffiti_timer_timeout"]
+[connection signal="timeout" from="GrindUpdateSprayCanTimer" to="." method="_on_grind_update_graffiti_timer_timeout"]

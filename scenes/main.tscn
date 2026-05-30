@@ -55,4 +55,4 @@ offset_right = 40.0
 offset_bottom = 40.0
 texture = SubResource("ViewportTexture_tipki")
 
-[connection signal="graffiti_fuel_updated" from="Sealskater" to="." method="_on_sealskater_graffiti_fuel_updated"]
+[connection signal="spray_can_amount_updated" from="Sealskater" to="." method="_on_sealskater_graffiti_fuel_updated"]

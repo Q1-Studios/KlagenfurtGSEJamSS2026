@@ -12,4 +12,4 @@ func _process(delta: float) -> void:
 
 
 func _on_sealskater_graffiti_fuel_updated(amount: float) -> void:
-	print("Updated graffiti fuel trough grinding: {0}".format([amount]))
+	print("Updated spray can amount trough grinding: {0}".format([amount]))
