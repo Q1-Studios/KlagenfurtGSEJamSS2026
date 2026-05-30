@@ -27,7 +27,7 @@ var canDraw: bool = true
 var default_font : Font = ThemeDB.fallback_font
 
 signal passPoints(points: float)
-
+signal drawingPhaseOver
 
 var imgDictionary = {
 	"bert": [
@@ -96,7 +96,8 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	print(timer.time_left)
+	if timer.time_left > 0:
+		print(timer.time_left)
 	pass
 
 
@@ -109,6 +110,7 @@ func _input(event: InputEvent) -> void:
 			if each == true:
 				pointsReached += 1
 		passPoints.emit(pointsReached * 100)
+		markerListBoolean.fill(false)
 		return
 	
 	trackCursorDistance()
@@ -176,7 +178,9 @@ func trackCursorDistance() -> void:
 
 
 func _on_timer_timeout() -> void:
+	print("on timer timeout reached")
 	canDraw = false
+	drawingPhaseOver.emit()
 
 func setCursorPosition() -> void:
 	cursorImg.global_position = Vector2(1980/2, 1080/2)
