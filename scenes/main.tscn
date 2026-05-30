@@ -7,6 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://ccwu1xbtgbwd5" path="res://assets/3DModles_ENV/Stairs_sample.fbx" id="3_sugp2"]
 [ext_resource type="Script" uid="uid://b6i2qqvv0tcf0" path="res://scripts/paintingMinigame/sub_viewport.gd" id="5_tefeu"]
 [ext_resource type="PackedScene" uid="uid://kr63tnrx6nbw" path="res://scenes/paintMinigame.tscn" id="8_tipki"]
+[ext_resource type="PackedScene" uid="uid://lx8fk8dr7hpn" path="res://scenes/Trick_mode.tscn" id="6_o6xl0"]
+[ext_resource type="Script" uid="uid://bha4vi35xtrag" path="res://scripts/painting_minigame_3d_scene.gd" id="7_tipki"]
 [ext_resource type="PackedScene" uid="uid://ul7ls8r6exsn" path="res://scenes/pointsHUD.tscn" id="9_85g3d"]
 
 [sub_resource type="Curve3D" id="Curve3D_rail1"]
@@ -72,16 +74,7 @@ transform = Transform3D(0.71637505, 0, -0.6977154, 0, 1, 0, 0.6977154, 0, 0.7163
 
 [node name="PaintingMinigame" type="Node3D" parent="." unique_id=1464322562]
 visible = false
-script = ExtResource("5_tefeu")
-
-[node name="TextureRect" type="TextureRect" parent="PaintingMinigame" unique_id=204207714]
-visible = false
-offset_right = 40.0
-offset_bottom = 40.0
-texture = SubResource("ViewportTexture_tipki")
-
-[node name="Node2D" parent="PaintingMinigame" unique_id=973804300 instance=ExtResource("8_tipki")]
-visible = false
+script = ExtResource("7_tipki")
 
 [node name="HUD" parent="." unique_id=785558833 instance=ExtResource("9_85g3d")]
 
@@ -95,4 +88,3 @@ curve = SubResource("Curve3D_rail2")
 
 [connection signal="spray_can_amount_consumed_for_points" from="Sealskater" to="." method="_on_sealskater_spray_can_amount_consumed_for_points"]
 [connection signal="spray_can_amount_updated" from="Sealskater" to="." method="_on_sealskater_graffiti_fuel_updated"]
-[connection signal="passPoints" from="PaintingMinigame/Node2D" to="." method="_on_node_2d_pass_points"]

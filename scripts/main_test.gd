@@ -2,6 +2,8 @@ extends Node3D
 
 var playerPoints = 0
 @onready var pointsHUD = $HUD/PointsAmount
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
