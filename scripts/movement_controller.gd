@@ -19,6 +19,8 @@ extends Node
 # f(x)=((a*((1)/(k)) x)/(1+(b*((1)/(k)) x)^(p)))
 @export var min_turning_factor := 1.0
 # max(f(x), min_turn)
+@export var allow_sliding := false
+
 
 @export_group("Jumping")
 @export var jump_force := 20.0
@@ -57,8 +59,13 @@ func handle_movement(player: CharacterBody3D) -> void:
 func _handle_player_turning(player: CharacterBody3D, delta: float) -> void:
 	var raw_turn = Input.get_axis("move_right", "move_left") 
 	var turn_speed := _calculate_AngularVelocity(player.velocity.length())
+	var turn_amount = raw_turn * turn_speed * delta
+	player.rotate(Vector3.UP, turn_amount)
 	
-	player.rotate(Vector3.UP, raw_turn * turn_speed * delta)
+	if not allow_sliding:
+		player.velocity = player.velocity.rotated(Vector3.UP, turn_amount)
+		
+	
 	
 
 func _handle_forward_movement(player: CharacterBody3D, delta: float) -> void:
