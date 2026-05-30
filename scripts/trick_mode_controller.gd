@@ -164,7 +164,7 @@ func mistakeModulate() -> void:
 func resetModulate() -> void:
 	for each in trickSprites:
 		each.self_modulate = Color(1, 1, 1)
-etSprites()
+	getSprites()
 
 func startMistakeTimer() -> void:
 	wrongInputTimer.start()

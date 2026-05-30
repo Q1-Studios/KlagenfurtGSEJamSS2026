@@ -18,6 +18,15 @@ size = Vector3(1.5, 1, 4.5)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_6give"]
 
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ew7ux"]
+
+[sub_resource type="Sky" id="Sky_d846i"]
+sky_material = SubResource("ProceduralSkyMaterial_ew7ux")
+
+[sub_resource type="Environment" id="Environment_6w6d5"]
+background_mode = 2
+sky = SubResource("Sky_d846i")
+
 [sub_resource type="ViewportTexture" id="ViewportTexture_n4d43"]
 viewport_path = NodePath("SprayFuelSubviewPort")
 
@@ -73,6 +82,7 @@ shape = SubResource("SphereShape3D_6give")
 
 [node name="PlayerCamera" type="Camera3D" parent="CameraPivot/SpringArm3D" unique_id=1638251071]
 unique_name_in_owner = true
+environment = SubResource("Environment_6w6d5")
 
 [node name="Controller" type="Node" parent="." unique_id=1823345731]
 

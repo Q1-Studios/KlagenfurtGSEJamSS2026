@@ -1,0 +1,61 @@
+[gd_scene format=3 uid="uid://bpj7o4myywyq7"]
+
+[ext_resource type="PackedScene" uid="uid://brpaiflgdvsx" path="res://assets/bert/bert.glb" id="1_6pu0d"]
+[ext_resource type="Animation" uid="uid://cfmtjk4tenk2b" path="res://assets/bert/animationLibrary/BoardSteerLeft.res" id="2_s53no"]
+[ext_resource type="Animation" uid="uid://da5u7sbjphxvg" path="res://assets/bert/animationLibrary/BoardSteerRight.res" id="3_wfo8j"]
+[ext_resource type="Animation" uid="uid://dt3ka1en1kpcn" path="res://assets/bert/animationLibrary/BoardSteerStraight.res" id="4_whumj"]
+
+[sub_resource type="GDScript" id="GDScript_6pu0d"]
+resource_name = "animationTreeInterface"
+script/source = "extends Node3D
+
+@onready var anim_tree: AnimationTree = $bert/AnimationTree
+
+func _ready() -> void:
+	setSteer(0.5) # 0.5 = straight, 0 = left, 1 = right (starting straight)
+
+func setSteer(f: float) -> void:
+	if(f>1 or f<0):
+		print(\"DO NOT THE CAT\")
+	anim_tree[\"parameters/boardBlendMichael/blend_amount\"] = f
+
+"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_72fff"]
+_data = {
+&"BoardSteerLeft": ExtResource("2_s53no"),
+&"BoardSteerRight": ExtResource("3_wfo8j"),
+&"BoardSteerStraight": ExtResource("4_whumj")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_6pu0d"]
+animation = &"bertAnimationLibrary/BoardSteerRight"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_wfo8j"]
+animation = &"bertAnimationLibrary/BoardSteerLeft"
+
+[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_72fff"]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_6pu0d"]
+graph_offset = Vector2(-699.3542, -242.19966)
+nodes/output/position = Vector2(546.6667, 26.666666)
+nodes/Animation/node = SubResource("AnimationNodeAnimation_wfo8j")
+nodes/Animation/position = Vector2(-213.33333, 26.666666)
+"nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_6pu0d")
+"nodes/Animation 2/position" = Vector2(-213.33333, 226.66667)
+nodes/boardBlendMichael/node = SubResource("AnimationNodeBlend2_72fff")
+nodes/boardBlendMichael/position = Vector2(200, 93.333336)
+node_connections = [&"output", 0, &"boardBlendMichael", &"boardBlendMichael", 0, &"Animation", &"boardBlendMichael", 1, &"Animation 2"]
+
+[node name="Bertmodel" type="Node3D" unique_id=966477376]
+script = SubResource("GDScript_6pu0d")
+
+[node name="bert" parent="." unique_id=228107614 instance=ExtResource("1_6pu0d")]
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="bert" unique_id=1073454764]
+libraries/bertAnimationLibrary = SubResource("AnimationLibrary_72fff")
+
+[node name="AnimationTree" type="AnimationTree" parent="bert" unique_id=648461816]
+tree_root = SubResource("AnimationNodeBlendTree_6pu0d")
+anim_player = NodePath("../AnimationPlayer2")
+parameters/boardBlendMichael/blend_amount = 0.5
