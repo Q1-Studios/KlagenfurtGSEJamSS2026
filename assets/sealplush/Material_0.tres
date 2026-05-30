@@ -1,0 +1,7 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://l1hi8x4a8j72"]
+
+[ext_resource type="Texture2D" uid="uid://7qfp2op7r5g8" path="res://assets/sealplush/sealtext.png" id="1_01mcb"]
+
+[resource]
+resource_name = "Material_0"
+albedo_texture = ExtResource("1_01mcb")

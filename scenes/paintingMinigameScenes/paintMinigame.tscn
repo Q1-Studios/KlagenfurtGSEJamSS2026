@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://bahem50vx1k2y"]
+[gd_scene format=3 uid="uid://dnx8f1tiredqw"]
 
 [ext_resource type="Texture2D" uid="uid://7cshfl85f1va" path="res://assets/paintingMinigame/backdrop.jpg" id="1_dta0m"]
 [ext_resource type="Script" uid="uid://7i0fdm1vah4f" path="res://scripts/paintingMinigame/mouseDraw.gd" id="1_sv35t"]

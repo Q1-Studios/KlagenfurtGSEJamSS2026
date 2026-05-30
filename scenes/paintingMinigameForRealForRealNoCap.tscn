@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://cj3s2lfoam3m3"]
+
+[ext_resource type="PackedScene" uid="uid://kr63tnrx6nbw" path="res://scenes/paintMinigame.tscn" id="1_3qrq4"]
+
+[node name="SubViewport" type="SubViewport" unique_id=194907921]
+size = Vector2i(1920, 1080)
+
+[node name="Node2D" parent="." unique_id=973804300 instance=ExtResource("1_3qrq4")]

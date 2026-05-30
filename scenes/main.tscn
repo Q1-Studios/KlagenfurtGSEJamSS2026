@@ -1,22 +1,54 @@
 [gd_scene format=3 uid="uid://fn42vyv1hxlq"]
 
-[ext_resource type="Script" uid="uid://xi87oklhk6mi" path="res://scripts/paintingMinigame/Node3dMouseTracker.gd" id="1_0wfyh"]
-[ext_resource type="PackedScene" uid="uid://bahem50vx1k2y" path="res://scenes/paintMinigame.tscn" id="1_o5qli"]
+[ext_resource type="ArrayMesh" uid="uid://dtig26o0eoy54" path="res://assets/3DModles_ENV/Stairs_sample.obj" id="1_0wfyh"]
+[ext_resource type="PackedScene" uid="uid://bjjyd6apwtscb" path="res://scenes/sealskater.tscn" id="1_o5qli"]
+[ext_resource type="PackedScene" uid="uid://c5hl0wna16l0g" path="res://scenes/rail.tscn" id="2_0wfyh"]
+[ext_resource type="PackedScene" uid="uid://ccwu1xbtgbwd5" path="res://assets/3DModles_ENV/Stairs_sample.fbx" id="3_sugp2"]
+[ext_resource type="Script" uid="uid://b6i2qqvv0tcf0" path="res://scripts/paintingMinigame/sub_viewport.gd" id="5_tefeu"]
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_0wfyh"]
-viewport_path = NodePath("paintingMinigame3d/SubViewport")
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_sgp6g"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_o5qli"]
+size = Vector3(100, 1.25, 100)
+
+[sub_resource type="BoxMesh" id="BoxMesh_sgp6g"]
+size = Vector3(100, 1, 100)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_tipki"]
+viewport_path = NodePath("PaintingMinigame/SubViewport")
 
 [node name="Node3D" type="Node3D" unique_id=1409937124]
 
-[node name="paintingMinigame3d" type="Node3D" parent="." unique_id=491879992]
-script = ExtResource("1_0wfyh")
+[node name="Rail" parent="." unique_id=261477281 instance=ExtResource("2_0wfyh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.388403, 0, 0)
 
-[node name="SubViewport" type="SubViewport" parent="paintingMinigame3d" unique_id=1269488665]
-size = Vector2i(1920, 1080)
+[node name="Florr" type="StaticBody3D" parent="." unique_id=330852359]
+physics_material_override = SubResource("PhysicsMaterial_sgp6g")
 
-[node name="PaintingOverlay" parent="paintingMinigame3d/SubViewport" unique_id=973804300 instance=ExtResource("1_o5qli")]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Florr" unique_id=448233773]
+shape = SubResource("BoxShape3D_o5qli")
 
-[node name="TextureRect" type="TextureRect" parent="paintingMinigame3d" unique_id=473782697]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Florr" unique_id=1876577474]
+transform = Transform3D(0.9999939, -0.00058296666, -0.0034437638, 0.0005923743, 0.99999607, 0.0027290485, 0.0034421582, -0.0027310736, 0.99999034, -0.061145782, 0.14846611, 0.0021195412)
+mesh = SubResource("BoxMesh_sgp6g")
+
+[node name="StairsSample" type="MeshInstance3D" parent="Florr" unique_id=1877437641]
+mesh = ExtResource("1_0wfyh")
+
+[node name="Sealskater" parent="." unique_id=1529588113 instance=ExtResource("1_o5qli")]
+transform = Transform3D(-0.038858686, 0, 0.9992447, 0, 1, 0, -0.9992447, 0, -0.038858686, 0, 9.539019, -5.5059776)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=72175676]
+transform = Transform3D(0.36489025, 0.42124525, 0.83030576, -0.3436225, -0.7679052, 0.54059714, 0.86532, -0.48257032, -0.13545173, 37.260403, 25.59762, -8.981766)
+
+[node name="Stairs_sample" parent="." unique_id=1527351871 instance=ExtResource("3_sugp2")]
+transform = Transform3D(0.71637505, 0, -0.6977154, 0, 1, 0, 0.6977154, 0, 0.71637505, 6.654236, 5.087315, -33.18016)
+
+[node name="PaintingMinigame" type="Node3D" parent="." unique_id=1464322562]
+script = ExtResource("5_tefeu")
+
+[node name="TextureRect" type="TextureRect" parent="PaintingMinigame" unique_id=204207714]
+visible = false
 offset_right = 40.0
 offset_bottom = 40.0
-texture = SubResource("ViewportTexture_0wfyh")
+texture = SubResource("ViewportTexture_tipki")

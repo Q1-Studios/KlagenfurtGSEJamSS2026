@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://tt6asyeme8if"]
+
+[ext_resource type="Script" uid="uid://ddl68g5ms6t7f" path="res://scripts/rail_follower.gd" id="1_gd7m1"]
+
+[node name="RailFollower" type="PathFollow3D" unique_id=1134688412 groups=["rail_follower"]]
+loop = false
+script = ExtResource("1_gd7m1")
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="." unique_id=309486162]
+visible = false

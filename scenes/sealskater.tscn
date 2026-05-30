@@ -1,0 +1,62 @@
+[gd_scene format=3 uid="uid://bjjyd6apwtscb"]
+
+[ext_resource type="PackedScene" uid="uid://dry6f4nwbpwbw" path="res://assets/skateboard/skateboard.glb" id="1_205dp"]
+[ext_resource type="Script" path="res://scripts/sealskater.gd" id="1_vef6s"]
+[ext_resource type="PackedScene" uid="uid://c6mad0mwcbdsj" path="res://assets/sealplush/seal.glb" id="2_u21eb"]
+[ext_resource type="Script" uid="uid://dgnaomu2hn4qf" path="res://scripts/movement_controller.gd" id="3_6give"]
+[ext_resource type="Script" path="res://scripts/grinding_controller.gd" id="4_xwg03"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_xwg03"]
+radius = 0.979
+height = 4.871
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_u21eb"]
+size = Vector3(2, 1, 4)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_6give"]
+
+[node name="Sealskater" type="CharacterBody3D" unique_id=833053730]
+script = ExtResource("1_vef6s")
+
+[node name="skateboard" parent="." unique_id=747438127 instance=ExtResource("1_205dp")]
+
+[node name="seal" parent="." unique_id=1311813028 instance=ExtResource("2_u21eb")]
+transform = Transform3D(-2.6226832e-09, 0, 0.06, 0, 0.06, 0, -0.06, 0, -2.6226832e-09, 0.070656896, 1.1358153, -0.20509052)
+
+[node name="SkaterCollisionShape" type="CollisionShape3D" parent="." unique_id=1524801059]
+transform = Transform3D(1, 0, 0, 0, -4.3711385e-08, -0.9999999, 0, 0.9999999, -4.3711385e-08, 0, 1.0054126, 0)
+shape = SubResource("CapsuleShape3D_xwg03")
+
+[node name="GrindShapeCast" type="ShapeCast3D" parent="." unique_id=1047026119]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00014603138, 0)
+shape = SubResource("BoxShape3D_u21eb")
+collision_mask = 2
+
+[node name="CameraPivot" type="Node3D" parent="." unique_id=1431441008]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 0.7682947, 0.6400963, 0, -0.6400963, 0.7682947, 0, 0, 0)
+
+[node name="SpringArm3D" type="SpringArm3D" parent="CameraPivot" unique_id=14928897]
+transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 0, 0, 0)
+shape = SubResource("SphereShape3D_6give")
+
+[node name="PlayerCamera" type="Camera3D" parent="CameraPivot/SpringArm3D" unique_id=1638251071]
+unique_name_in_owner = true
+
+[node name="Controller" type="Node" parent="." unique_id=1823345731]
+
+[node name="MovementController" type="Node" parent="Controller" unique_id=1305322326]
+unique_name_in_owner = true
+script = ExtResource("3_6give")
+
+[node name="GrindingController" type="Node" parent="Controller" unique_id=1515660716 node_paths=PackedStringArray("grind_ray", "player", "player_model", "skateboard_model")]
+unique_name_in_owner = true
+script = ExtResource("4_xwg03")
+grind_ray = NodePath("../../GrindShapeCast")
+player = NodePath("../..")
+player_model = NodePath("../../seal")
+skateboard_model = NodePath("../../skateboard")
+
+[node name="TrickModeController" type="Node" parent="Controller" unique_id=643593822]
+
+[connection signal="toggle_grinding" from="Controller/GrindingController" to="Controller/MovementController" method="_on_toggle_grinding"]
