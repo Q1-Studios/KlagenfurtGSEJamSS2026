@@ -1,6 +1,15 @@
 class_name TrickController
 extends Node
 
+@onready var trickInputUI = $"../../TrickInputSubviewPort/TrickSequenceDisplay"
+var trickSprites: Array
+var upImg = load("res://assets/sprites/arrowUp.png")
+var rightImg = load("res://assets/sprites/arrowRight.png")
+var downImg = load ("res://assets/sprites/arrowDown.png")
+var leftImg = load("res://assets/sprites/arrowLeft.png")
+
+@onready var wrongInputTimer = $"../WrongInputTimer"
+
 var sequence_length = 4
 var rng = RandomNumberGenerator.new()	
 var input = ["LEFT", "RIGHT", "UP", "DOWN"]
@@ -14,9 +23,11 @@ signal trick_sequence_success()
 
 func _ready() -> void:
 	_create_goal_sequence()
+	getSprites()
+	setSprites()
 
 func _process(delta: float) -> void:
-	if is_active:
+	if is_active && wrongInputTimer.time_left <= 0 :
 		if (sequence_input_index >= sequence_length and not failed) or won:
 			_handle_success()
 		elif failed:
@@ -47,30 +58,42 @@ func _evaluate_input() -> void:
 	
 	if left:
 		if sequence[sequence_input_index] == "LEFT":
+			trickSprites[sequence_input_index].self_modulate = Color (0, 1, 0)
 			sequence_input_index += 1
 		else:
 			print("Pressed LEFT should have been ", sequence[sequence_input_index])
+			startMistakeTimer()
+			mistakeModulate()
 			failed = true
 	
 	if right:
 		if sequence[sequence_input_index] == "RIGHT":
+			trickSprites[sequence_input_index].self_modulate = Color (0, 1, 0)
 			sequence_input_index += 1
 		else:
 			print("Pressed RIGHT should have been ", sequence[sequence_input_index])
+			startMistakeTimer()
+			mistakeModulate()
 			failed = true
 			
 	if up:
 		if sequence[sequence_input_index] == "UP":
+			trickSprites[sequence_input_index].self_modulate = Color (0, 1, 0)
 			sequence_input_index += 1
 		else:
 			print("Pressed UP should have been ", sequence[sequence_input_index])
+			startMistakeTimer()
+			mistakeModulate()
 			failed = true
 			
 	if down:
 		if sequence[sequence_input_index] == "DOWN":
+			trickSprites[sequence_input_index].self_modulate = Color (0, 1, 0)
 			sequence_input_index += 1
 		else:
 			print("Pressed DOWN should have been ", sequence[sequence_input_index])
+			startMistakeTimer()
+			mistakeModulate()
 			failed = true
 
 func _create_goal_sequence() -> void:
@@ -79,10 +102,50 @@ func _create_goal_sequence() -> void:
 		sequence.append(input[rng.randi_range(0, 3)])
 	print(sequence)
 	is_active = true
+	displayTrickSequence()
+	
 	
 func _reset() -> void:
 	sequence = []
 	sequence_input_index = 0
 	failed = false
 	won = false
+	resetModulate()
 	
+
+func displayTrickSequence() -> void:
+	trickInputUI.set_visible(true)
+
+func getSprites() -> void:
+	trickSprites = trickInputUI.get_children()
+
+func setSprites() -> void:
+	var i = 0
+	for each in sequence:
+		match each:
+			"UP":
+				trickSprites[i].texture = upImg
+			"RIGHT":
+				trickSprites[i].texture = rightImg
+			"DOWN":
+				trickSprites[i].texture = downImg
+			"LEFT":
+				trickSprites[i].texture = leftImg
+		i += 1
+		
+func mistakeModulate() -> void:
+	for each in trickSprites:
+		each.self_modulate = Color(1, 0, 0)
+		
+func resetModulate() -> void:
+	for each in trickSprites:
+		each.self_modulate = Color(1, 1, 1)
+
+
+func startMistakeTimer() -> void:
+	wrongInputTimer.start()
+
+
+func _on_wrong_input_timer_timeout() -> void:
+	for each in trickSprites:
+		each.self_modulate = Color(1, 1, 1)

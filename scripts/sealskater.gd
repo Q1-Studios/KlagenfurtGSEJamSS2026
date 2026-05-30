@@ -2,7 +2,7 @@ extends CharacterBody3D
 @onready var movementController := %MovementController
 @onready var grindingController := %GrindingController
 @onready var grind_update_timer = %GrindUpdateSprayCanTimer
-@onready var healthBar = $SubViewport/ProgressBar
+@onready var healthBar = $SprayFuelSubviewPort/ProgressBar
 
 @export_category("Spray Can")
 @export var max_spray_can_amount: float = 100.0

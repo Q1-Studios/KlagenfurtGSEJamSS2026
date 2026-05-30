@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://beikiclpngb51"]
+
+[ext_resource type="Texture2D" uid="uid://cqc00smjwcds6" path="res://assets/sprites/arrowDown.png" id="1_p4oih"]
+[ext_resource type="Texture2D" uid="uid://0xa88hnrmd7e" path="res://assets/sprites/arrowLeft.png" id="2_w5wbv"]
+[ext_resource type="Texture2D" uid="uid://x2skpi50lmkj" path="res://assets/sprites/arrowRight.png" id="4_telbk"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_37snx"]
+load_path = "res://.godot/imported/arrowRight (2).png-f05bbcd3c0bbf6faed29345533b722ce.ctex"
+
+[node name="TrickSequenceDisplay" type="Node2D" unique_id=1397633476]
+
+[node name="Input1" type="Sprite2D" parent="." unique_id=1043691651]
+position = Vector2(682.5, 260.5)
+texture = ExtResource("1_p4oih")
+
+[node name="Input2" type="Sprite2D" parent="." unique_id=1569280363]
+position = Vector2(878.5, 260.5)
+texture = ExtResource("2_w5wbv")
+
+[node name="Input3" type="Sprite2D" parent="." unique_id=194930080]
+position = Vector2(1073.5, 261.5)
+texture = SubResource("CompressedTexture2D_37snx")
+
+[node name="Input4" type="Sprite2D" parent="." unique_id=1701831479]
+position = Vector2(1252.5, 263.5)
+texture = ExtResource("4_telbk")
