@@ -9,10 +9,13 @@ extends CharacterBody3D
 
 @export_category("Spray Can")
 @export var max_spray_can_amount: float = 100.0
-@export_range(1.0, 100.0, 1.0) var spray_can_grind_reward: float = 8.0
+@export_range(1.0, 100.0, 1.0) var spray_can_grind_reward: float = 5.0
 @export var spray_color: Color = Color.RED
 @export var spray_brush_radius: float = 0.5
 @export var spray_drain_per_second: float = 20.0
+
+@export_category("Tricks")
+@export_range(1.0, 100.0, 1.0) var spray_can_trick_reward: float = 25.0
 
 var spray_can_amount: float = 0.0
 
@@ -91,3 +94,10 @@ func _on_movement_controller_landed() -> void:
 	
 func _on_trick_mode_controller_leave_trick_mode() -> void:
 	_exit_slow_mode()
+
+func _on_trick_sequence_success() -> void:
+	# update graffiti fuel gained through tricks
+	var new_amount: float = min(spray_can_amount + spray_can_trick_reward, max_spray_can_amount)
+	spray_can_amount = new_amount
+	spray_can_amount_updated.emit(spray_can_amount)
+	_update_fuel_ui()

@@ -162,6 +162,7 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0
 [connection signal="toggle_grinding" from="Controller/GrindingController" to="Controller/VibrationController" method="_on_toggle_grinding"]
 [connection signal="leave_trick_mode" from="Controller/TrickModeController" to="." method="_on_trick_mode_controller_leave_trick_mode"]
 [connection signal="trick_sequence_failure" from="Controller/TrickModeController" to="Controller/VibrationController" method="_on_trick_mode_controller_trick_sequence_failure"]
+[connection signal="trick_sequence_success" from="Controller/TrickModeController" to="." method="_on_trick_sequence_success"]
 [connection signal="trick_sequence_success" from="Controller/TrickModeController" to="Controller/VibrationController" method="_on_trick_mode_controller_trick_sequence_success"]
 [connection signal="timeout" from="Controller/WrongInputTimer" to="Controller/TrickModeController" method="_on_wrong_input_timer_timeout"]
 [connection signal="timeout" from="GrindUpdateSprayCanTimer" to="." method="_on_grind_update_graffiti_timer_timeout"]
