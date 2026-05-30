@@ -20,6 +20,7 @@ extends CharacterBody3D
 var spray_can_amount: float = 0.0
 
 signal spray_can_amount_updated(amount: float)
+signal spray_can_amount_consumed_for_points(points: float)
 
 var slow_mo = false
 var slow_mo_factor: float = 4.0
@@ -43,7 +44,8 @@ func _process(delta: float) -> void:
 		spray_can_amount = max(0.0, spray_can_amount - spray_drain_per_second * delta)
 		spray_can_amount_updated.emit(spray_can_amount)
 		_update_fuel_ui()
-
+		spray_can_amount_consumed_for_points.emit(spray_drain_per_second * delta)
+		
 	if Input.is_action_just_pressed("enter_trick_mode"):
 		trick_mode_controller.create_goal_sequence()
 

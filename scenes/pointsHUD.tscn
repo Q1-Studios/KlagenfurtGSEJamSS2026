@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://ul7ls8r6exsn"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hd1wn"]
+bg_color = Color(0, 0, 0.003921569, 0.31764707)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[node name="HUD" type="CanvasLayer" unique_id=785558833]
+
+[node name="BackgroundHUD" type="Panel" parent="." unique_id=1061685835]
+offset_left = 31.0
+offset_top = 28.0
+offset_right = 409.0
+offset_bottom = 123.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_hd1wn")
+
+[node name="PointsText" type="Label" parent="." unique_id=1738566486]
+offset_left = 48.0
+offset_top = 40.0
+offset_right = 255.0
+offset_bottom = 109.0
+theme_override_font_sizes/font_size = 40
+text = "Points: "
+vertical_alignment = 1
+uppercase = true
+
+[node name="PointsAmount" type="Label" parent="." unique_id=1495156123]
+offset_left = 312.0
+offset_top = 46.0
+offset_right = 427.0
+offset_bottom = 159.0
+theme_override_font_sizes/font_size = 40
+text = "00
+"

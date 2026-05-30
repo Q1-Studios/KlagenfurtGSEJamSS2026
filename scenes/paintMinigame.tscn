@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://7cshfl85f1va" path="res://assets/paintingMinigame/backdrop.jpg" id="1_dta0m"]
 [ext_resource type="Script" uid="uid://7i0fdm1vah4f" path="res://scripts/paintingMinigame/mouseDraw.gd" id="1_sv35t"]
-[ext_resource type="PackedScene" uid="uid://crqsa3epgfls1" path="res://scenes/controllerCursor.tscn" id="3_r8pki"]
+[ext_resource type="PackedScene" uid="uid://dhhb3ewm8j0im" path="res://scenes/controllerCursor.tscn" id="3_r8pki"]
 
 [node name="Node2D" type="Node2D" unique_id=973804300]
 script = ExtResource("1_sv35t")

@@ -1,6 +1,5 @@
 extends Node2D
 
-
 var mousePositions: Array = []
 var markerContainer: Node2D
 var markerList: Array = []
@@ -26,6 +25,9 @@ var schlauerStudent = load("res://assets/paintingMinigame/schlauerStudent.jpg")
 var canDraw: bool = true
 @onready var timer: Timer = $Timer
 var default_font : Font = ThemeDB.fallback_font
+
+signal passPoints(points: float)
+
 
 var imgDictionary = {
 	"bert": [
@@ -102,6 +104,11 @@ func _input(event: InputEvent) -> void:
 	#if not Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) || totalDistanceCursor > totalDistancePoints*2 || allPointsReached:
 		#return
 	if not Input.is_action_pressed("LMB") || totalDistanceCursor > totalDistancePoints*2 || allPointsReached || !canDraw:
+		var pointsReached = 0
+		for each in markerBoolean:
+			if each == true:
+				pointsReached += 1
+		passPoints.emit(pointsReached * 100)
 		return
 	
 	trackCursorDistance()
@@ -133,8 +140,6 @@ func _draw() -> void:
 			draw_line(mousePositions[i-1], mousePositions[i], Color.RED, 10)
 			i += 1
 		 
-		
-
 
 func _checkPointProximity(position) -> void:
 	for each in marker2DArrayVector:
@@ -147,6 +152,7 @@ func _checkPointProximity(position) -> void:
 func checkAllPoints() -> void:
 	if markerListBoolean.find(false) == -1:
 		allPointsReached = true
+		print("YOU WIN")
 
 
 func printBooleans() -> void:
