@@ -1,0 +1,11 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://bhgfo53a18eau"]
+
+[ext_resource type="Texture2D" uid="uid://deue1gecdfqxf" path="res://assets/bert/bert_eye.png" id="1_2s0nd"]
+
+[resource]
+resource_name = "eye"
+transparency = 4
+cull_mode = 2
+albedo_texture = ExtResource("1_2s0nd")
+roughness = 0.5
+texture_repeat = false
