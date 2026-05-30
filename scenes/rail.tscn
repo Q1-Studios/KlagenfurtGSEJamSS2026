@@ -4,7 +4,7 @@
 
 [sub_resource type="Curve3D" id="Curve3D_yunk7"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -1.2077694, 1.1619501, 8.999237, 0, 0, 0, 0, 0, 0, -0.7781067, -0.39713264, -43.337563),
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -1.2077694, 1.1619501, 8.999237, 0, 0, 0, 0, 0, 0, -0.7781067, 1.3680766, -20.432827),
 "tilts": PackedFloat32Array(0, 0)
 }
 point_count = 2
@@ -14,9 +14,9 @@ curve = SubResource("Curve3D_yunk7")
 script = ExtResource("1_qb0h2")
 
 [node name="CSGPolygon3D" type="CSGPolygon3D" parent="." unique_id=871636713 groups=["Rail"]]
-visible = false
 use_collision = true
 collision_layer = 2
+polygon = PackedVector2Array(0, 0, 0.0014828555, 0.17986217, 0.21751605, 0.17878512, 0.23953551, -0.0015909672)
 mode = 2
 path_node = NodePath("..")
 path_interval_type = 0
