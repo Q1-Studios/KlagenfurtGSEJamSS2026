@@ -1,9 +1,21 @@
 [gd_scene format=3 uid="uid://bpj7o4myywyq7"]
 
-[ext_resource type="PackedScene" uid="uid://brpaiflgdvsx" path="res://assets/bert/bert.glb" id="1_6pu0d"]
-[ext_resource type="Animation" uid="uid://cfmtjk4tenk2b" path="res://assets/bert/animationLibrary/BoardSteerLeft.res" id="2_s53no"]
-[ext_resource type="Animation" uid="uid://da5u7sbjphxvg" path="res://assets/bert/animationLibrary/BoardSteerRight.res" id="3_wfo8j"]
-[ext_resource type="Animation" uid="uid://dt3ka1en1kpcn" path="res://assets/bert/animationLibrary/BoardSteerStraight.res" id="4_whumj"]
+[ext_resource type="PackedScene" uid="uid://cgaffi0rppyqx" path="res://assets/bert/bert.glb" id="1_covau"]
+[ext_resource type="Animation" uid="uid://muyw5b32ttqx" path="res://assets/bert/bertAnimations/BoardSteerLeft.res" id="2_qtmog"]
+[ext_resource type="Animation" uid="uid://bdu31fuwe3avx" path="res://assets/bert/bertAnimations/BoardSteerRight.res" id="3_tybpf"]
+[ext_resource type="Animation" uid="uid://bi702utkm27sq" path="res://assets/bert/bertAnimations/BoardSteerStraight.res" id="4_s00k6"]
+[ext_resource type="Animation" uid="uid://l8fmfyd6i0qa" path="res://assets/bert/bertAnimations/GrindRail.res" id="5_3km1t"]
+[ext_resource type="Animation" uid="uid://ctrj6crri3egb" path="res://assets/bert/bertAnimations/IdleRolling.res" id="6_t45of"]
+[ext_resource type="Animation" uid="uid://c7x5l0ew5ly3i" path="res://assets/bert/bertAnimations/IdleStanding.res" id="7_a4cmt"]
+[ext_resource type="Animation" uid="uid://cpjnbjlrb8vio" path="res://assets/bert/bertAnimations/InAir.res" id="8_si1ny"]
+[ext_resource type="Animation" uid="uid://bqjvdmcgxr3ax" path="res://assets/bert/bertAnimations/JumpEnd.res" id="9_2vb87"]
+[ext_resource type="Animation" uid="uid://cklhgm8k7mxrf" path="res://assets/bert/bertAnimations/JumpStart.res" id="10_1o7ov"]
+[ext_resource type="Animation" uid="uid://brqljngq8jufc" path="res://assets/bert/bertAnimations/TPose.res" id="11_vnfsl"]
+[ext_resource type="Animation" uid="uid://dpkygiy2ecyf" path="res://assets/bert/bertAnimations/Trick1.res" id="12_m6v64"]
+[ext_resource type="Animation" uid="uid://c8l1ais8dypfo" path="res://assets/bert/bertAnimations/Trick2.res" id="13_uuim4"]
+[ext_resource type="Animation" uid="uid://d16nj4e4ceymc" path="res://assets/bert/bertAnimations/TrickPose1.res" id="14_qieh0"]
+[ext_resource type="Animation" uid="uid://bta2q4jq6jbtb" path="res://assets/bert/bertAnimations/TrickPose2.res" id="15_bgmnx"]
+[ext_resource type="Animation" uid="uid://drss1ucd2tcqr" path="res://assets/bert/bertAnimations/TrickPose3.res" id="16_iicyg"]
 
 [sub_resource type="GDScript" id="GDScript_6pu0d"]
 resource_name = "animationTreeInterface"
@@ -20,41 +32,52 @@ func setSteer(f: float) -> void:
 	anim_tree[\"parameters/boardBlendMichael/blend_amount\"] = f
 "
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_72fff"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8r73l"]
 _data = {
-&"BoardSteerLeft": ExtResource("2_s53no"),
-&"BoardSteerRight": ExtResource("3_wfo8j"),
-&"BoardSteerStraight": ExtResource("4_whumj")
+&"BoardSteerLeft": ExtResource("2_qtmog"),
+&"BoardSteerRight": ExtResource("3_tybpf"),
+&"BoardSteerStraight": ExtResource("4_s00k6"),
+&"GrindRail": ExtResource("5_3km1t"),
+&"IdleRolling": ExtResource("6_t45of"),
+&"IdleStanding": ExtResource("7_a4cmt"),
+&"InAir": ExtResource("8_si1ny"),
+&"JumpEnd": ExtResource("9_2vb87"),
+&"JumpStart": ExtResource("10_1o7ov"),
+&"TPose": ExtResource("11_vnfsl"),
+&"Trick1": ExtResource("12_m6v64"),
+&"Trick2": ExtResource("13_uuim4"),
+&"TrickPose1": ExtResource("14_qieh0"),
+&"TrickPose2": ExtResource("15_bgmnx"),
+&"TrickPose3": ExtResource("16_iicyg")
 }
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_6pu0d"]
-animation = &"bertAnimationLibrary/BoardSteerRight"
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ye60r"]
+animation = &"bertLibrary/BoardSteerRight"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_wfo8j"]
-animation = &"bertAnimationLibrary/BoardSteerLeft"
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_hvwgq"]
+animation = &"bertLibrary/BoardSteerLeft"
 
-[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_72fff"]
+[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_1xn5g"]
 
-[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_6pu0d"]
-graph_offset = Vector2(-343.91565, -76.02818)
-nodes/output/position = Vector2(546.6667, 26.666666)
-nodes/Animation/node = SubResource("AnimationNodeAnimation_wfo8j")
-nodes/Animation/position = Vector2(-213.33333, 26.666666)
-"nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_6pu0d")
-"nodes/Animation 2/position" = Vector2(-213.33333, 226.66667)
-nodes/boardBlendMichael/node = SubResource("AnimationNodeBlend2_72fff")
-nodes/boardBlendMichael/position = Vector2(200, 93.333336)
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_ypo84"]
+graph_offset = Vector2(-505.69632, 81.77737)
+nodes/boardBlendMichael/node = SubResource("AnimationNodeBlend2_1xn5g")
+nodes/boardBlendMichael/position = Vector2(27.275482, 202.18683)
+nodes/Animation/node = SubResource("AnimationNodeAnimation_hvwgq")
+nodes/Animation/position = Vector2(-333.33334, 80)
+"nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_ye60r")
+"nodes/Animation 2/position" = Vector2(-400, 386.66666)
 node_connections = [&"output", 0, &"boardBlendMichael", &"boardBlendMichael", 0, &"Animation", &"boardBlendMichael", 1, &"Animation 2"]
 
 [node name="Bertmodel" type="Node3D" unique_id=966477376]
 script = SubResource("GDScript_6pu0d")
 
-[node name="bert" parent="." unique_id=228107614 instance=ExtResource("1_6pu0d")]
+[node name="bert" parent="." unique_id=1376347749 instance=ExtResource("1_covau")]
 
-[node name="AnimationPlayer2" type="AnimationPlayer" parent="bert" unique_id=1073454764]
-libraries/bertAnimationLibrary = SubResource("AnimationLibrary_72fff")
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="bert" unique_id=201788050]
+libraries/bertLibrary = SubResource("AnimationLibrary_8r73l")
 
-[node name="AnimationTree" type="AnimationTree" parent="bert" unique_id=648461816]
-tree_root = SubResource("AnimationNodeBlendTree_6pu0d")
+[node name="AnimationTree" type="AnimationTree" parent="bert" unique_id=1384168032]
+tree_root = SubResource("AnimationNodeBlendTree_ypo84")
 anim_player = NodePath("../AnimationPlayer2")
 parameters/boardBlendMichael/blend_amount = 0.5

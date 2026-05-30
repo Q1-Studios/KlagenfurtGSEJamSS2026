@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://bsdkgq5kwslnd"]
+
+[ext_resource type="Texture2D" uid="uid://dx7bqp27nvrro" path="res://assets/bert/bert_backpack.png" id="1_picp6"]
+
+[resource]
+resource_name = "Backpack.001"
+cull_mode = 2
+shading_mode = 0
+albedo_texture = ExtResource("1_picp6")

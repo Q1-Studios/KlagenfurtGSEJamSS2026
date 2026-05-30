@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://dafml14quyb0u"]
+
+[ext_resource type="Texture2D" uid="uid://dbmppl6l2rpk8" path="res://assets/bert/bert_clawtext.png" id="1_ftoi3"]
+
+[resource]
+resource_name = "BertClawMaterial"
+cull_mode = 2
+shading_mode = 0
+albedo_texture = ExtResource("1_ftoi3")

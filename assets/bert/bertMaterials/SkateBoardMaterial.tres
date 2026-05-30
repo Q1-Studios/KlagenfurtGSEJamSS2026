@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://guj0tt5slmio"]
+
+[ext_resource type="Texture2D" uid="uid://84gobqhjosr8" path="res://assets/bert/bert_skateboard.png" id="1_jiufb"]
+
+[resource]
+resource_name = "SkateBoardMaterial"
+cull_mode = 2
+shading_mode = 0
+albedo_texture = ExtResource("1_jiufb")

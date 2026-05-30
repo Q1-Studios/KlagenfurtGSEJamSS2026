@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://fcvhk0epxm62"]
+
+[ext_resource type="Texture2D" uid="uid://cwf7oh2spab27" path="res://assets/bert/bert_spraycan.png" id="1_awq7i"]
+
+[resource]
+resource_name = "Spraycan.001"
+cull_mode = 2
+shading_mode = 0
+albedo_texture = ExtResource("1_awq7i")
