@@ -9,6 +9,9 @@ extends CharacterBody3D
 @export_category("Spray Can")
 @export var max_spray_can_amount: float = 100.0
 @export_range(1.0, 100.0, 1.0) var spray_can_grind_reward: float = 8.0
+@export var spray_color: Color = Color.RED
+@export var spray_brush_radius: float = 0.5
+@export var spray_drain_per_second: float = 20.0
 
 var spray_can_amount: float = 0.0
 
@@ -29,7 +32,13 @@ func _physics_process(delta: float) -> void:
 	movementController.handle_movement(self, delta)
 	move_and_slide()
 	
-func _process(_delta: float) -> void:
+func _process(delta: float) -> void:
+	if Input.is_action_pressed("spray") and spray_can_amount > 0.0:
+		FloorPainter.paint(global_position, spray_color, spray_brush_radius)
+		spray_can_amount = max(0.0, spray_can_amount - spray_drain_per_second * delta)
+		spray_can_amount_updated.emit(spray_can_amount)
+		_update_fuel_ui()
+
 	if Input.is_action_just_pressed("debugButtonTODORemoveLater"):
 		trick_mode_controller.create_goal_sequence()
 		slow_mo = !slow_mo
