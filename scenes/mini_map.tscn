@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://dy2ssres8kaye"]
+
+[ext_resource type="Script" uid="uid://d1j8j8aavwywk" path="res://scenes/MiniMapCamera.gd" id="1_l143l"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2bn0t"]
+content_margin_left = 8.0
+content_margin_top = 8.0
+content_margin_right = 8.0
+content_margin_bottom = 8.0
+bg_color = Color(2.5027991e-06, 0.8114572, 0.75021636, 1)
+border_blend = true
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+shadow_color = Color(0, 0, 0, 0.69803923)
+
+[node name="MiniMap" type="MarginContainer" unique_id=833663843]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=814037327]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme_override_styles/panel = SubResource("StyleBoxFlat_2bn0t")
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="PanelContainer" unique_id=1432840667]
+custom_minimum_size = Vector2(320, 180)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="PanelContainer/SubViewportContainer" unique_id=306455766]
+handle_input_locally = false
+size = Vector2i(2, 2)
+render_target_update_mode = 4
+
+[node name="Camera3D" type="Camera3D" parent="PanelContainer/SubViewportContainer/SubViewport" unique_id=2138657575]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 57.097168, 65.96795)
+cull_mask = 1047554
+projection = 1
+size = 72.027
+near = 0.023
+script = ExtResource("1_l143l")
