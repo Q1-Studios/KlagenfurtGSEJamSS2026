@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://denrg47s3u5ga"]
+[gd_scene load_steps=24 format=3 uid="uid://denrg47s3u5ga"]
 
 [ext_resource type="PackedScene" uid="uid://jmt5yqanfxhe" path="res://assets/3DModles_ENV/house4.fbx" id="1_u3x7g"]
 [ext_resource type="PackedScene" uid="uid://uvhtmgmn1b5i" path="res://assets/3DModles_ENV/AAU.fbx" id="2_oiyxv"]
@@ -15,6 +15,11 @@
 [ext_resource type="PackedScene" uid="uid://cgbmouts7vxiv" path="res://assets/3DModles_ENV/Ramp.tscn" id="13_4a17v"]
 [ext_resource type="PackedScene" uid="uid://b7nalf6ysnom8" path="res://assets/3DModles_ENV/wall.fbx" id="14_qhuri"]
 [ext_resource type="PackedScene" uid="uid://cohf11gupaavb" path="res://assets/3DModles_ENV/wall_no_top.fbx" id="15_xhugj"]
+[ext_resource type="PackedScene" uid="uid://b5yha3wggnmwx" path="res://assets/3DModles_ENV/skate_features/entrance_railing.fbx" id="16_12mnl"]
+[ext_resource type="PackedScene" uid="uid://cl7ftd06g7h8f" path="res://assets/3DModles_ENV/skate_features/mini_ramp.fbx" id="17_y0apw"]
+[ext_resource type="PackedScene" uid="uid://bvhgwox1amqtv" path="res://assets/3DModles_ENV/skate_features/mini_rail.fbx" id="18_3dw6s"]
+[ext_resource type="PackedScene" uid="uid://b6bnebjlay6a2" path="res://assets/3DModles_ENV/skate_features/quater_rail.fbx" id="19_43tlv"]
+[ext_resource type="PackedScene" uid="uid://cj4uo3cutd81u" path="res://assets/3DModles_ENV/skate_features/triple_quater.fbx" id="20_k76jp"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_bggjr"]
 
@@ -46,7 +51,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -214.59126, 47.93685, -166.02
 transform = Transform3D(0.011082617, 0, -0.9999386, 0, 1, 0, 0.9999386, 0, 0.011082617, 93.413, 26, -47.386)
 
 [node name="house3" parent="." instance=ExtResource("5_ruh5v")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 56.76683, 20, 6.059)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 56.76683, 17.420485, 6.059)
 
 [node name="house5" parent="." instance=ExtResource("1_u3x7g")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.2557678, 9.8870125, 6.0593796)
@@ -1016,6 +1021,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40, 0, 50)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.11419678, 0.24880981, -0.08630371)
 shape = SubResource("BoxShape3D_4a17v")
 
+[node name="mini_ramp" parent="Node3D/Ground4/Ground2/StaticBody3D" instance=ExtResource("17_y0apw")]
+transform = Transform3D(-8.742278e-08, 0, -2, 0, 2, 0, 2, 0, -8.742278e-08, 90.02084, 1.5479212, -15.3888855)
+
 [node name="Ground" parent="Node3D/Ground4" instance=ExtResource("12_bggjr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 50)
 
@@ -1388,6 +1396,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 20, -189)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.11419678, 0.24880981, -0.08630371)
 shape = SubResource("BoxShape3D_4a17v")
 
+[node name="wall_no_top" parent="Node3D" instance=ExtResource("15_xhugj")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -102.98712, 10.476829, -99.14894)
+
+[node name="wall_no_top2" parent="Node3D" instance=ExtResource("15_xhugj")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -102.98712, 12.442846, -99.14894)
+
 [node name="Ground11" parent="." instance=ExtResource("12_bggjr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40, 20, -148)
 
@@ -1573,7 +1587,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -120, 10, -117)
 [node name="StaticBody3D" type="StaticBody3D" parent="Ground23"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Ground23/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.11419678, 0.24880981, -0.08630371)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.705673, 0.24880981, -0.08630371)
 shape = SubResource("BoxShape3D_4a17v")
 
 [node name="Ground24" parent="." instance=ExtResource("12_bggjr")]
@@ -1719,3 +1733,72 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 108.42764, 5.3153877, -19.708
 
 [node name="wall_no_top15" parent="." instance=ExtResource("15_xhugj")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 0.75, 0, -1, 0, -4.371139e-08, 98.763985, 9.783353, -9.3700485)
+
+[node name="entrance_railing" parent="." instance=ExtResource("16_12mnl")]
+transform = Transform3D(-8.9826905e-08, 0, -2.055, 0, 2.055, 0, 2.055, 0, -8.9826905e-08, -138.28587, 7.743396, -59.04538)
+
+[node name="entrance_railing3" parent="." instance=ExtResource("16_12mnl")]
+transform = Transform3D(2.055, 0, 0, 0, 2.055, 0, 0, 0, 2.055, -230.10107, 1.9962087, -14.817556)
+
+[node name="entrance_railing2" parent="." instance=ExtResource("16_12mnl")]
+transform = Transform3D(8.9826905e-08, 7.852918e-15, -2.055, 1.7965381e-07, -2.055, 0, -2.055, -1.7965381e-07, -8.9826905e-08, -138.28587, 5.6990404, -59.04538)
+
+[node name="entrance_railing4" parent="." instance=ExtResource("16_12mnl")]
+transform = Transform3D(-8.742278e-08, 0, 2, 0, 2, 0, -2, 0, -8.742278e-08, 3.3156033, 1.4976197, 33.806675)
+
+[node name="mini_ramp" parent="." instance=ExtResource("17_y0apw")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -22.007694, 12.103577, -53.992798)
+
+[node name="mini_ramp2" parent="." instance=ExtResource("17_y0apw")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -17.05608, 12.103577, -93.67162)
+
+[node name="entrance_railing5" parent="." instance=ExtResource("16_12mnl")]
+transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, 66.9877, 21.49762, -142.63272)
+
+[node name="mini_rail" parent="." instance=ExtResource("18_3dw6s")]
+transform = Transform3D(-8.742278e-08, 0, 2, 0, 2, 0, -2, 0, -8.742278e-08, -38.80657, 16.651833, 2.316667)
+
+[node name="mini_rail2" parent="." instance=ExtResource("18_3dw6s")]
+transform = Transform3D(-8.742278e-08, 0, 2, 0, 2, 0, -2, 0, -8.742278e-08, -38.80657, 16.651833, 14.218954)
+
+[node name="mini_rail3" parent="." instance=ExtResource("18_3dw6s")]
+transform = Transform3D(-8.742278e-08, 0, 2, 0, 2, 0, -2, 0, -8.742278e-08, -38.80657, 16.651833, 26.127874)
+
+[node name="mini_rail4" parent="." instance=ExtResource("18_3dw6s")]
+transform = Transform3D(-8.742278e-08, 0, 2, 0, 2, 0, -2, 0, -8.742278e-08, -37.045166, 20.437561, 12.6525)
+
+[node name="mini_rail5" parent="." instance=ExtResource("18_3dw6s")]
+transform = Transform3D(-8.742278e-08, 0, 2, 0, 2, 0, -2, 0, -8.742278e-08, -37.045166, 20.437561, 24.56142)
+
+[node name="mini_ramp3" parent="." instance=ExtResource("17_y0apw")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 123.39595, 15.718561, -58.959064)
+
+[node name="mini_rail6" parent="." instance=ExtResource("18_3dw6s")]
+transform = Transform3D(-3.3111377e-07, 0, 5, 0, 5, 0, -7.575, 0, -2.1855695e-07, 73.65347, 20.095396, 24.308243)
+
+[node name="quater_rail" parent="." instance=ExtResource("19_43tlv")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 7.79, 89.29314, 13.776921, -13.11962)
+
+[node name="mini_ramp4" parent="." instance=ExtResource("17_y0apw")]
+transform = Transform3D(10.12, 0, 0, 0, 2, 0, 0, 0, 2, 81.28572, 11.579828, -38.075554)
+
+[node name="mini_rail7" parent="." instance=ExtResource("18_3dw6s")]
+transform = Transform3D(1.2985797e-07, -7.59519e-08, 7.88, -0.41751954, -12.363496, 3.5181386e-15, 2.9708042, -1.7375771, -3.4444574e-07, -180.17412, 18.631983, -115.53165)
+
+[node name="triple_quater" parent="." instance=ExtResource("20_k76jp")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -233.76201, 2.971078, -137.84085)
+
+[node name="mini_rail8" parent="." instance=ExtResource("18_3dw6s")]
+transform = Transform3D(2.335, 0, 0, 0, 2, 0, 0, 0, 1.435, -234.54399, 3.7370272, -139.81206)
+
+[node name="quater_rail2" parent="." instance=ExtResource("19_43tlv")]
+transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, -254.10205, 2.902287, -130.46982)
+
+[node name="mini_rail9" parent="." instance=ExtResource("18_3dw6s")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -240.07216, 1.0976197, -121.3953)
+
+[node name="mini_ramp5" parent="." instance=ExtResource("17_y0apw")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -234.00441, 1.4976196, -115.42291)
+
+[node name="mini_ramp6" parent="." instance=ExtResource("17_y0apw")]
+transform = Transform3D(-1.5, 0, -1.3113416e-07, 0, 1.5, 0, 1.3113416e-07, 0, -1.5, -234.00441, 1.4976196, -66.01108)
