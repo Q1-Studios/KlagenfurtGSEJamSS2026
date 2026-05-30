@@ -10,11 +10,12 @@ var sequence_input_index = 0
 var failed = false
 var won = false
 
+signal trick_sequence_success()
+
 func _ready() -> void:
 	_create_goal_sequence()
 
 func _process(delta: float) -> void:
-	
 	if is_active:
 		if (sequence_input_index >= sequence_length and not failed) or won:
 			_handle_success()
@@ -27,10 +28,11 @@ func _handle_success() -> void:
 	is_active = false
 	_reset()
 	print("WON")
+	emit_signal("trick_sequence_success")
 	
 func _handle_failure() -> void:
-	is_active = false
-	_reset()
+	sequence_input_index = 0
+	failed = false
 	print("LOST")
 	
 
