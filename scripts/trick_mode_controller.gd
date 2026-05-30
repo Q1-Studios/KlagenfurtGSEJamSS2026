@@ -41,8 +41,8 @@ func _process(delta: float) -> void:
 			time_needed_for_tricks = time_for_tricks / slow_mo
 		
 		if (movementController.is_about_to_land(character_body, time_needed_for_tricks, false)):
-			#is_active = false
-			#_reset()
+			is_active = false
+			_reset()
 			print("Trick Mode over")
 		
 		if (sequence_input_index >= sequence_length and not failed) or won:
@@ -118,7 +118,6 @@ func _evaluate_input() -> void:
 			failed = true
 
 func create_goal_sequence() -> void:
-	_reset()
 	for i in range(sequence_length):
 		sequence.append(input[rng.randi_range(0, 3)])
 	print(sequence)
@@ -132,6 +131,7 @@ func _reset() -> void:
 	failed = false
 	won = false
 	resetModulate()
+	trickInputUI.set_visible(false)
 	
 func toggle_slow_mo(is_active: bool) -> void:
 	slow_mo_is_active = is_active
