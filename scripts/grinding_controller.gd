@@ -6,6 +6,7 @@ class_name GrindingController
 @onready var rail_grind_node: RailFollower = null
 @onready var camera = %PlayerCamera as Camera3D
 @onready var camera_pivot = %CameraPivot as Node3D
+@onready var grind_particles_emitter = %GrindParticlesEmitter as GPUParticles3D
 
 @export var grind_ray: ShapeCast3D
 @export var player: CharacterBody3D
@@ -85,6 +86,7 @@ func start_grinding():
 
 	# Update players rotation and position
 	rotate_player_for_grinding()
+	grind_particles_emitter.emitting = true
 	emit_signal("toggle_grinding", true)
 	
 func rotate_player_for_grinding():
@@ -102,6 +104,12 @@ func rotate_player_for_grinding():
 	skateboard_model.global_transform = skateboard_model.global_transform.looking_at(skateboard_model.global_position + perpendicular, Vector3.UP)
 	skateboard_model.scale = board_scale
 	
+
+	#var particle_rotation = path_forward.rotated(Vector3.UP, PI / 2)
+	#var particles_looking_at = grind_particles_emitter.global_position + particle_rotation
+	#grind_particles_emitter.global_transform = grind_particles_emitter.global_transform.looking_at(particles_looking_at, Vector3.UP)
+	
+	
 func update_player_camera():
 	camera_pivot.rotation.y = lerp_angle(camera_pivot.rotation.y, target_yaw, 0.08)
 
@@ -109,6 +117,7 @@ func update_player_position():
 	player.global_position = rail_grind_node.global_position
  
 func detach_from_rail():
+	grind_particles_emitter.emitting = false
 	can_grind = false
 	grinding = false
 	rail_grind_node.chosen = false
