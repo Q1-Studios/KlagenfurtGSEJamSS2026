@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://denrg47s3u5ga"]
+[gd_scene load_steps=10 format=3 uid="uid://denrg47s3u5ga"]
 
 [ext_resource type="PackedScene" uid="uid://jmt5yqanfxhe" path="res://assets/3DModles_ENV/house4.fbx" id="1_u3x7g"]
 [ext_resource type="PackedScene" uid="uid://uvhtmgmn1b5i" path="res://assets/3DModles_ENV/AAU.fbx" id="2_oiyxv"]
@@ -6,75 +6,79 @@
 [ext_resource type="PackedScene" uid="uid://bwmbfo861b6nn" path="res://assets/3DModles_ENV/house2.fbx" id="4_xd5kv"]
 [ext_resource type="PackedScene" uid="uid://prbgjysekyop" path="res://assets/3DModles_ENV/house3.fbx" id="5_ruh5v"]
 [ext_resource type="PackedScene" uid="uid://b3luo6vxyc0f7" path="res://assets/3DModles_ENV/house5.fbx" id="6_10wqe"]
+[ext_resource type="PackedScene" uid="uid://cu10mvrry3ov3" path="res://scenes/lgbtq_staircase.fbx" id="7_oiyxv"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_bggjr"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_u3x7g"]
 
-[node name="GameLevel" type="Node2D" unique_id=1398788048]
+[node name="GameLevel" type="Node2D"]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1790270333]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(220, 0, 0, 0, 1, 0, 0, 0, 150, 0, 0, -40.573303)
 mesh = SubResource("PlaneMesh_bggjr")
 
-[node name="house4" parent="." unique_id=2142585721 instance=ExtResource("1_u3x7g")]
+[node name="house4" parent="." instance=ExtResource("1_u3x7g")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 92.57405, 9.973759, 10.243519)
 
-[node name="AAU" parent="." unique_id=1329342411 instance=ExtResource("2_oiyxv")]
+[node name="AAU" parent="." instance=ExtResource("2_oiyxv")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -115.89, 9, 22.063)
 
-[node name="house1" parent="." unique_id=1163511165 instance=ExtResource("3_mdcd8")]
+[node name="house1" parent="." instance=ExtResource("3_mdcd8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -158.272, 0, -35.212)
 
-[node name="house2" parent="." unique_id=1868377997 instance=ExtResource("4_xd5kv")]
+[node name="house2" parent="." instance=ExtResource("4_xd5kv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -195.59126, 47.93685, -166.02777)
 
-[node name="house13" parent="." unique_id=287106142 instance=ExtResource("5_ruh5v")]
+[node name="house13" parent="." instance=ExtResource("5_ruh5v")]
 transform = Transform3D(0.011082617, 0, -0.9999386, 0, 1, 0, 0.9999386, 0, 0.011082617, 79.413, 30, -47.386)
 
-[node name="house3" parent="." unique_id=743042434 instance=ExtResource("5_ruh5v")]
+[node name="house3" parent="." instance=ExtResource("5_ruh5v")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.76683, 20, 6.059)
 
-[node name="house5" parent="." unique_id=1685253329 instance=ExtResource("1_u3x7g")]
+[node name="house5" parent="." instance=ExtResource("1_u3x7g")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.744232, 9.8870125, 6.0593796)
 
-[node name="house6" parent="." unique_id=2139258477 instance=ExtResource("6_10wqe")]
+[node name="house6" parent="." instance=ExtResource("6_10wqe")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.094, 25.285, -173.039)
 
-[node name="house7" parent="." unique_id=1313044854 instance=ExtResource("3_mdcd8")]
+[node name="house7" parent="." instance=ExtResource("3_mdcd8")]
 transform = Transform3D(-0.0018849336, 0, 0.9999982, 0, 1, 0, -0.9999982, 0, -0.0018849336, -98.5515, 10, -59.19461)
 
-[node name="house8" parent="." unique_id=2075363323 instance=ExtResource("4_xd5kv")]
+[node name="house8" parent="." instance=ExtResource("4_xd5kv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -139.165, 57.937, -166.028)
 
-[node name="house9" parent="." unique_id=283674754 instance=ExtResource("4_xd5kv")]
+[node name="house9" parent="." instance=ExtResource("4_xd5kv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 64.921, 57.937, -113.509)
 
-[node name="house10" parent="." unique_id=1670981632 instance=ExtResource("3_mdcd8")]
+[node name="house10" parent="." instance=ExtResource("3_mdcd8")]
 transform = Transform3D(-0.0018849336, 0, 0.9999982, 0, 1, 0, -0.9999982, 0, -0.0018849336, -98.551, 10, -149.431)
 
-[node name="house11" parent="." unique_id=1869030830 instance=ExtResource("6_10wqe")]
+[node name="house11" parent="." instance=ExtResource("6_10wqe")]
 transform = Transform3D(-0.015375767, 0, 0.9998818, 0, 1, 0, -0.9998818, 0, -0.015375767, -15.787, 16.073, -81.518)
 
-[node name="house12" parent="." unique_id=1248143151 instance=ExtResource("5_ruh5v")]
+[node name="house12" parent="." instance=ExtResource("5_ruh5v")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 137.6381, 20, -29.12018)
 
-[node name="house14" parent="." unique_id=381522738 instance=ExtResource("4_xd5kv")]
+[node name="house14" parent="." instance=ExtResource("4_xd5kv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 93.438, 57.93, -171.825)
 
-[node name="house15" parent="." unique_id=1857827052 instance=ExtResource("4_xd5kv")]
+[node name="house15" parent="." instance=ExtResource("4_xd5kv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 146.947, 67.937, -171.825)
 
-[node name="house16" parent="." unique_id=1294563967 instance=ExtResource("6_10wqe")]
+[node name="house16" parent="." instance=ExtResource("6_10wqe")]
 transform = Transform3D(-0.015375767, 0, 0.9998818, 0, 1, 0, -0.9998818, 0, -0.015375767, 172.295, 24.738, -105.228)
 
-[node name="house17" parent="." unique_id=1956213910 instance=ExtResource("5_ruh5v")]
+[node name="house17" parent="." instance=ExtResource("5_ruh5v")]
 transform = Transform3D(0.011082617, 0, -0.9999386, 0, 1, 0, 0.9999386, 0, 0.011082617, 117.863, 40, -106.662)
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=1940580150]
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
 transform = Transform3D(-0.34184948, -0.12011028, -19.99702, -2.783462, 49.5134, 0, 19.802414, 6.9576197, -0.3452091, -56.482784, 3, 42.354)
 mesh = SubResource("PlaneMesh_u3x7g")
 
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="." unique_id=1838985173]
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
 transform = Transform3D(-0.34184948, -0.002402205, -19.99702, -2.7834616, 0.99026805, -2.9695747e-07, 19.80241, 0.13915235, -0.34520906, -55.74548, 8.565169, 2.983049)
 mesh = SubResource("PlaneMesh_u3x7g")
+
+[node name="lgbtq_staircase" parent="." instance=ExtResource("7_oiyxv")]
+transform = Transform3D(-0.99999845, -1.8770665e-05, -0.0017452784, 0, 1.0269437, -0.0104717845, 0.0017453741, -0.010754506, -0.9999436, -188.367, -0.225, 16.316)
