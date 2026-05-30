@@ -2,6 +2,7 @@ extends CharacterBody3D
 @onready var movementController := %MovementController
 @onready var grindingController := %GrindingController
 @onready var trick_mode_controller := %TrickModeController
+@onready var wrong_input_timer := %WrongInputTimer
 @onready var grind_update_timer = %GrindUpdateSprayCanTimer
 @onready var healthBar = $SprayFuelSubviewPort/ProgressBar
 
@@ -58,9 +59,11 @@ func _on_enter_slow_mode():
 	# trickAnimationPlayer.speed_scale = slow_mo_factor 
 	# animationPlayerForStuffNotRelatedToTricks.speed_scale = 1.0 
 	trick_mode_controller.toggle_slow_mo(true)
+	wrong_input_timer.wait_time /= slow_mo_factor
 
 func _on_exit_slow_mode():
 	Engine.time_scale = 1.0
 	# trickAnimationPlayer.speed_scale = 1.0
 	# animationPlayerForStuffNotRelatedToTricks.speed_scale = 1.0 
 	trick_mode_controller.toggle_slow_mo(false)
+	wrong_input_timer.wait_time *= slow_mo_factor

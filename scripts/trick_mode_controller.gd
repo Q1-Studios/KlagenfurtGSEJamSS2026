@@ -30,9 +30,8 @@ var won = false
 signal trick_sequence_success()
 
 func _ready() -> void:
-	create_goal_sequence()
 	getSprites()
-	setSprites()
+	create_goal_sequence()
 
 func _process(delta: float) -> void:
 	if is_active && wrongInputTimer.time_left <= 0:
@@ -61,7 +60,7 @@ func _handle_success() -> void:
 	_reset()
 	print("WON")
 	emit_signal("trick_sequence_success")
-	
+	getSprites
 func _handle_failure() -> void:
 	sequence_input_index = 0
 	failed = false
@@ -118,10 +117,12 @@ func _evaluate_input() -> void:
 			failed = true
 
 func create_goal_sequence() -> void:
+	_reset()
 	for i in range(sequence_length):
 		sequence.append(input[rng.randi_range(0, 3)])
 	print(sequence)
 	is_active = true
+	setSprites()
 	displayTrickSequence()
 	
 	
@@ -163,7 +164,7 @@ func mistakeModulate() -> void:
 func resetModulate() -> void:
 	for each in trickSprites:
 		each.self_modulate = Color(1, 1, 1)
-
+etSprites()
 
 func startMistakeTimer() -> void:
 	wrongInputTimer.start()

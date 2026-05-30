@@ -21,8 +21,6 @@ size = Vector3(1.5, 1, 4.5)
 [sub_resource type="ViewportTexture" id="ViewportTexture_n4d43"]
 viewport_path = NodePath("SprayFuelSubviewPort")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_ew7ux"]
-viewport_path = NodePath("TrickInputSubviewPort")
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_vef6s"]
 lifetime_randomness = 0.2
 emission_shape = 3
@@ -44,6 +42,9 @@ emission_energy_multiplier = 16.0
 [sub_resource type="PlaneMesh" id="PlaneMesh_ew7ux"]
 material = SubResource("StandardMaterial3D_n4d43")
 size = Vector2(0.4, 0.03)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_ew7ux"]
+viewport_path = NodePath("TrickInputSubviewPort")
 
 [node name="Sealskater" type="CharacterBody3D" unique_id=833053730]
 script = ExtResource("1_vef6s")
@@ -90,8 +91,11 @@ skateboard_model = NodePath("../../skateboard")
 [node name="TrickModeController" type="Node" parent="Controller" unique_id=643593822]
 unique_name_in_owner = true
 script = ExtResource("6_n4d43")
+time_for_tricks = null
 
 [node name="WrongInputTimer" type="Timer" parent="Controller" unique_id=1057629774]
+unique_name_in_owner = true
+wait_time = 0.25
 one_shot = true
 
 [node name="GrindUpdateSprayCanTimer" type="Timer" parent="." unique_id=498531919]
@@ -115,7 +119,7 @@ unique_name_in_owner = true
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0.38783646, 0)
 emitting = false
 amount = 64
-lifetime = 0.09999999999999999
+lifetime = 0.1
 randomness = 0.6
 local_coords = true
 trail_lifetime = 0.01
