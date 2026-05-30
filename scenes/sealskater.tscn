@@ -58,3 +58,5 @@ player_model = NodePath("../../seal")
 skateboard_model = NodePath("../../skateboard")
 
 [node name="TrickModeController" type="Node" parent="Controller" unique_id=643593822]
+
+[connection signal="toggle_grinding" from="Controller/GrindingController" to="Controller/MovementController" method="_on_toggle_grinding"]

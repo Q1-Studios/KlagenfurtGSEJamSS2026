@@ -5,6 +5,7 @@ extends Node
 @export var max_speed := 20.0       
 @export var acceleration := 100.0
 @export var deceleration := 70.0
+@export var air_deceleration := 10.0
 @export var coasting := 20.0
 @export var threshhold := 0.1 
 @export var acceleration_penalty := 0.4
@@ -18,8 +19,11 @@ extends Node
 @export var low_speed_limit_factor := 1.5 # k
 # f(x)=((a*((1)/(k)) x)/(1+(b*((1)/(k)) x)^(p)))
 @export var min_turning_factor := 1.0
+@export var allow_for_air_turning := true
+@export var air_turning_factor := 0.5
 # max(f(x), min_turn)
 @export var allow_sliding := false
+
 
 
 @export_group("Jumping")
@@ -29,10 +33,9 @@ extends Node
 
 # config var - no export
 var ahead = Vector3.RIGHT # Front of player, change es necessary
-var is_grinding: bool = false
-
 
 # script controlled vars
+var is_grinding: bool = false
 var is_grounded = true
 var previous_direction = 0
 var coyote_timer = 0.0
@@ -61,6 +64,9 @@ func handle_movement(player: CharacterBody3D) -> void:
 func _handle_player_turning(player: CharacterBody3D, delta: float) -> void:
 	var raw_turn = Input.get_axis("move_right", "move_left") 
 	var turn_speed := _calculate_AngularVelocity(player.velocity.length())
+	if not is_grounded and not allow_for_air_turning:
+		turn_speed = air_turning_factor
+		
 	var turn_amount = raw_turn * turn_speed * delta
 	player.rotate(Vector3.UP, turn_amount)
 	
@@ -76,14 +82,20 @@ func _handle_forward_movement(player: CharacterBody3D, delta: float) -> void:
 	var acceleration_penalty = _calculate_acceleration_acceleration_penalty(velocity_percent)
 	var scaled_acceleration = acceleration * acceleration_penalty
 	
+	var xz_velocity = player.velocity * (Vector3.ONE - Vector3.UP)
 	
 	if raw_input < 0:
-		player.velocity = player.velocity.move_toward(move_direction * max_speed, scaled_acceleration * delta)
+		xz_velocity = xz_velocity.move_toward(move_direction * max_speed, scaled_acceleration * delta)
+	elif raw_input > 0 and is_grounded:
+		xz_velocity = xz_velocity.move_toward(Vector3.ZERO, deceleration * delta)
 	elif raw_input > 0:
-		player.velocity = player.velocity.move_toward(Vector3.ZERO, deceleration * delta)
+		xz_velocity = xz_velocity.move_toward(Vector3.ZERO, air_deceleration * delta)
 	elif is_grounded:
-		player.velocity = player.velocity.move_toward(Vector3.ZERO, coasting * delta)
+		xz_velocity = xz_velocity.move_toward(Vector3.ZERO, coasting * delta)
+	
+	player.velocity = player.velocity * Vector3.UP + xz_velocity
 	current_speed = player.velocity.length()
+	
 	
 func _handle_jump(player: CharacterBody3D, delta: float) -> void:
 	if Input.is_action_just_pressed("jump") and is_grounded:
@@ -103,6 +115,7 @@ func _calculate_AngularVelocity(velocity: float) -> float:
 				)
 			)
 		)
+		
 	return max(f_x, min_turning_factor)
 	
 func _calculate_acceleration_acceleration_penalty(velocity_percent: float) -> float:
