@@ -6,6 +6,7 @@ extends Node
 @export var acceleration := 100.0
 @export var deceleration := 70.0
 @export var air_deceleration := 10.0
+@export var air_acceleration := 40.0
 @export var coasting := 20.0
 @export var threshhold := 0.1 
 @export var acceleration_penalty := 0.4
@@ -23,8 +24,6 @@ extends Node
 @export var air_turning_factor := 0.5
 # max(f(x), min_turn)
 @export var allow_sliding := false
-
-
 
 @export_group("Jumping")
 @export var jump_force := 20.0
@@ -84,8 +83,10 @@ func _handle_forward_movement(player: CharacterBody3D, delta: float) -> void:
 	
 	var xz_velocity = player.velocity * (Vector3.ONE - Vector3.UP)
 	
-	if raw_input < 0:
+	if raw_input < 0 and is_grounded:
 		xz_velocity = xz_velocity.move_toward(move_direction * max_speed, scaled_acceleration * delta)
+	elif raw_input < 0:
+		xz_velocity = xz_velocity.move_toward(move_direction * max_speed, air_acceleration * delta)
 	elif raw_input > 0 and is_grounded:
 		xz_velocity = xz_velocity.move_toward(Vector3.ZERO, deceleration * delta)
 	elif raw_input > 0:
@@ -122,6 +123,23 @@ func _calculate_acceleration_acceleration_penalty(velocity_percent: float) -> fl
 	var scaled_velocity_percent = velocity_percent * max_acceleration_penalty
 	return 2**(-(acceleration_penalty*scaled_velocity_percent))
 
+func is_about_to_land(player: CharacterBody3D, timeframe: float) -> bool:
+	if is_grounded:
+		return true
+		
+	var world_state = player.get_world_3d().direct_space_state
+	var gravity_vector = Vector3.UP * gravity
+	
+	var start_pos = player.global_position
+	var player_displacement = (player.velocity * timeframe) + (0.5 * gravity_vector * pow(timeframe, 2))
+	var end_pos = start_pos + player_displacement
+	
+	var query = PhysicsRayQueryParameters3D.create(start_pos, end_pos)
+	query.exclude = [player.get_rid()]
+	
+	var result = world_state.intersect_ray(query)
+	return !result.is_empty()
+	
 
 func _on_toggle_grinding(_is_grinding: bool) -> void:
 	is_grinding = _is_grinding

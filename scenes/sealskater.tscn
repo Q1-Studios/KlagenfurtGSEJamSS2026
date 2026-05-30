@@ -63,6 +63,7 @@ player_model = NodePath("../../seal")
 skateboard_model = NodePath("../../skateboard")
 
 [node name="TrickModeController" type="Node" parent="Controller" unique_id=643593822]
+unique_name_in_owner = true
 script = ExtResource("6_n4d43")
 
 [node name="GrindUpdateSprayCanTimer" type="Timer" parent="." unique_id=498531919]
