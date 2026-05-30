@@ -75,6 +75,7 @@ func _handle_player_turning(player: CharacterBody3D, delta: float) -> void:
 		
 func _handle_forward_movement(player: CharacterBody3D, delta: float) -> void:
 	var raw_input = Input.get_axis("accelerate", "decelerate")
+	print(raw_input)
 	var move_direction = Vector3.ZERO + player.global_basis.z * raw_input	
 	
 	var forward_speed = -player.velocity.dot(player.global_basis.z)

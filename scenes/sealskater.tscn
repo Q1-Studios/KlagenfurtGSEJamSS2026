@@ -11,7 +11,7 @@ radius = 0.979
 height = 4.871
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_u21eb"]
-size = Vector3(2, 1, 4)
+size = Vector3(1.5, 1, 4.5)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_6give"]
 
@@ -28,7 +28,7 @@ transform = Transform3D(1, 0, 0, 0, -4.3711385e-08, -0.9999999, 0, 0.9999999, -4
 shape = SubResource("CapsuleShape3D_xwg03")
 
 [node name="GrindShapeCast" type="ShapeCast3D" parent="." unique_id=1047026119]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00014603138, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4652518, 0)
 shape = SubResource("BoxShape3D_u21eb")
 collision_mask = 2
 

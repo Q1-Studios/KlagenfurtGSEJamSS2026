@@ -24,7 +24,7 @@ signal toggle_grinding(is_grinding: bool)
  
 #GRINDING
 func handle_grinding(): 
-	if can_grind and not grinding and is_colliding_with_rail():
+	if should_start_grinding():
 		start_grinding()
 	
 	if grinding and rail_grind_node:
@@ -32,11 +32,11 @@ func handle_grinding():
 		update_player_camera()
 		update_player_position()
 		
-		if rail_grind_node.detach:
-			# jump of the rail at the end
+		if rail_grind_node.detach and grinding:
+			# jump of the rail at the ends
 			Input.action_press("accelerate")
 			Input.action_press("jump")
-	
+
 		if Input.is_action_just_pressed("jump"):
 			detach_from_rail()
 			
@@ -47,6 +47,9 @@ func is_colliding_with_rail() -> bool:
 	var collider = grind_ray.get_collider(0)
 	return collider and collider.is_in_group("Rail")
  
+func should_start_grinding() -> bool:
+	return not player.is_on_floor() and can_grind and not grinding and is_colliding_with_rail()
+
 func start_grinding():
 	initial_player_model_transform = player_model.transform
 	initial_skateboard_model_transform = skateboard_model.transform
