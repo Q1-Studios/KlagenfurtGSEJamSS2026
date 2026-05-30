@@ -1,6 +1,12 @@
 class_name TrickController
 extends Node
 
+@export var time_for_tricks := 0.5
+
+
+@onready var movementController := %MovementController
+var character_body: CharacterBody3D
+
 var sequence_length = 4
 var rng = RandomNumberGenerator.new()	
 var input = ["LEFT", "RIGHT", "UP", "DOWN"]
@@ -12,18 +18,23 @@ var won = false
 
 signal trick_sequence_success()
 
-func _ready() -> void:
-	_create_goal_sequence()
-
 func _process(delta: float) -> void:
 	if is_active:
+		if (movementController.is_about_to_land(character_body, time_for_tricks)):
+			is_active = false
+			_reset()
+			print("Trick Mode over")
+		
 		if (sequence_input_index >= sequence_length and not failed) or won:
 			_handle_success()
 		elif failed:
 			_handle_failure()
 		else:
 			_evaluate_input()	
-	
+
+func instanciate(player: CharacterBody3D) -> void:
+	character_body = player
+
 func _handle_success() -> void:
 	is_active = false
 	_reset()
@@ -33,7 +44,7 @@ func _handle_success() -> void:
 func _handle_failure() -> void:
 	sequence_input_index = 0
 	failed = false
-	print("LOST")
+	print("Failed sequence")
 	
 
 func _evaluate_input() -> void:
@@ -73,7 +84,7 @@ func _evaluate_input() -> void:
 			print("Pressed DOWN should have been ", sequence[sequence_input_index])
 			failed = true
 
-func _create_goal_sequence() -> void:
+func create_goal_sequence() -> void:
 	_reset()
 	for i in range(sequence_length):
 		sequence.append(input[rng.randi_range(0, 3)])
