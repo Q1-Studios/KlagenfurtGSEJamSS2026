@@ -1,7 +1,7 @@
 extends Path3D
 class_name Rail
 
-@export var rail_follower = preload("res://Scenes/rail_follower.tscn")
+@export var rail_follower = preload("res://scenes/rail_follower.tscn")
  
 # Called when the node enters the scene tree for the first time.
 func _ready():
