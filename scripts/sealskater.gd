@@ -4,6 +4,6 @@ extends CharacterBody3D
 
 
 func _physics_process(delta: float) -> void:
-	grindingController.handle_grinding()
+	grindingController.handle_grinding(delta)
 	movementController.handle_movement(self)
 	move_and_slide()

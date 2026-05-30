@@ -58,7 +58,6 @@ func handle_movement(player: CharacterBody3D) -> void:
 	_handle_jump(player, delta)
 	
 
-
 func _handle_player_turning(player: CharacterBody3D, delta: float) -> void:
 	var raw_turn = Input.get_axis("move_right", "move_left") 
 	var turn_speed := _calculate_AngularVelocity(player.velocity.length())
@@ -68,9 +67,6 @@ func _handle_player_turning(player: CharacterBody3D, delta: float) -> void:
 	if not allow_sliding:
 		player.velocity = player.velocity.rotated(Vector3.UP, turn_amount)
 		
-	
-	
-
 func _handle_forward_movement(player: CharacterBody3D, delta: float) -> void:
 	var raw_input = Input.get_axis("accelerate", "decelerate")
 	var move_direction = Vector3.ZERO + player.global_basis.z * raw_input	

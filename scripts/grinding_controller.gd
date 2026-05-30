@@ -23,7 +23,7 @@ var target_yaw: float
 signal toggle_grinding(is_grinding: bool)
  
 #GRINDING
-func handle_grinding(): 
+func handle_grinding(delta: float): 
 	if can_grind and not grinding and is_colliding_with_rail():
 		start_grinding()
 	
@@ -32,9 +32,15 @@ func handle_grinding():
 		update_player_camera()
 		update_player_position()
 		print("Rail_grind_node.detach: {0}".format([rail_grind_node.detach]))
-		if rail_grind_node.detach or Input.is_action_just_pressed("jump"):
+		
+		if rail_grind_node.detach:
+			# jump of the rail at the end
+			Input.action_press("accelerate")
+			Input.action_press("jump")
+	
+		if Input.is_action_just_pressed("jump"):
 			detach_from_rail()
- 
+			
 func is_colliding_with_rail() -> bool:
 	if !grind_ray.is_colliding():
 		return false
@@ -64,7 +70,6 @@ func start_grinding():
 	var closest_offset = grind_rail.curve.get_closest_offset(player.global_position)
 	rail_grind_node.progress = closest_offset
 	
-
 	var path_forward: Vector3 = -rail_grind_node.global_transform.basis.z
 	var travel_dir := (path_forward * rail_grind_node.progress_direction).normalized()
 	target_yaw = atan2(-travel_dir.x, -travel_dir.z)
