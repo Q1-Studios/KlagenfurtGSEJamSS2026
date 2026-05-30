@@ -6,7 +6,7 @@ var markerContainer: Node2D
 var markerList: Array = []
 var marker2DArrayVector = PackedVector2Array()
 var markerListBoolean: Array[bool]
-const DISTANCE_THRESHOLD: int = 20
+const DISTANCE_THRESHOLD: int = 25
 var totalDistancePoints: float = 0
 var previousCursorPosition: Vector2 
 var totalDistanceCursor: float = 0
@@ -15,6 +15,8 @@ var allPointsReached: bool = false
 var rng = RandomNumberGenerator.new()
 var weights = PackedFloat32Array([2, 1, 1, 1])
 @onready var lineSprite = $FollowLine
+
+@onready var cursorImg = $Cursor
 
 var bert = load("res://assets/paintingMinigame/snek.jpg")
 var q1 = load("res://assets/paintingMinigame/q1.jpg")
@@ -134,12 +136,23 @@ func _process(delta: float) -> void:
 
 
 func _input(event: InputEvent) -> void:
-	if not Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) || totalDistanceCursor > totalDistancePoints*2 || allPointsReached:
+	#if not Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) || totalDistanceCursor > totalDistancePoints*2 || allPointsReached:
+		#return
+	if not Input.is_action_pressed("LMB") || totalDistanceCursor > totalDistancePoints*2 || allPointsReached:
 		return
+	
 	trackCursorDistance()
-	mousePositions.append(event.global_position)
+	print("test ",typeof(event))
+	if (typeof(event) != typeof(InputEventJoypadButton)):
+		mousePositions.append(event.global_position)
+	else:
+		mousePositions.append(cursorImg.global_position)
 	queue_redraw()
-	_checkPointProximity(event.global_position)
+	
+	if (typeof(event) != typeof(InputEventJoypadButton)):
+		_checkPointProximity(event.global_position)
+	else:
+		_checkPointProximity(cursorImg.global_position)
 	print("cursor distance: ", totalDistanceCursor, "total distance allowed: ", totalDistancePoints)
 	
 

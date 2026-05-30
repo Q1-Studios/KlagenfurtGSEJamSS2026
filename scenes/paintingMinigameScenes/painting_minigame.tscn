@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bnodccpgo4r0o"]
 
 [ext_resource type="Script" uid="uid://b6i2qqvv0tcf0" path="res://scripts/paintingMinigame/sub_viewport.gd" id="1_083vw"]
-[ext_resource type="PackedScene" uid="uid://kr63tnrx6nbw" path="res://scenes/paintMinigame.tscn" id="2_g6ca8"]
+[ext_resource type="PackedScene" uid="uid://bahem50vx1k2y" path="res://scenes/paintMinigame.tscn" id="2_g6ca8"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_tefeu"]
 viewport_path = NodePath("PaintingMinigame/SubViewport")
