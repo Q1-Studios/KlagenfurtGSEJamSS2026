@@ -2,42 +2,10 @@
 
 [ext_resource type="Texture2D" uid="uid://7cshfl85f1va" path="res://assets/paintingMinigame/backdrop.jpg" id="1_dta0m"]
 [ext_resource type="Script" uid="uid://7i0fdm1vah4f" path="res://scripts/paintingMinigame/mouseDraw.gd" id="1_sv35t"]
-[ext_resource type="PackedScene" uid="uid://dhhb3ewm8j0im" path="res://scenes/controllerCursor.tscn" id="3_r8pki"]
+[ext_resource type="PackedScene" uid="uid://crqsa3epgfls1" path="res://scenes/controllerCursor.tscn" id="3_r8pki"]
 
 [node name="Node2D" type="Node2D" unique_id=973804300]
 script = ExtResource("1_sv35t")
-
-[node name="markerContainer" type="Node2D" parent="." unique_id=214359149]
-position = Vector2(962, 540.25)
-scale = Vector2(1.19875, 1.2433527)
-
-[node name="Marker2D" type="Marker2D" parent="markerContainer" unique_id=566674050]
-position = Vector2(2.5025024, -185.98907)
-scale = Vector2(0.8342025, 0.8042773)
-
-[node name="Marker2D2" type="Marker2D" parent="markerContainer" unique_id=1899593528]
-position = Vector2(142.64856, 41.621338)
-scale = Vector2(0.8342025, 0.8042774)
-
-[node name="Marker2D3" type="Marker2D" parent="markerContainer" unique_id=1922179617]
-position = Vector2(117.6225, -107.97421)
-scale = Vector2(0.8342025, 0.8042775)
-
-[node name="Marker2D4" type="Marker2D" parent="markerContainer" unique_id=767144768]
-position = Vector2(-161.00116, 48.055573)
-scale = Vector2(0.8342025, 0.8042776)
-
-[node name="Marker2D5" type="Marker2D" parent="markerContainer" unique_id=596038842]
-position = Vector2(-150.99066, -133.71106)
-scale = Vector2(0.8342025, 0.8042774)
-
-[node name="Marker2D6" type="Marker2D" parent="markerContainer" unique_id=1689830163]
-position = Vector2(91.7622, 149.39447)
-scale = Vector2(0.8342025, 0.8042775)
-
-[node name="Marker2D7" type="Marker2D" parent="markerContainer" unique_id=2048172490]
-position = Vector2(-65.06781, 134.91751)
-scale = Vector2(0.6958939, 0.6468622)
 
 [node name="FollowLine" type="Sprite2D" parent="." unique_id=1566206986]
 self_modulate = Color(1, 1, 1, 0.23137255)
@@ -52,3 +20,9 @@ scale = Vector2(1.1987501, 1.2433527)
 texture = ExtResource("1_dta0m")
 
 [node name="Cursor" parent="." unique_id=1495474004 instance=ExtResource("3_r8pki")]
+
+[node name="Timer" type="Timer" parent="." unique_id=197796071]
+wait_time = 10.0
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
