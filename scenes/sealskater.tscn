@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://bjjyd6apwtscb"]
 
 [ext_resource type="PackedScene" uid="uid://dry6f4nwbpwbw" path="res://assets/skateboard/skateboard.glb" id="1_205dp"]
-[ext_resource type="Script" path="res://scripts/sealskater.gd" id="1_vef6s"]
+[ext_resource type="Script" uid="uid://bkyou3m2ics3d" path="res://scripts/sealskater.gd" id="1_vef6s"]
 [ext_resource type="PackedScene" uid="uid://c6mad0mwcbdsj" path="res://assets/sealplush/seal.glb" id="2_u21eb"]
 [ext_resource type="Script" uid="uid://dgnaomu2hn4qf" path="res://scripts/movement_controller.gd" id="3_6give"]
-[ext_resource type="Script" path="res://scripts/grinding_controller.gd" id="4_xwg03"]
+[ext_resource type="Script" uid="uid://ch2f2vldy5q0l" path="res://scripts/grinding_controller.gd" id="4_xwg03"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_xwg03"]
 radius = 0.979

@@ -31,7 +31,6 @@ func handle_grinding():
 		rail_grind_node.chosen = true
 		update_player_camera()
 		update_player_position()
-		print("Rail_grind_node.detach: {0}".format([rail_grind_node.detach]))
 		
 		if rail_grind_node.detach:
 			# jump of the rail at the end
@@ -70,9 +69,10 @@ func start_grinding():
 	var closest_offset = grind_rail.curve.get_closest_offset(player.global_position)
 	rail_grind_node.progress = closest_offset
 	
+	# calculate target camera yaw
 	var path_forward: Vector3 = -rail_grind_node.global_transform.basis.z
-	var travel_dir := (path_forward * rail_grind_node.progress_direction).normalized()
-	target_yaw = atan2(-travel_dir.x, -travel_dir.z)
+	var travel_dir := (path_forward).normalized()
+	target_yaw = atan2(-travel_dir.x, -travel_dir.z) * rail_grind_node.progress_direction
 
 	# Update players rotation and position
 	rotate_player_for_grinding()
@@ -81,7 +81,8 @@ func start_grinding():
 func rotate_player_for_grinding():
 	# Turn player 45 degrees to the rail
 	var path_forward: Vector3 = -rail_grind_node.global_transform.basis.z
-	var perpendicular = path_forward.rotated(Vector3.UP, PI / 2)
+	var rotation_angle = (PI / 2) * rail_grind_node.progress_direction
+	var perpendicular = path_forward.rotated(Vector3.UP, rotation_angle) 
 	
 	var model_scale := player_model.scale
 	player_model.global_transform = player_model.global_transform.looking_at(player_model.global_position + perpendicular, Vector3.UP)
@@ -93,9 +94,6 @@ func rotate_player_for_grinding():
 	skateboard_model.scale = board_scale
 	
 func update_player_camera():
-	var path_forward: Vector3 = -rail_grind_node.global_transform.basis.z
-	var travel_dir := (path_forward * rail_grind_node.progress_direction).normalized()
-	target_yaw = atan2(-travel_dir.x, -travel_dir.z)
 	camera_pivot.rotation.y = lerp_angle(camera_pivot.rotation.y, target_yaw, 0.08)
 
 func update_player_position():
