@@ -91,26 +91,6 @@ environment = SubResource("Environment_6w6d5")
 [node name="MovementController" type="Node" parent="Controller" unique_id=1305322326]
 unique_name_in_owner = true
 script = ExtResource("3_6give")
-max_speed = null
-acceleration = null
-deceleration = null
-air_deceleration = null
-air_acceleration = null
-coasting = null
-threshhold = null
-acceleration_penalty = null
-max_acceleration_penalty = null
-low_speed_slope = null
-high_speed_slope = null
-high_speed_punishment = null
-low_speed_limit_factor = null
-min_turning_factor = null
-allow_for_air_turning = null
-air_turning_factor = null
-allow_sliding = null
-jump_force = null
-coyote_time = null
-gravity = null
 
 [node name="GrindingController" type="Node" parent="Controller" unique_id=1515660716 node_paths=PackedStringArray("grind_ray", "player", "player_model")]
 unique_name_in_owner = true

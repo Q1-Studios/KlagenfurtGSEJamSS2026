@@ -42,6 +42,10 @@ var is_grounded = true
 var previous_direction = 0
 var coyote_timer = 0.0
 var current_speed = 0.0
+var last_steer_amount: float = 0.5
+
+# constants
+const STEER_SPEED = 5.0
 
 
 func handle_movement(player: CharacterBody3D, delta: float) -> void:
@@ -72,8 +76,12 @@ func _handle_player_turning(player: CharacterBody3D, delta: float) -> void:
 	player.rotate(Vector3.UP, turn_amount)
 	
 	# Play steer animation
-	var steer_amount = clampf(raw_turn * -1.0, 0.0, 1.0) if abs(raw_turn) > 0 else 0.5
-	player_model.setSteer(steer_amount)
+	# 0 -> left, 0.5 -> straight, 1.0 -> right
+	var sanitized_turn_amount = ((raw_turn * -1.0) + 1.0) / 2
+	var steer_amount = clampf(sanitized_turn_amount, 0.0, 1.0)
+	last_steer_amount = lerpf(last_steer_amount, steer_amount, STEER_SPEED * delta)
+	print("steer amount: {0}".format([last_steer_amount]))
+	player_model.setSteer(last_steer_amount)
 	
 	if not allow_sliding:
 		player.velocity = player.velocity.rotated(Vector3.UP, turn_amount)
