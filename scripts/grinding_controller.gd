@@ -104,10 +104,11 @@ func rotate_player_for_grinding():
 	skateboard_model.global_transform = skateboard_model.global_transform.looking_at(skateboard_model.global_position + perpendicular, Vector3.UP)
 	skateboard_model.scale = board_scale
 	
-
-	#var particle_rotation = path_forward.rotated(Vector3.UP, PI / 2)
-	#var particles_looking_at = grind_particles_emitter.global_position + particle_rotation
-	#grind_particles_emitter.global_transform = grind_particles_emitter.global_transform.looking_at(particles_looking_at, Vector3.UP)
+	# rotate particle emitter
+	var part_rot_angle = (PI / 2) if rail_grind_node.progress_direction < 0.0 else (3 * PI / 2)
+	var particle_rotation: Vector3 = path_forward.rotated(Vector3.UP, part_rot_angle)
+	var particles_looking_at = grind_particles_emitter.global_position + particle_rotation
+	grind_particles_emitter.global_transform = grind_particles_emitter.global_transform.looking_at(particles_looking_at, Vector3.UP)
 	
 	
 func update_player_camera():
