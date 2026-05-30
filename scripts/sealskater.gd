@@ -1,6 +1,7 @@
 extends CharacterBody3D
 @onready var movementController := %MovementController
 @onready var grindingController := %GrindingController
+@onready var trick_mode_controller := %TrickModeController
 @onready var grind_update_timer = %GrindUpdateSprayCanTimer
 @onready var healthBar = $SubViewport/ProgressBar
 
@@ -16,13 +17,17 @@ func _ready() -> void:
 	spray_can_amount_updated.emit(spray_can_amount)
 	healthBar.value = 0
 	healthBar.max_value = max_spray_can_amount
-	spray_can_amount = 0.0
+	spray_can_amount = 0
+	trick_mode_controller.instanciate(self)
 
 func _physics_process(_delta: float) -> void:
 	grindingController.handle_grinding()
 	movementController.handle_movement(self)
 	move_and_slide()
 	
+func _process(_delta: float) -> void:
+	if Input.is_action_just_pressed("debugButtonTODORemoveLater"):
+		trick_mode_controller.create_goal_sequence()
 
 func _on_toggle_grinding(_is_grinding: bool) -> void:
 	if _is_grinding:
