@@ -1,3 +1,4 @@
+class_name Bert
 extends CharacterBody3D
 @onready var movementController := %MovementController
 @onready var grindingController := %GrindingController
@@ -40,13 +41,8 @@ func _process(delta: float) -> void:
 		spray_can_amount_updated.emit(spray_can_amount)
 		_update_fuel_ui()
 
-	if Input.is_action_just_pressed("debugButtonTODORemoveLater"):
+	if Input.is_action_just_pressed("enter_trick_mode"):
 		trick_mode_controller.create_goal_sequence()
-		slow_mo = !slow_mo
-		if (slow_mo):
-			_on_enter_slow_mode()
-		else:
-			_on_exit_slow_mode()
 
 func _can_spray_paint() -> bool:
 	return Input.is_action_pressed("spray") and !is_grinding and is_on_floor() and spray_can_amount > 0.0
@@ -68,16 +64,30 @@ func _on_grind_update_graffiti_timer_timeout() -> void:
 func _update_fuel_ui() -> void:
 	healthBar.value = spray_can_amount
 
-func _on_enter_slow_mode():
+func _enter_slow_mode():
 	Engine.time_scale = 1.0 / slow_mo_factor 
 	# trickAnimationPlayer.speed_scale = slow_mo_factor 
 	# animationPlayerForStuffNotRelatedToTricks.speed_scale = 1.0 
 	trick_mode_controller.toggle_slow_mo(true)
 	wrong_input_timer.wait_time /= slow_mo_factor
 
-func _on_exit_slow_mode():
+func _exit_slow_mode():
 	Engine.time_scale = 1.0
 	# trickAnimationPlayer.speed_scale = 1.0
 	# animationPlayerForStuffNotRelatedToTricks.speed_scale = 1.0 
 	trick_mode_controller.toggle_slow_mo(false)
 	wrong_input_timer.wait_time *= slow_mo_factor
+	
+func enter_trick_mode():
+	_enter_slow_mode()
+	trick_mode_controller.create_goal_sequence()
+
+func leave_trick_mode():
+	_exit_slow_mode()
+	trick_mode_controller.deactivate()
+
+func _on_movement_controller_landed() -> void:
+	leave_trick_mode()
+	
+func _on_trick_mode_controller_leave_trick_mode() -> void:
+	_exit_slow_mode()

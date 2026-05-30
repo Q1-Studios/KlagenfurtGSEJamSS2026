@@ -30,6 +30,8 @@ extends Node
 @export var coyote_time := 0.15
 @export var gravity := -30.0
 
+signal landed
+
 
 @onready var player_model: Node3D = %PlayerModel
 
@@ -43,13 +45,16 @@ var previous_direction = 0
 var coyote_timer = 0.0
 var current_speed = 0.0
 var last_steer_amount: float = 0.5
+var was_on_floor = false
 
 # constants
 const STEER_SPEED = 5.0
 
-
 func handle_movement(player: CharacterBody3D, delta: float) -> void:
 	if player.is_on_floor():
+		if !was_on_floor:
+			landed.emit()
+			was_on_floor = true
 		is_grounded = true
 		coyote_timer = coyote_time
 		
@@ -57,6 +62,7 @@ func handle_movement(player: CharacterBody3D, delta: float) -> void:
 		coyote_time -= delta
 	else:
 		is_grounded = false
+		was_on_floor = false
 	
 	if not is_grinding:
 		_handle_player_turning(player, delta)

@@ -1602,6 +1602,10 @@ shape = SubResource("BoxShape3D_4a17v")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 2.0
+offset_top = 1.0
+offset_right = 370.0
+offset_bottom = 229.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 8
@@ -1629,13 +1633,14 @@ handle_input_locally = false
 size = Vector2i(320, 180)
 render_target_update_mode = 4
 
-[node name="Camera3D" type="Camera3D" parent="MiniMap/PanelContainer/SubViewportContainer/SubViewport" unique_id=1729987222]
+[node name="Camera3D" type="Camera3D" parent="MiniMap/PanelContainer/SubViewportContainer/SubViewport" unique_id=1729987222 node_paths=PackedStringArray("target")]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 57.097168, 65.96795)
-cull_mask = 1047554
+cull_mask = 1047553
 projection = 1
 size = 72.027
 near = 0.023
 script = ExtResource("15_2bn0t")
+target = NodePath("../../../../../Sealskater")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=913293425]
 transform = Transform3D(0.36489025, 0.42124525, 0.83030576, -0.3436225, -0.7679052, 0.54059714, 0.86532, -0.48257032, -0.13545175, 37.260403, 148.03293, -64.51192)

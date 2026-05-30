@@ -6,7 +6,7 @@
 [ext_resource type="Script" uid="uid://cgkvem2x6eets" path="res://scripts/trick_mode_controller.gd" id="6_n4d43"]
 [ext_resource type="PackedScene" uid="uid://dwvfoe6b1lusu" path="res://scenes/FuelBarScene2.tscn" id="6_vuft4"]
 [ext_resource type="PackedScene" uid="uid://bpj7o4myywyq7" path="res://scenes/bertmodel.tscn" id="7_n4d43"]
-[ext_resource type="PackedScene" uid="uid://beikiclpngb51" path="res://scenes/trick_sequence_display.tscn" id="8_ew7ux"]
+[ext_resource type="PackedScene" path="res://scenes/trick_sequence_display.tscn" id="8_ew7ux"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_n4d43"]
 radius = 1.1640625
@@ -102,7 +102,6 @@ player_model = NodePath("../../PlayerModel")
 [node name="TrickModeController" type="Node" parent="Controller" unique_id=643593822]
 unique_name_in_owner = true
 script = ExtResource("6_n4d43")
-time_for_tricks = null
 
 [node name="WrongInputTimer" type="Timer" parent="Controller" unique_id=1057629774]
 unique_name_in_owner = true
@@ -153,7 +152,9 @@ texture = SubResource("ViewportTexture_ew7ux")
 unique_name_in_owner = true
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
 
+[connection signal="landed" from="Controller/MovementController" to="." method="_on_movement_controller_landed"]
 [connection signal="toggle_grinding" from="Controller/GrindingController" to="." method="_on_toggle_grinding"]
 [connection signal="toggle_grinding" from="Controller/GrindingController" to="Controller/MovementController" method="_on_toggle_grinding"]
+[connection signal="leave_trick_mode" from="Controller/TrickModeController" to="." method="_on_trick_mode_controller_leave_trick_mode"]
 [connection signal="timeout" from="Controller/WrongInputTimer" to="Controller/TrickModeController" method="_on_wrong_input_timer_timeout"]
 [connection signal="timeout" from="GrindUpdateSprayCanTimer" to="." method="_on_grind_update_graffiti_timer_timeout"]

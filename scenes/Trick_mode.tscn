@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://lx8fk8dr7hpn"]
+
+[ext_resource type="Script" uid="uid://cx3hwwl4hf2p4" path="res://scripts/collectible.gd" id="1_bkg8t"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_1pg6c"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_61c27"]
+
+[node name="TRICK_MODE" type="Area3D" unique_id=305659963]
+script = ExtResource("1_bkg8t")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=81511554]
+shape = SubResource("SphereShape3D_1pg6c")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1912542032]
+mesh = SubResource("SphereMesh_61c27")

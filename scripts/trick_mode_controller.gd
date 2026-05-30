@@ -26,14 +26,16 @@ var sequence = []
 var sequence_input_index = 0
 var failed = false
 var won = false
+var generated = false
 
 signal trick_sequence_success()
+signal leave_trick_mode()
 
 func _ready() -> void:
 	getSprites()
-	create_goal_sequence()
 
 func _process(delta: float) -> void:
+		
 	if is_active && wrongInputTimer.time_left <= 0:
 		var time_needed_for_tricks = time_for_tricks
 		if slow_mo_is_active:
@@ -42,6 +44,7 @@ func _process(delta: float) -> void:
 		if (movementController.is_about_to_land(character_body, time_needed_for_tricks, false)):
 			is_active = false
 			_reset()
+			leave_trick_mode.emit()
 			print("Trick Mode over")
 		
 		if (sequence_input_index >= sequence_length and not failed) or won:
@@ -50,6 +53,16 @@ func _process(delta: float) -> void:
 			_handle_failure()
 		else:
 			_evaluate_input()	
+			
+	
+	if generated:
+		is_active = !character_body.is_on_floor()
+		generated = character_body.is_on_floor()
+		if is_active:
+			displayTrickSequence()
+
+
+
 
 func instanciate(player: CharacterBody3D, slow_mo_factor: float) -> void:
 	character_body = player
@@ -59,8 +72,10 @@ func _handle_success() -> void:
 	is_active = false
 	_reset()
 	print("WON")
+	# \/\/ @cucu gibts da eigentlich irgendwas bevorzugtes? \/\/
 	emit_signal("trick_sequence_success")
-	getSprites
+	leave_trick_mode.emit()
+	
 func _handle_failure() -> void:
 	sequence_input_index = 0
 	failed = false
@@ -117,13 +132,17 @@ func _evaluate_input() -> void:
 			failed = true
 
 func create_goal_sequence() -> void:
+	if is_active:
+		return
+	
 	_reset()
 	for i in range(sequence_length):
 		sequence.append(input[rng.randi_range(0, 3)])
 	print(sequence)
-	is_active = true
+	is_active = false
+	generated = true
 	setSprites()
-	displayTrickSequence()
+	
 	
 	
 func _reset() -> void:
@@ -169,6 +188,8 @@ func resetModulate() -> void:
 func startMistakeTimer() -> void:
 	wrongInputTimer.start()
 
+func deactivate() -> void:
+	is_active = false
 
 func _on_wrong_input_timer_timeout() -> void:
 	for each in trickSprites:
