@@ -23,7 +23,7 @@ var target_yaw: float
 signal toggle_grinding(is_grinding: bool)
  
 #GRINDING
-func handle_grinding(delta: float): 
+func handle_grinding(): 
 	if can_grind and not grinding and is_colliding_with_rail():
 		start_grinding()
 	

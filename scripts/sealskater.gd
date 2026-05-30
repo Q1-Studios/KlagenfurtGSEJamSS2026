@@ -3,7 +3,7 @@ extends CharacterBody3D
 @onready var grindingController := %GrindingController
 
 
-func _physics_process(delta: float) -> void:
-	grindingController.handle_grinding(delta)
+func _physics_process(_delta: float) -> void:
+	grindingController.handle_grinding()
 	movementController.handle_movement(self)
 	move_and_slide()
