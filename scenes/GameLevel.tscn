@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://denrg47s3u5ga"]
+[gd_scene load_steps=24 format=3 uid="uid://denrg47s3u5ga"]
 
 [ext_resource type="PackedScene" uid="uid://jmt5yqanfxhe" path="res://assets/3DModles_ENV/house4.fbx" id="1_u3x7g"]
 [ext_resource type="PackedScene" uid="uid://uvhtmgmn1b5i" path="res://assets/3DModles_ENV/AAU.fbx" id="2_oiyxv"]
@@ -19,6 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://cl7ftd06g7h8f" path="res://assets/3DModles_ENV/skate_features/mini_ramp.fbx" id="17_y0apw"]
 [ext_resource type="PackedScene" uid="uid://bvhgwox1amqtv" path="res://assets/3DModles_ENV/skate_features/mini_rail.fbx" id="18_3dw6s"]
 [ext_resource type="PackedScene" uid="uid://b6bnebjlay6a2" path="res://assets/3DModles_ENV/skate_features/quater_rail.fbx" id="19_43tlv"]
+[ext_resource type="PackedScene" uid="uid://cj4uo3cutd81u" path="res://assets/3DModles_ENV/skate_features/triple_quater.fbx" id="20_k76jp"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_bggjr"]
 
@@ -1020,6 +1021,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40, 0, 50)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.11419678, 0.24880981, -0.08630371)
 shape = SubResource("BoxShape3D_4a17v")
 
+[node name="mini_ramp" parent="Node3D/Ground4/Ground2/StaticBody3D" instance=ExtResource("17_y0apw")]
+transform = Transform3D(-8.742278e-08, 0, -2, 0, 2, 0, 2, 0, -8.742278e-08, 90.02084, 1.5479212, -15.3888855)
+
 [node name="Ground" parent="Node3D/Ground4" instance=ExtResource("12_bggjr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 50)
 
@@ -1780,3 +1784,21 @@ transform = Transform3D(10.12, 0, 0, 0, 2, 0, 0, 0, 2, 81.28572, 11.579828, -38.
 
 [node name="mini_rail7" parent="." instance=ExtResource("18_3dw6s")]
 transform = Transform3D(1.2985797e-07, -7.59519e-08, 7.88, -0.41751954, -12.363496, 3.5181386e-15, 2.9708042, -1.7375771, -3.4444574e-07, -180.17412, 18.631983, -115.53165)
+
+[node name="triple_quater" parent="." instance=ExtResource("20_k76jp")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -233.76201, 2.971078, -137.84085)
+
+[node name="mini_rail8" parent="." instance=ExtResource("18_3dw6s")]
+transform = Transform3D(2.335, 0, 0, 0, 2, 0, 0, 0, 1.435, -234.54399, 3.7370272, -139.81206)
+
+[node name="quater_rail2" parent="." instance=ExtResource("19_43tlv")]
+transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, -254.10205, 2.902287, -130.46982)
+
+[node name="mini_rail9" parent="." instance=ExtResource("18_3dw6s")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -240.07216, 1.0976197, -121.3953)
+
+[node name="mini_ramp5" parent="." instance=ExtResource("17_y0apw")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -234.00441, 1.4976196, -115.42291)
+
+[node name="mini_ramp6" parent="." instance=ExtResource("17_y0apw")]
+transform = Transform3D(-1.5, 0, -1.3113416e-07, 0, 1.5, 0, 1.3113416e-07, 0, -1.5, -234.00441, 1.4976196, -66.01108)
