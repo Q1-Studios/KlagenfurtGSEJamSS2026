@@ -74,7 +74,8 @@ func start_grinding():
 	rail_grind_node.progress_direction = -1.0 if is_moving_towards_rail_start else 1.0
 	
 	# place player on closest offset
-	var closest_offset = grind_rail.curve.get_closest_offset(player.global_position)
+	var player_local_pos = grind_rail.to_local(player.global_position)
+	var closest_offset = grind_rail.curve.get_closest_offset(player_local_pos)
 	rail_grind_node.progress = closest_offset
 	
 	# calculate target camera yaw
