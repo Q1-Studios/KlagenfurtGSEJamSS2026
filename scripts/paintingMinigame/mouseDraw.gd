@@ -4,7 +4,7 @@ var mousePositions: Array = []
 var markerList: Array = []
 var marker2DArrayVector = PackedVector2Array()
 var markerListBoolean: Array[bool]
-const DISTANCE_THRESHOLD: int = 100
+const DISTANCE_THRESHOLD: int = 75
 var totalDistancePoints: float = 0
 var previousCursorPosition: Vector2 
 var totalDistanceCursor: float = 0

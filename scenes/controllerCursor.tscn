@@ -1,11 +1,14 @@
 [gd_scene format=3 uid="uid://dhhb3ewm8j0im"]
 
 [ext_resource type="Script" uid="uid://c7ymnm8ab1nti" path="res://scripts/controllerControls.gd" id="1_4pwpx"]
-[ext_resource type="Texture2D" uid="uid://dvtmvluqkxlo5" path="res://assets/sprites/cursor.png" id="2_mimmq"]
+[ext_resource type="Texture2D" uid="uid://cy21dtvlnxqrx" path="res://assets/sprites/myPrideAndJoy.png" id="2_4pwpx"]
 
 [node name="Node2D" type="Node2D" unique_id=1290096127]
 script = ExtResource("1_4pwpx")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=135525405]
-position = Vector2(361, -6)
-texture = ExtResource("2_mimmq")
+modulate = Color(1, 1, 1, 0.48235294)
+position = Vector2(48.999992, 45.000008)
+rotation = -0.7382743
+scale = Vector2(0.42323467, 0.42323467)
+texture = ExtResource("2_4pwpx")
