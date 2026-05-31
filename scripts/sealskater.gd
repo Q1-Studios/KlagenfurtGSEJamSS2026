@@ -7,6 +7,7 @@ extends CharacterBody3D
 @onready var wrong_input_timer := %WrongInputTimer
 @onready var grind_update_timer = %GrindUpdateSprayCanTimer
 @onready var healthBar = $SprayFuelSubviewPort/ProgressBar
+@onready var bert = %PlayerModel
 
 @export_category("Spray Can")
 @export var max_spray_can_amount: float = 100.0
@@ -28,6 +29,7 @@ var slow_mo_factor: float = 4.0
 var can_trick = true
 var is_grinding: bool = false
 var base_wrong_input_time: float 
+var rng = RandomNumberGenerator.new()
 
 func _ready() -> void:
 	base_wrong_input_time = wrong_input_timer.wait_time 
@@ -120,3 +122,11 @@ func _on_trick_sequence_success() -> void:
 	spray_can_amount = new_amount
 	spray_can_amount_updated.emit(spray_can_amount)
 	_update_fuel_ui()
+	# play animation
+	if (rng.rand_weighted([1, 1]) == 0):
+		bert.do_trick_1()
+		print("Trick 1")
+	else: 
+		bert.do_trick_2()	
+		print("Trick 2")
+	

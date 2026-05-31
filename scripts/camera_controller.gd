@@ -3,7 +3,7 @@ extends Node
 @export_group("Free Camera")
 @export var joystick_sensitivity: float = 3.0
 @export var camera_reset_speed: float = 5.0 
-@export var default_vertical_angle: float = -40.0
+@export var default_vertical_angle: float = -30.0
 
 @export_group("Trick Camera")
 @export var trick_yaw_angle: float = 135.0
