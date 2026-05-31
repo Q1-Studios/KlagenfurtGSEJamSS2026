@@ -28,6 +28,7 @@ var won = false
 var generated = false
 
 signal trick_sequence_success()
+signal trick_sequence_success_time_info(time: float)
 signal trick_sequence_failure()
 signal leave_trick_mode()
 
@@ -74,7 +75,7 @@ func _handle_success() -> void:
 	print("WON")
 	# \/\/ @cucu gibts da eigentlich irgendwas bevorzugtes? \/\/
 	emit_signal("trick_sequence_success")
-	leave_trick_mode.emit()
+	trick_sequence_success_time_info.emit(time_for_tricks / slow_mo)
 	
 func _handle_failure() -> void:
 	sequence_input_index = 0
@@ -190,3 +191,7 @@ func deactivate() -> void:
 func _on_wrong_input_timer_timeout() -> void:
 	for each in trickSprites:
 		each.self_modulate = Color(1, 1, 1)
+
+
+func _on_camera_controller_trick_camera_finished() -> void:
+	create_goal_sequence() 
