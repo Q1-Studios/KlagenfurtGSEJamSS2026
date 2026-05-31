@@ -1846,9 +1846,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 20, -37)
 curve = SubResource("Curve3D_b3owo")
 
 [node name="MiniMap" parent="." unique_id=833663843 node_paths=PackedStringArray("target") instance=ExtResource("29_458yb")]
-offset_left = 514.0
-offset_top = 507.0
-offset_right = 882.0
-offset_bottom = 735.0
+offset_left = -3.0
+offset_top = 3.0
+offset_right = 365.0
+offset_bottom = 231.0
 target = NodePath("../Sealskater")
 metadata/_edit_use_anchors_ = true
