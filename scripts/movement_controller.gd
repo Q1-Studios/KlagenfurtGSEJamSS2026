@@ -52,9 +52,8 @@ const STEER_SPEED = 5.0
 
 func handle_movement(player: CharacterBody3D, delta: float) -> void:
 	if player.is_on_floor():
-		player_model.land()
-		player_model.start_moving()
 		if !was_on_floor:
+			player_model.land()
 			landed.emit()
 			was_on_floor = true
 		is_grounded = true
