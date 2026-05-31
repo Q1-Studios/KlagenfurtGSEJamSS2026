@@ -21,7 +21,9 @@ func _update_leaderboard() -> void:
 	var score_board = ScoreManager.scoreboard["scores"]
 	var leaderboard_text = ""
 	for i in range(5):
-		leaderboard_text += "%d) %s: %d\n" % [i, score_board[i]["name"], round(score_board[i]["score"])]
+		leaderboard_text += "%d) %s: %d\n" % [i+1, score_board[i]["name"], round(score_board[i]["score"])]
+	if (GameManger.last_score >= 0):
+		leaderboard_text += "%s: %d\n" % ["you", round(GameManger.last_score)]
 	leaderboard_ppl_label.text = leaderboard_text
 		
 func _on_play_button_pressed() -> void:
