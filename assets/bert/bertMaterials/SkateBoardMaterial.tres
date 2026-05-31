@@ -1,9 +1,16 @@
 [gd_resource type="StandardMaterial3D" format=3 uid="uid://guj0tt5slmio"]
 
 [ext_resource type="Texture2D" uid="uid://84gobqhjosr8" path="res://assets/bert/bert_skateboard.png" id="1_jiufb"]
+[ext_resource type="Material" uid="uid://bhel300odlfqa" path="res://assets/shaders/outshader_material.tres" id="2_auvpx"]
 
 [resource]
 resource_name = "SkateBoardMaterial"
+render_priority = 67
+next_pass = ExtResource("2_auvpx")
 cull_mode = 2
-shading_mode = 0
+diffuse_mode = 3
+specular_mode = 1
 albedo_texture = ExtResource("1_jiufb")
+metallic = 0.66
+metallic_specular = 0.62
+roughness = 0.11

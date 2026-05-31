@@ -1,9 +1,16 @@
 [gd_resource type="StandardMaterial3D" format=3 uid="uid://dafml14quyb0u"]
 
 [ext_resource type="Texture2D" uid="uid://dbmppl6l2rpk8" path="res://assets/bert/bert_clawtext.png" id="1_ftoi3"]
+[ext_resource type="Material" uid="uid://bhel300odlfqa" path="res://assets/shaders/outshader_material.tres" id="2_aw57o"]
 
 [resource]
 resource_name = "BertClawMaterial"
+render_priority = 67
+next_pass = ExtResource("2_aw57o")
 cull_mode = 2
-shading_mode = 0
+diffuse_mode = 3
+specular_mode = 1
 albedo_texture = ExtResource("1_ftoi3")
+metallic = 0.38
+metallic_specular = 1.0
+roughness = 0.36

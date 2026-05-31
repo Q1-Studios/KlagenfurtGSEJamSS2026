@@ -1,9 +1,22 @@
 [gd_resource type="StandardMaterial3D" format=3 uid="uid://bsdkgq5kwslnd"]
 
 [ext_resource type="Texture2D" uid="uid://dx7bqp27nvrro" path="res://assets/bert/bert_backpack.png" id="1_picp6"]
+[ext_resource type="Material" uid="uid://bhel300odlfqa" path="res://assets/shaders/outshader_material.tres" id="2_h4bj1"]
 
 [resource]
 resource_name = "Backpack.001"
+render_priority = 67
+next_pass = ExtResource("2_h4bj1")
 cull_mode = 2
-shading_mode = 0
+diffuse_mode = 3
+specular_mode = 1
 albedo_texture = ExtResource("1_picp6")
+metallic = 0.39
+metallic_specular = 0.37
+roughness = 0.33
+rim_enabled = true
+rim = 0.23
+rim_tint = 0.8
+clearcoat_enabled = true
+clearcoat = 0.1
+clearcoat_roughness = 1.0

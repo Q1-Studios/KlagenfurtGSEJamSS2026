@@ -6,6 +6,8 @@
 resource_name = "eye"
 transparency = 4
 cull_mode = 2
+diffuse_mode = 3
+specular_mode = 2
 albedo_texture = ExtResource("1_2s0nd")
 roughness = 0.5
 texture_repeat = false
