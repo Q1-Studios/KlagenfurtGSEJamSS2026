@@ -5,9 +5,6 @@
 [ext_resource type="Script" uid="uid://8emk0fh3xi4d" path="res://scripts/main_test.gd" id="1_tefeu"]
 [ext_resource type="PackedScene" uid="uid://c5hl0wna16l0g" path="res://scenes/rail.tscn" id="2_0wfyh"]
 [ext_resource type="PackedScene" uid="uid://ccwu1xbtgbwd5" path="res://assets/3DModles_ENV/Stairs_sample.fbx" id="3_sugp2"]
-[ext_resource type="Script" uid="uid://b6i2qqvv0tcf0" path="res://scripts/paintingMinigame/sub_viewport.gd" id="5_tefeu"]
-[ext_resource type="PackedScene" uid="uid://kr63tnrx6nbw" path="res://scenes/paintMinigame.tscn" id="8_tipki"]
-[ext_resource type="PackedScene" uid="uid://lx8fk8dr7hpn" path="res://scenes/Trick_mode.tscn" id="6_o6xl0"]
 [ext_resource type="Script" uid="uid://bha4vi35xtrag" path="res://scripts/painting_minigame_3d_scene.gd" id="7_tipki"]
 [ext_resource type="PackedScene" uid="uid://ul7ls8r6exsn" path="res://scenes/pointsHUD.tscn" id="9_85g3d"]
 
@@ -25,9 +22,6 @@ size = Vector3(100, 1.25, 100)
 
 [sub_resource type="BoxMesh" id="BoxMesh_sgp6g"]
 size = Vector3(100, 1, 100)
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_tipki"]
-viewport_path = NodePath("PaintingMinigame/SubViewport")
 
 [sub_resource type="Curve3D" id="Curve3D_o6xl0"]
 _data = {
@@ -88,3 +82,4 @@ curve = SubResource("Curve3D_rail2")
 
 [connection signal="spray_can_amount_consumed_for_points" from="Sealskater" to="." method="_on_sealskater_spray_can_amount_consumed_for_points"]
 [connection signal="spray_can_amount_updated" from="Sealskater" to="." method="_on_sealskater_graffiti_fuel_updated"]
+[connection signal="passPointsToParentSignal" from="PaintingMinigame" to="." method="_on_node_2d_pass_points"]

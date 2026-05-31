@@ -22,10 +22,7 @@ func _on_sealskater_spray_can_amount_consumed_for_points(points: float) -> void:
 	playerPoints += points
 	pointsHUD.text = str(int(playerPoints))
 
-func _on_node_2d_pass_points(points: float) -> void:
-	playerPoints += points
+func _on_node_2d_pass_points(pointsReached: int) -> void:
+	print("parent in 3d recieved points: ", pointsReached)
+	playerPoints += pointsReached
 	pointsHUD.text = str(int(playerPoints))
-
-
-func instantiateMinigame() -> void:
-	pass

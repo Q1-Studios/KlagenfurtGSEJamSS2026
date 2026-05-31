@@ -1,15 +1,13 @@
 extends Node2D
 
 var mousePositions: Array = []
-var markerContainer: Node2D
 var markerList: Array = []
 var marker2DArrayVector = PackedVector2Array()
 var markerListBoolean: Array[bool]
-const DISTANCE_THRESHOLD: int = 75
+const DISTANCE_THRESHOLD: int = 100
 var totalDistancePoints: float = 0
 var previousCursorPosition: Vector2 
 var totalDistanceCursor: float = 0
-var markerBoolean: Array[bool] = []
 var allPointsReached: bool = false
 var rng = RandomNumberGenerator.new()
 var weights = PackedFloat32Array([2,1,1,1])
@@ -27,7 +25,7 @@ var canDraw: bool = true
 var default_font : Font = ThemeDB.fallback_font
 
 signal passPoints(points: float)
-signal drawingPhaseOver
+signal drawingPhaseOver(points:int)
 
 var imgDictionary = {
 	"bert": [
@@ -103,12 +101,6 @@ func _input(event: InputEvent) -> void:
 	#if not Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) || totalDistanceCursor > totalDistancePoints*2 || allPointsReached:
 		#return
 	if not Input.is_action_pressed("LMB") || totalDistanceCursor > totalDistancePoints*2 || allPointsReached || !canDraw:
-		var pointsReached = 0
-		for each in markerBoolean:
-			if each == true:
-				pointsReached += 1
-		passPoints.emit(pointsReached * 100)
-		markerListBoolean.fill(false)
 		return
 	
 	trackCursorDistance()
@@ -153,6 +145,7 @@ func checkAllPoints() -> void:
 	if markerListBoolean.find(false) == -1:
 		allPointsReached = true
 		print("YOU WIN")
+		
 
 
 func printBooleans() -> void:
@@ -178,7 +171,15 @@ func trackCursorDistance() -> void:
 func _on_timer_timeout() -> void:
 	print("on timer timeout reached")
 	canDraw = false
-	drawingPhaseOver.emit()
+
+	var pointsReached = 0
+	for each in markerListBoolean:
+		if each == true:
+			pointsReached += 1
+	print("we have touched this many points: ", pointsReached)
+	drawingPhaseOver.emit(pointsReached * 100)
+	print("emit from 2d scene ", pointsReached * 100)
+	markerListBoolean.fill(false)
 
 func setCursorPosition() -> void:
 	cursorImg.global_position = Vector2(1980/2, 1080/2)
