@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cp4as4vr3lfsl"
-path="res://.godot/imported/arrowUp.png-9acc2cf29fe3527e849e708b751d3c7e.ctex"
+uid="uid://v7v6a5rgi6m0"
+path="res://.godot/imported/RedQuit.png-98ccb9e6b382c277f605e4f20262f354.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/arrowUp.png"
-dest_files=["res://.godot/imported/arrowUp.png-9acc2cf29fe3527e849e708b751d3c7e.ctex"]
+source_file="res://assets/menu/red/RedQuit.png"
+dest_files=["res://.godot/imported/RedQuit.png-98ccb9e6b382c277f605e4f20262f354.ctex"]
 
 [params]
 

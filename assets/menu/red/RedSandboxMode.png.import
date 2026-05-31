@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://x2skpi50lmkj"
-path="res://.godot/imported/arrowRight.png-8ccbe0ebcc6fbd0d26fbd0ee69d367b6.ctex"
+uid="uid://dfmjgtien1l57"
+path="res://.godot/imported/RedSandboxMode.png-92a72509929f2ff011213739f24e7384.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/arrowRight.png"
-dest_files=["res://.godot/imported/arrowRight.png-8ccbe0ebcc6fbd0d26fbd0ee69d367b6.ctex"]
+source_file="res://assets/menu/red/RedSandboxMode.png"
+dest_files=["res://.godot/imported/RedSandboxMode.png-92a72509929f2ff011213739f24e7384.ctex"]
 
 [params]
 

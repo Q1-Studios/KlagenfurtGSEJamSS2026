@@ -1,0 +1,169 @@
+[gd_scene format=3 uid="uid://dv77uy2r2t6sb"]
+
+[ext_resource type="Script" uid="uid://d60ssqmhdy3p" path="res://scripts/mainMenu.gd" id="1_2wk7i"]
+[ext_resource type="Texture2D" uid="uid://bluqesp2rcmbo" path="res://assets/menu/black/BlackStartGame.png" id="2_m7j83"]
+[ext_resource type="Texture2D" uid="uid://dgk6sf0wptgsw" path="res://assets/menu/red/RedStartGame.png" id="3_h6b4j"]
+[ext_resource type="Texture2D" uid="uid://cgpkw7tsfd2kx" path="res://assets/menu/black/BlackSandboxMode.png" id="4_0g8oy"]
+[ext_resource type="Texture2D" uid="uid://dfmjgtien1l57" path="res://assets/menu/red/RedSandboxMode.png" id="5_5jqxe"]
+[ext_resource type="Texture2D" uid="uid://cm3j7q1k880ji" path="res://assets/menu/black/BlackControls.png" id="6_43obh"]
+[ext_resource type="Texture2D" uid="uid://lp7dnx0xyytg" path="res://assets/menu/red/RedControls.png" id="7_8iicl"]
+[ext_resource type="Texture2D" uid="uid://cw2mspi7pj4nh" path="res://assets/menu/black/BlackQuit.png" id="8_ee28s"]
+[ext_resource type="Texture2D" uid="uid://v7v6a5rgi6m0" path="res://assets/menu/red/RedQuit.png" id="9_mecc7"]
+[ext_resource type="Texture2D" uid="uid://butrv7t3x2ugw" path="res://assets/menu/tutorial.png" id="10_rbirm"]
+[ext_resource type="PackedScene" uid="uid://bpj7o4myywyq7" path="res://scenes/bertmodel.tscn" id="11_m7j83"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uuqsn"]
+bg_color = Color(0, 0, 0.003921569, 0.31764707)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[sub_resource type="BoxMesh" id="BoxMesh_m7j83"]
+
+[node name="Node3D" type="Node3D" unique_id=1045934478]
+script = ExtResource("1_2wk7i")
+
+[node name="Control" type="Control" parent="." unique_id=1967715329]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="PlayButton" type="TextureButton" parent="Control" unique_id=706768501]
+layout_mode = 0
+offset_left = 50.0
+offset_top = 392.0
+offset_right = 744.0
+offset_bottom = 532.0
+texture_normal = ExtResource("2_m7j83")
+texture_pressed = ExtResource("3_h6b4j")
+texture_hover = ExtResource("3_h6b4j")
+
+[node name="SandboxButton" type="TextureButton" parent="Control" unique_id=2034898635]
+layout_mode = 0
+offset_left = 50.0
+offset_top = 563.0
+offset_right = 804.0
+offset_bottom = 713.0
+texture_normal = ExtResource("4_0g8oy")
+texture_pressed = ExtResource("5_5jqxe")
+texture_hover = ExtResource("5_5jqxe")
+
+[node name="Tutorial" type="TextureButton" parent="Control" unique_id=592751469]
+layout_mode = 0
+offset_left = 50.0
+offset_top = 728.0
+offset_right = 550.0
+offset_bottom = 878.0
+texture_normal = ExtResource("6_43obh")
+texture_pressed = ExtResource("7_8iicl")
+texture_hover = ExtResource("7_8iicl")
+
+[node name="Quit" type="TextureButton" parent="Control" unique_id=897835568]
+layout_mode = 0
+offset_left = 50.0
+offset_top = 874.0
+offset_right = 550.0
+offset_bottom = 1024.0
+texture_normal = ExtResource("8_ee28s")
+texture_pressed = ExtResource("9_mecc7")
+texture_hover = ExtResource("9_mecc7")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1246877616]
+visible = false
+z_index = 10
+position = Vector2(962.24994, 540.125)
+scale = Vector2(0.6506454, 0.6145419)
+texture = ExtResource("10_rbirm")
+
+[node name="LeaderboardTitle" type="Label" parent="." unique_id=1748266149]
+offset_left = 1541.0
+offset_top = 40.0
+offset_right = 1828.0
+offset_bottom = 109.0
+theme_override_font_sizes/font_size = 40
+text = "Leaderboard"
+vertical_alignment = 1
+uppercase = true
+
+[node name="Credits" type="Control" parent="." unique_id=1777894750]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 3162.0
+offset_top = 1566.0
+offset_right = 3202.0
+offset_bottom = 1606.0
+
+[node name="CreditTitle" type="Label" parent="Credits" unique_id=685029670]
+layout_mode = 0
+offset_left = -1581.0
+offset_top = -924.0
+offset_right = -1374.0
+offset_bottom = -855.0
+theme_override_font_sizes/font_size = 40
+text = "Credits"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="CreditPpl" type="Label" parent="Credits" unique_id=93202893]
+layout_mode = 0
+offset_left = -1610.0
+offset_top = -889.0
+offset_right = -1403.0
+offset_bottom = -486.0
+theme_override_font_sizes/font_size = 30
+text = "1
+2
+3
+4
+5
+6
+7"
+vertical_alignment = 1
+uppercase = true
+
+[node name="Backdrops" type="Control" parent="." unique_id=1439155269]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="LeaderboardBackdrop" type="Panel" parent="Backdrops" unique_id=1875085166]
+layout_mode = 0
+offset_left = 1480.0
+offset_top = 28.0
+offset_right = 1880.0
+offset_bottom = 428.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_uuqsn")
+
+[node name="CreditsBackdrop" type="Panel" parent="Backdrops" unique_id=1649813013]
+layout_mode = 0
+offset_left = 1480.0
+offset_top = 601.0
+offset_right = 1880.0
+offset_bottom = 1059.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_uuqsn")
+
+[node name="PlayerModel" parent="." unique_id=966477376 instance=ExtResource("11_m7j83")]
+unique_name_in_owner = true
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=61138064]
+transform = Transform3D(-0.05463267, -0.23610894, 0.9701896, -0.01327458, 0.9717266, 0.23573549, -0.9984183, 0, -0.056222267, 4.81754, 3.08822, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=683964685]
+transform = Transform3D(30, 0, 0, 0, 100, 0, 0, 0, 100, -31.083576, 0, 0)
+mesh = SubResource("BoxMesh_m7j83")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=1321871490]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.165112, 3.8967934, 0)
+light_energy = 16.0
+light_indirect_energy = 16.0
+omni_range = 4.254722
+
+[connection signal="pressed" from="Control/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="Control/SandboxButton" to="." method="_on_sandbox_button_pressed"]
+[connection signal="pressed" from="Control/Tutorial" to="." method="_on_tutorial_pressed"]
+[connection signal="pressed" from="Control/Quit" to="." method="_on_quit_pressed"]
