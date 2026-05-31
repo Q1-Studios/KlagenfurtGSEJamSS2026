@@ -105,21 +105,23 @@ func _handle_forward_movement(player: CharacterBody3D, delta: float) -> void:
 	
 	if raw_input < 0 and is_grounded:
 		xz_velocity = xz_velocity.move_toward(move_direction * max_speed, scaled_acceleration * delta)
-		player_model.start_moving()
+		if not is_grinding:
+			player_model.start_moving()
 	elif raw_input < 0:
 		xz_velocity = xz_velocity.move_toward(move_direction * max_speed, air_acceleration * delta)
 	elif raw_input > 0 and is_grounded:
 		xz_velocity = xz_velocity.move_toward(Vector3.ZERO, deceleration * delta)
-		player_model.start_moving()
+		if not is_grinding:
+			player_model.start_moving()
 	elif raw_input > 0:
 		xz_velocity = xz_velocity.move_toward(Vector3.ZERO, air_deceleration * delta)
 	elif is_grounded:
 		xz_velocity = xz_velocity.move_toward(Vector3.ZERO, coasting * delta)
-	
+
 	player.velocity = player.velocity * Vector3.UP + xz_velocity
 	current_speed = player.velocity.length()
-	
-	if current_speed == 0.0:
+
+	if current_speed == 0.0 and not is_grinding:
 		player_model.start_idling()
 	
 	

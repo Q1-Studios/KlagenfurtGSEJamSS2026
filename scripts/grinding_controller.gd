@@ -91,22 +91,18 @@ func rotate_player_for_grinding():
 	var model_scale := player_model.scale
 	# horizontal rotation
 	var path_forward: Vector3 = -rail_grind_node.global_transform.basis.z
-	#var rotation_angle = 0.0 if rail_grind_node.progress_direction < 0.0 else PI
-	#var perpendicular = path_forward.rotated(Vector3.UP, rotation_angle) 
+	var rotation_angle = + PI / 2 if rail_grind_node.progress_direction < 0.0 else PI
+	var perpendicular = path_forward.rotated(Vector3.UP, rotation_angle) 
 	#player_model.global_transform = player_model.global_transform.looking_at(player_model.global_position + perpendicular, Vector3.UP)
 
 	# must reset model_scale if it is not 1.0 by default 
-	#player_model.scale = model_scale
-	
-	
-	
+	player_model.scale = model_scale
 	
 	# rotate particle emitter
-	# old
-	#var part_rot_angle = (PI / 2) if rail_grind_node.progress_direction < 0.0 else (3 * PI / 2)
-	#var particle_rotation: Vector3 = path_forward.rotated(Vector3.UP, part_rot_angle)
-	#var particles_looking_at = grind_particles_emitter.global_position + particle_rotation
-	#grind_particles_emitter.global_transform = grind_particles_emitter.global_transform.looking_at(particles_looking_at, Vector3.UP)
+	var part_rot_angle = (PI / 2) if rail_grind_node.progress_direction < 0.0 else (3 * PI / 2)
+	var particle_rotation: Vector3 = path_forward.rotated(Vector3.UP, part_rot_angle)
+	var particles_looking_at = grind_particles_emitter.global_position + particle_rotation
+	grind_particles_emitter.global_transform = grind_particles_emitter.global_transform.looking_at(particles_looking_at, Vector3.UP)
 	
 	
 func update_player_camera():
@@ -117,12 +113,11 @@ func update_player_position():
 	
 	var rail_basis = rail_grind_node.global_transform.basis
 	var rail_up = rail_basis.y # -> perpendiculr to rail
-	var path_forward = -rail_basis.z * rail_grind_node.progress_direction 
+	var path_forward: Vector3 = rail_basis.x * rail_grind_node.progress_direction 
 	var target_basis = Basis.looking_at(-path_forward, rail_up) # -> face pls forwards, body pls down
 	player_model.global_transform.basis = target_basis
 
 	grind_particles_emitter.global_transform.basis = Basis.looking_at(path_forward, rail_up)
-	grind_particles_emitter.rotation.y -= 90
  
 func detach_from_rail():
 	grind_particles_emitter.emitting = false
