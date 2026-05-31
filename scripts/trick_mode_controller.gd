@@ -10,10 +10,10 @@ var slow_mo_is_active: bool
 
 @onready var trickInputUI = $"../../TrickInputSubviewPort/TrickSequenceDisplay"
 var trickSprites: Array
-var upImg = load("res://assets/sprites/arrowUp.png")
-var rightImg = load("res://assets/sprites/arrowRight.png")
-var downImg = load ("res://assets/sprites/arrowDown.png")
-var leftImg = load("res://assets/sprites/arrowLeft.png")
+var upImg = load("res://assets/trickArrows/arrowUp.png")
+var rightImg = load("res://assets/trickArrows/arrowRight.png")
+var downImg = load ("res://assets/trickArrows/arrowDown.png")
+var leftImg = load("res://assets/trickArrows/arrowLeft.png")
 
 @onready var wrongInputTimer = $"../WrongInputTimer"
 
