@@ -39,10 +39,10 @@ material = ExtResource("27_kc7oj")
 
 [sub_resource type="Curve3D" id="Curve3D_b3owo"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -4.5077696, -8.938049, -1.0007629, 0, 0, 0, 0, 0, 0, 1.4218941, 2.068077, -1.1328278, 0, 0, 0, 0, 0, 0, 3, 6, -1, 0, 0, 0, 0, 0, 0, 11, 15, -1, 0, 0, 0, 0, 0, 0, 15, 22, -2, 0, 0, 0, 0, 0, 0, 18, 28, -3, 0, 0, 0, 0, 0, 0, 19, 34, -10, 0, 0, 0, 0, 0, 0, 19, 37, -16, 0, 0, 0, 0, 0, 0, 19, 42, -23, 0, 0, 0, 0, 0, 0, 19, 51, -32, 0, 0, 0, 0, 0, 0, 18, 59, -34, 0, 0, 0, 0, 0, 0, 18, 68, -40, 0, 0, 0, 0, 0, 0, 19.426264, 75.9461, -48.89273, 0, 0, 0, 0, 0, 0, 17.614079, 89.79053, -56.717834, 0, 0, 0, 0, 0, 0, 17, 103, -64, 0, 0, 0, 0, 0, 0, 14, 105, -66),
-"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 4.791443, -5.4435883, -51.436504, 0, 0, 0, 0, 0, 0, 29.82582, 2.7119446, -65.141495, 0, 0, 0, 0, 0, 0, 112.317154, 41.11559, -67.29076, 0, 0, 0, 0, 0, 0, 244.78845, 148.2881, -83.17212),
+"tilts": PackedFloat32Array(0, 0, 0, 0)
 }
-point_count = 16
+point_count = 4
 
 [sub_resource type="Curve3D" id="Curve3D_458yb"]
 _data = {
@@ -130,7 +130,7 @@ point_count = 4
 
 [node name="GameLevel" type="Node2D" unique_id=1256743737]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=934446392]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=934446392 groups=["Paintable"]]
 transform = Transform3D(220, 0, 0, 0, 1, 0, 0, 0, 150, 0, 0, -40.573303)
 mesh = SubResource("PlaneMesh_bggjr")
 
@@ -555,7 +555,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 78.921, 56.937, -113.509)
 transform = Transform3D(-0.0018849336, 0, 0.9999982, 0, 1, 0, -0.9999982, 0, -0.0018849336, -117.551, 10, -155.431)
 
 [node name="house11" parent="." unique_id=1024299385 instance=ExtResource("6_10wqe")]
-transform = Transform3D(-0.015375767, 0, 0.9998818, 0, 1, 0, -0.9998818, 0, -0.015375767, -1.7869997, 16.073, -81.518)
+transform = Transform3D(-0.015375767, 0, 0.9998818, 0, 1, 0, -0.9998818, 0, -0.015375767, -1.7339907, 16.073, -81.39097)
 
 [node name="house12" parent="." unique_id=1021428334 instance=ExtResource("5_ruh5v")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 151.6381, 20, -29.12018)
@@ -1457,7 +1457,7 @@ transform = Transform3D(0.9659258, -0.25881904, 0, 0.25881904, 0.9659258, 0, 0, 
 [node name="Bench5" parent="." unique_id=755621845 instance=ExtResource("22_m0bvb")]
 transform = Transform3D(0.9659258, -0.25881904, 0, 0.25881904, 0.9659258, 0, 0, 0, 1, -149.97528, 9.123748, -111.11299)
 
-[node name="Water" type="MeshInstance3D" parent="." unique_id=2022113231]
+[node name="Water" type="MeshInstance3D" parent="." unique_id=2022113231 groups=["Paintable"]]
 transform = Transform3D(1000, 0, 0, 0, 300, 0, 0, 0, 100, 32, 0, 209)
 mesh = SubResource("PlaneMesh_ykfqv")
 
@@ -1479,11 +1479,11 @@ transform = Transform3D(0.745, 0, 0, 0, 0.745, 0, 0, 0, 0.745, 53.02462, 21.1392
 [node name="tree15" parent="." unique_id=480987409 instance=ExtResource("24_gt75r")]
 transform = Transform3D(0.745, 0, 0, 0, 0.745, 0, 0, 0, 0.745, 137.02463, 21.139277, -153.67096)
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=287313982]
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=287313982 groups=["Paintable"]]
 transform = Transform3D(1000, 0, 0, 0, 1, 0, 0, 0, 800, 0, 0, -691)
 mesh = SubResource("PlaneMesh_etdju")
 
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="." unique_id=251519530]
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="." unique_id=251519530 groups=["Paintable"]]
 transform = Transform3D(1000, 0, 0, 0, 1, 0, 0, 0, 800, 0, 0, 1109)
 mesh = SubResource("PlaneMesh_etdju")
 
@@ -1872,7 +1872,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 754.30334, 31.93, -653.3553)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 807.8124, 37.936996, -653.3553)
 
 [node name="Rail" parent="." unique_id=261477281 instance=ExtResource("28_etdju")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 20, -37)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -246.40959, 8.684769, 1.6029396)
 curve = SubResource("Curve3D_b3owo")
 
 [node name="Node3D2" type="Node3D" parent="." unique_id=1472067460]

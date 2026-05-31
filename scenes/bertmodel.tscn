@@ -29,6 +29,13 @@ func _ready() -> void:
 		return
 	anim_tree.active = true
 	setSteer(0.5)
+	_mark_no_paint(self)
+
+func _mark_no_paint(node: Node) -> void:
+	if node is MeshInstance3D:
+		node.add_to_group(\"NoPaint\")
+	for child in node.get_children():
+		_mark_no_paint(child)
 
 func _playback() -> AnimationNodeStateMachinePlayback:
 	return anim_tree[\"parameters/playback\"] as AnimationNodeStateMachinePlayback
