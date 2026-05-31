@@ -62,13 +62,13 @@ func land() -> void:
 	if current == \"inAir\" or current == \"jumpStart\":
 		anim_tree[\"parameters/conditions/is_landing\"] = true
 		anim_tree[\"parameters/conditions/is_jumping\"] = false
-		_playback().travel(\"jumpEnd\")
+		_playback().start(\"jumpEnd\")
 
 func start_grind() -> void:
 	anim_tree[\"parameters/conditions/is_grinding\"] = true
 	anim_tree[\"parameters/conditions/is_jumping\"] = false
 	anim_tree[\"parameters/conditions/is_landing\"] = false
-	_playback().travel(\"grindRail\")
+	_playback().start(\"grindRail\")
 
 func stop_grind() -> void:
 	anim_tree[\"parameters/conditions/is_grinding\"] = false
@@ -163,7 +163,6 @@ break_loop_at_end = true
 advance_condition = &"is_moving"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_covau"]
-break_loop_at_end = true
 advance_condition = &"is_idle"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_qtmog"]
@@ -191,9 +190,9 @@ states/IdleStanding/node = SubResource("AnimationNodeAnimation_2vb87")
 states/IdleStanding/position = Vector2(282.5, 109.36133)
 states/Start/position = Vector2(70, 99.5)
 states/grindRail/node = SubResource("AnimationNodeAnimation_t45of")
-states/grindRail/position = Vector2(542, 445)
+states/grindRail/position = Vector2(547, 225.5)
 states/inAir/node = SubResource("AnimationNodeAnimation_1o7ov")
-states/inAir/position = Vector2(534, 250.25)
+states/inAir/position = Vector2(546.66406, 399.75)
 states/jumpEnd/node = SubResource("AnimationNodeAnimation_a4cmt")
 states/jumpEnd/position = Vector2(751.5, 275)
 states/jumpStart/node = SubResource("AnimationNodeAnimation_si1ny")
