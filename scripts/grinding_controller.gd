@@ -59,6 +59,7 @@ func start_grinding():
 	initial_player_model_transform = player_model.transform
 	initial_camera_pivot_rotation = camera_pivot.rotation
 	grinding = true
+	player_model.start_grind()
 	
 	var grind_rail: Rail = grind_ray.get_collider(0).get_parent()
 	
@@ -90,12 +91,12 @@ func rotate_player_for_grinding():
 	var model_scale := player_model.scale
 	# horizontal rotation
 	var path_forward: Vector3 = -rail_grind_node.global_transform.basis.z
-	var rotation_angle = 0.0 if rail_grind_node.progress_direction < 0.0 else PI
-	var perpendicular = path_forward.rotated(Vector3.UP, rotation_angle) 
-	player_model.global_transform = player_model.global_transform.looking_at(player_model.global_position + perpendicular, Vector3.UP)
+	#var rotation_angle = 0.0 if rail_grind_node.progress_direction < 0.0 else PI
+	#var perpendicular = path_forward.rotated(Vector3.UP, rotation_angle) 
+	#player_model.global_transform = player_model.global_transform.looking_at(player_model.global_position + perpendicular, Vector3.UP)
 
 	# must reset model_scale if it is not 1.0 by default 
-	player_model.scale = model_scale
+	#player_model.scale = model_scale
 	
 	# rotate particle emitter
 	var part_rot_angle = (PI / 2) if rail_grind_node.progress_direction < 0.0 else (3 * PI / 2)
@@ -124,6 +125,7 @@ func detach_from_rail():
 	rail_grind_node.detach = false
 	player_model.transform = initial_player_model_transform
 	camera_pivot.rotation = initial_camera_pivot_rotation
+	player_model.stop_grind()
 	emit_signal("toggle_grinding", false)
 	
 	# reset can_grind after timeout
