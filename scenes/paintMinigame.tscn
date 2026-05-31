@@ -22,7 +22,7 @@ texture = ExtResource("1_dta0m")
 [node name="Cursor" parent="." unique_id=1495474004 instance=ExtResource("3_r8pki")]
 
 [node name="Timer" type="Timer" parent="." unique_id=197796071]
-wait_time = 5.0
+wait_time = 10.0
 one_shot = true
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

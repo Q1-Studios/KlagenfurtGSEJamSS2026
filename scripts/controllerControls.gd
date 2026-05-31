@@ -1,6 +1,6 @@
 extends Node2D
 
-const cursorSpeed: float = 600
+const cursorSpeed: float = 700
 const deadZone: float = 0.2
 @onready var parent = $".."
 func _process(delta: float) -> void:
