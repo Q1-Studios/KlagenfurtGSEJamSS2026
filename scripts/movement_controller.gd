@@ -52,6 +52,8 @@ const STEER_SPEED = 5.0
 
 func handle_movement(player: CharacterBody3D, delta: float) -> void:
 	if player.is_on_floor():
+		player_model.land()
+		player_model.start_moving()
 		if !was_on_floor:
 			landed.emit()
 			was_on_floor = true
@@ -104,10 +106,12 @@ func _handle_forward_movement(player: CharacterBody3D, delta: float) -> void:
 	
 	if raw_input < 0 and is_grounded:
 		xz_velocity = xz_velocity.move_toward(move_direction * max_speed, scaled_acceleration * delta)
+		player_model.start_moving()
 	elif raw_input < 0:
 		xz_velocity = xz_velocity.move_toward(move_direction * max_speed, air_acceleration * delta)
 	elif raw_input > 0 and is_grounded:
 		xz_velocity = xz_velocity.move_toward(Vector3.ZERO, deceleration * delta)
+		player_model.start_moving()
 	elif raw_input > 0:
 		xz_velocity = xz_velocity.move_toward(Vector3.ZERO, air_deceleration * delta)
 	elif is_grounded:
@@ -116,9 +120,13 @@ func _handle_forward_movement(player: CharacterBody3D, delta: float) -> void:
 	player.velocity = player.velocity * Vector3.UP + xz_velocity
 	current_speed = player.velocity.length()
 	
+	if current_speed == 0.0:
+		player_model.start_idling()
+	
 	
 func _handle_jump(player: CharacterBody3D, _delta: float) -> void:
 	if Input.is_action_just_pressed("jump") and is_grounded:
+		player_model.start_jump()
 		player.velocity.y = jump_force
 
 func _handle_gravity(player: CharacterBody3D, delta: float) -> void:

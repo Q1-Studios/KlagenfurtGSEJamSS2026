@@ -21,15 +21,40 @@
 resource_name = "animationTreeInterface"
 script/source = "extends Node3D
 
-@onready var anim_tree: AnimationTree = $bert/AnimationTree
+@onready var anim_tree: AnimationTree = $bert/AnimationTreeStateMachine
 
 func _ready() -> void:
-	setSteer(0.5) # 0.5 = straight, 0 = left, 1 = right (starting straight)
+	if anim_tree == null:
+		push_error(\"Bertmodel: AnimationTreeStateMachine not found at bert/AnimationTreeStateMachine\")
+		return
+	anim_tree.active = true
+	setSteer(0.5)
+
+func _playback() -> AnimationNodeStateMachinePlayback:
+	return anim_tree[\"parameters/playback\"] as AnimationNodeStateMachinePlayback
 
 func setSteer(f: float) -> void:
-	if(f>1 or f<0):
-		print(\"DO NOT THE CAT\")
-	anim_tree[\"parameters/boardBlendMichael/blend_amount\"] = f
+	if f > 1 or f < 0:
+		return
+	anim_tree[\"parameters/locomotion/boardBlendMichael/blend_amount\"] = f
+
+func start_moving() -> void:
+	_playback().travel(\"locomotion\")
+
+func start_idling() -> void:
+	_playback().travel(\"IdleStanding\")
+
+func start_jump() -> void:
+	_playback().travel(\"jumpStart\")
+
+func land() -> void:
+	_playback().travel(\"jumpEnd\")
+
+func start_grind() -> void:
+	_playback().travel(\"grindRail\")
+
+func stop_grind() -> void:
+	_playback().travel(\"locomotion\")
 "
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8r73l"]
@@ -51,31 +76,102 @@ _data = {
 &"TrickPose3": ExtResource("16_iicyg")
 }
 
-[sub_resource type="AnimationNodeAdd2" id="AnimationNodeAdd2_covau"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_2vb87"]
+animation = &"bertLibrary/IdleStanding"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ye60r"]
-animation = &"bertLibrary/BoardSteerRight"
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_t45of"]
+animation = &"bertLibrary/GrindRail"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_qtmog"]
-animation = &"bertLibrary/IdleRolling"
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_1o7ov"]
+animation = &"bertLibrary/InAir"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_hvwgq"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_a4cmt"]
+animation = &"bertLibrary/JumpEnd"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_si1ny"]
+animation = &"bertLibrary/JumpStart"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_covau"]
 animation = &"bertLibrary/BoardSteerLeft"
 
-[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_1xn5g"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_s00k6"]
+animation = &"bertLibrary/BoardSteerRight"
 
-[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_ypo84"]
-nodes/boardBlendMichael/node = SubResource("AnimationNodeBlend2_1xn5g")
-nodes/boardBlendMichael/position = Vector2(27.275482, 202.18683)
-nodes/Animation/node = SubResource("AnimationNodeAnimation_hvwgq")
-nodes/Animation/position = Vector2(-333.33334, 80)
-"nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_ye60r")
-"nodes/Animation 2/position" = Vector2(-400, 386.66666)
-nodes/Add2/node = SubResource("AnimationNodeAdd2_covau")
-nodes/Add2/position = Vector2(300.05997, 357.87997)
-"nodes/Animation 3/node" = SubResource("AnimationNodeAnimation_qtmog")
-"nodes/Animation 3/position" = Vector2(-80, 573.3333)
-node_connections = [&"output", 0, &"Add2", &"boardBlendMichael", 0, &"Animation", &"boardBlendMichael", 1, &"Animation 2", &"Add2", 0, &"boardBlendMichael", &"Add2", 1, &"Animation 3"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_3km1t"]
+animation = &"bertLibrary/IdleRolling"
+
+[sub_resource type="AnimationNodeAdd2" id="AnimationNodeAdd2_t45of"]
+
+[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_a4cmt"]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_si1ny"]
+nodes/output/position = Vector2(1310, 240)
+nodes/BoardSteerLeft/node = SubResource("AnimationNodeAnimation_covau")
+nodes/BoardSteerLeft/position = Vector2(260, 160)
+nodes/BoardSteerRight/node = SubResource("AnimationNodeAnimation_s00k6")
+nodes/BoardSteerRight/position = Vector2(299.06097, 384.76746)
+nodes/boardBlendMichael/node = SubResource("AnimationNodeBlend2_a4cmt")
+nodes/boardBlendMichael/position = Vector2(650, 260)
+nodes/IdleRolling/node = SubResource("AnimationNodeAnimation_3km1t")
+nodes/IdleRolling/position = Vector2(410, 640)
+nodes/Locomotion/node = SubResource("AnimationNodeAdd2_t45of")
+nodes/Locomotion/position = Vector2(1020, 330)
+node_connections = [&"output", 0, &"Locomotion", &"boardBlendMichael", 0, &"BoardSteerLeft", &"boardBlendMichael", 1, &"BoardSteerRight", &"Locomotion", 0, &"boardBlendMichael", &"Locomotion", 1, &"IdleRolling"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_vnfsl"]
+break_loop_at_end = true
+advance_condition = &"is_jumping"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_uuim4"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_m6v64"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_qieh0"]
+advance_mode = 2
+advance_condition = &"is_landing"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_bgmnx"]
+advance_condition = &"is_grinding"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_iicyg"]
+break_loop_at_end = true
+advance_condition = &"is_jumping"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_8r73l"]
+break_loop_at_end = true
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ye60r"]
+break_loop_at_end = true
+advance_condition = &"is_moving"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_covau"]
+break_loop_at_end = true
+advance_condition = &"is_idle"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_qtmog"]
+advance_condition = &"is_grinding"
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_tybpf"]
+states/IdleStanding/node = SubResource("AnimationNodeAnimation_2vb87")
+states/IdleStanding/position = Vector2(282.5, 109.36133)
+states/Start/position = Vector2(70, 99.5)
+states/grindRail/node = SubResource("AnimationNodeAnimation_t45of")
+states/grindRail/position = Vector2(541.5, 445)
+states/inAir/node = SubResource("AnimationNodeAnimation_1o7ov")
+states/inAir/position = Vector2(534, 250.75)
+states/jumpEnd/node = SubResource("AnimationNodeAnimation_a4cmt")
+states/jumpEnd/position = Vector2(751.5, 275)
+states/jumpStart/node = SubResource("AnimationNodeAnimation_si1ny")
+states/jumpStart/position = Vector2(358.875, 287)
+states/locomotion/node = SubResource("AnimationNodeBlendTree_si1ny")
+states/locomotion/position = Vector2(526.15625, 109.27832)
+transitions = ["locomotion", "jumpStart", SubResource("AnimationNodeStateMachineTransition_vnfsl"), "jumpEnd", "locomotion", SubResource("AnimationNodeStateMachineTransition_uuim4"), "jumpStart", "inAir", SubResource("AnimationNodeStateMachineTransition_m6v64"), "inAir", "jumpEnd", SubResource("AnimationNodeStateMachineTransition_qieh0"), "jumpEnd", "grindRail", SubResource("AnimationNodeStateMachineTransition_bgmnx"), "grindRail", "jumpStart", SubResource("AnimationNodeStateMachineTransition_iicyg"), "Start", "IdleStanding", SubResource("AnimationNodeStateMachineTransition_8r73l"), "IdleStanding", "locomotion", SubResource("AnimationNodeStateMachineTransition_ye60r"), "locomotion", "IdleStanding", SubResource("AnimationNodeStateMachineTransition_covau"), "jumpStart", "grindRail", SubResource("AnimationNodeStateMachineTransition_qtmog")]
+graph_offset = Vector2(0, 33.073944)
 
 [node name="Bertmodel" type="Node3D" unique_id=966477376]
 script = SubResource("GDScript_6pu0d")
@@ -85,8 +181,13 @@ script = SubResource("GDScript_6pu0d")
 [node name="AnimationPlayer2" type="AnimationPlayer" parent="bert" unique_id=201788050]
 libraries/bertLibrary = SubResource("AnimationLibrary_8r73l")
 
-[node name="AnimationTree" type="AnimationTree" parent="bert" unique_id=1384168032]
-tree_root = SubResource("AnimationNodeBlendTree_ypo84")
+[node name="AnimationTreeStateMachine" type="AnimationTree" parent="bert" unique_id=1113446674]
+tree_root = SubResource("AnimationNodeStateMachine_tybpf")
 anim_player = NodePath("../AnimationPlayer2")
-parameters/boardBlendMichael/blend_amount = 0.5
-parameters/Add2/add_amount = 1.0
+parameters/conditions/is_grinding = false
+parameters/conditions/is_idle = false
+parameters/conditions/is_jumping = false
+parameters/conditions/is_landing = false
+parameters/conditions/is_moving = false
+parameters/locomotion/boardBlendMichael/blend_amount = 0.5
+parameters/locomotion/Locomotion/add_amount = 1.0
