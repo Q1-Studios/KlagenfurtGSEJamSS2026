@@ -1,0 +1,149 @@
+[gd_scene format=3 uid="uid://fgtb3tejw0iu"]
+
+[ext_resource type="Script" uid="uid://d60ssqmhdy3p" path="res://scripts/mainMenu.gd" id="1_qkhwq"]
+[ext_resource type="Texture2D" uid="uid://bluqesp2rcmbo" path="res://assets/menu/black/BlackStartGame.png" id="2_dj72i"]
+[ext_resource type="Texture2D" uid="uid://dgk6sf0wptgsw" path="res://assets/menu/red/RedStartGame.png" id="3_6b2wv"]
+[ext_resource type="Texture2D" uid="uid://cgpkw7tsfd2kx" path="res://assets/menu/black/BlackSandboxMode.png" id="4_tov5d"]
+[ext_resource type="Texture2D" uid="uid://dfmjgtien1l57" path="res://assets/menu/red/RedSandboxMode.png" id="5_epn8x"]
+[ext_resource type="Texture2D" uid="uid://cm3j7q1k880ji" path="res://assets/menu/black/BlackControls.png" id="6_vt84v"]
+[ext_resource type="Texture2D" uid="uid://lp7dnx0xyytg" path="res://assets/menu/red/RedControls.png" id="7_lam2r"]
+[ext_resource type="Texture2D" uid="uid://cw2mspi7pj4nh" path="res://assets/menu/black/BlackQuit.png" id="8_amia2"]
+[ext_resource type="Texture2D" uid="uid://v7v6a5rgi6m0" path="res://assets/menu/red/RedQuit.png" id="9_25e00"]
+[ext_resource type="Texture2D" uid="uid://butrv7t3x2ugw" path="res://assets/menu/tutorial.png" id="10_6b2wv"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6b2wv"]
+bg_color = Color(0, 0, 0.003921569, 0.31764707)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[node name="Node2D" type="Node2D" unique_id=1433737624]
+script = ExtResource("1_qkhwq")
+
+[node name="Control" type="Control" parent="." unique_id=1415361232]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="PlayButton" type="TextureButton" parent="Control" unique_id=1444197263]
+layout_mode = 0
+offset_left = 50.0
+offset_top = 392.0
+offset_right = 744.0
+offset_bottom = 532.0
+texture_normal = ExtResource("2_dj72i")
+texture_pressed = ExtResource("3_6b2wv")
+texture_hover = ExtResource("3_6b2wv")
+
+[node name="SandboxButton" type="TextureButton" parent="Control" unique_id=45727894]
+layout_mode = 0
+offset_left = 50.0
+offset_top = 563.0
+offset_right = 804.0
+offset_bottom = 713.0
+texture_normal = ExtResource("4_tov5d")
+texture_pressed = ExtResource("5_epn8x")
+texture_hover = ExtResource("5_epn8x")
+
+[node name="Tutorial" type="TextureButton" parent="Control" unique_id=1120315261]
+layout_mode = 0
+offset_left = 50.0
+offset_top = 728.0
+offset_right = 550.0
+offset_bottom = 878.0
+texture_normal = ExtResource("6_vt84v")
+texture_pressed = ExtResource("7_lam2r")
+texture_hover = ExtResource("7_lam2r")
+
+[node name="Quit" type="TextureButton" parent="Control" unique_id=1121656993]
+layout_mode = 0
+offset_left = 50.0
+offset_top = 874.0
+offset_right = 550.0
+offset_bottom = 1024.0
+texture_normal = ExtResource("8_amia2")
+texture_pressed = ExtResource("9_25e00")
+texture_hover = ExtResource("9_25e00")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=583518615]
+visible = false
+z_index = 10
+position = Vector2(962.24994, 540.125)
+scale = Vector2(0.6506454, 0.6145419)
+texture = ExtResource("10_6b2wv")
+
+[node name="LeaderboardTitle" type="Label" parent="." unique_id=1322588025]
+offset_left = 1541.0
+offset_top = 40.0
+offset_right = 1828.0
+offset_bottom = 109.0
+theme_override_font_sizes/font_size = 40
+text = "Leaderboard"
+vertical_alignment = 1
+uppercase = true
+
+[node name="Credits" type="Control" parent="." unique_id=623576999]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 3162.0
+offset_top = 1566.0
+offset_right = 3202.0
+offset_bottom = 1606.0
+
+[node name="CreditTitle" type="Label" parent="Credits" unique_id=2050559900]
+layout_mode = 0
+offset_left = -1581.0
+offset_top = -924.0
+offset_right = -1374.0
+offset_bottom = -855.0
+theme_override_font_sizes/font_size = 40
+text = "Credits"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="CreditPpl" type="Label" parent="Credits" unique_id=1213713270]
+layout_mode = 0
+offset_left = -1610.0
+offset_top = -889.0
+offset_right = -1403.0
+offset_bottom = -486.0
+theme_override_font_sizes/font_size = 30
+text = "1
+2
+3
+4
+5
+6
+7"
+vertical_alignment = 1
+uppercase = true
+
+[node name="Backdrops" type="Control" parent="." unique_id=2123876506]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="LeaderboardBackdrop" type="Panel" parent="Backdrops" unique_id=53719772]
+layout_mode = 0
+offset_left = 1480.0
+offset_top = 28.0
+offset_right = 1880.0
+offset_bottom = 428.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_6b2wv")
+
+[node name="CreditsBackdrop" type="Panel" parent="Backdrops" unique_id=1478168788]
+layout_mode = 0
+offset_left = 1480.0
+offset_top = 601.0
+offset_right = 1880.0
+offset_bottom = 1059.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_6b2wv")
+
+[connection signal="pressed" from="Control/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="Control/SandboxButton" to="." method="_on_sandbox_button_pressed"]
+[connection signal="pressed" from="Control/Tutorial" to="." method="_on_tutorial_pressed"]
+[connection signal="pressed" from="Control/Quit" to="." method="_on_quit_pressed"]
