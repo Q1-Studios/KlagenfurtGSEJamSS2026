@@ -20,7 +20,12 @@ func _update_leaderboard() -> void:
 	print(typeof(ScoreManager.scoreboard["scores"]))
 	var score_board = ScoreManager.scoreboard["scores"]
 	var leaderboard_text = ""
-	for i in range(5):
+	var displayed_score_count = min(5, score_board.size())
+	
+	if displayed_score_count <= 1:
+		return;
+	
+	for i in range(displayed_score_count):
 		leaderboard_text += "%d) %s: %d\n" % [i+1, score_board[i]["name"], round(score_board[i]["score"])]
 	if (GameManger.last_score >= 0):
 		leaderboard_text += "%s: %d\n" % ["you", round(GameManger.last_score)]
