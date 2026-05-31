@@ -34,7 +34,7 @@ func _on_play_button_pressed() -> void:
 		username_input.text = GameManger.default_username
 	
 	GameManger.username = username_input.text
-	get_tree().change_scene_to_file("res://scenes/main.tscn")
+	get_tree().change_scene_to_file("res://scenes/GameLevel.tscn")
 	
 
 # please change later for sandbox mode, this is currently pointing to standard game
@@ -45,7 +45,7 @@ func _on_sandbox_button_pressed() -> void:
 		username_input.text = GameManger.default_username
 	
 	GameManger.username = username_input.text
-	get_tree().change_scene_to_file("res://scenes/main.tscn")
+	get_tree().change_scene_to_file("res://scenes/GameLevel.tscn")
 
 
 func _on_tutorial_pressed() -> void:

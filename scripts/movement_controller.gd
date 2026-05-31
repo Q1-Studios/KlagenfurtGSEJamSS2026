@@ -2,7 +2,7 @@ class_name MovementController
 extends Node
 
 @export_group("Skating")
-@export var max_speed := 20.0       
+@export var max_speed := 30.0       
 @export var acceleration := 100.0
 @export var deceleration := 70.0
 @export var air_deceleration := 10.0
@@ -133,7 +133,7 @@ func _handle_jump(player: CharacterBody3D, _delta: float) -> void:
 func _handle_gravity(player: CharacterBody3D, delta: float) -> void:
 	player.velocity.y += gravity * delta
 
-
+				
 func _calculate_AngularVelocity(velocity: float) -> float:
 	var f_x := (
 		(
