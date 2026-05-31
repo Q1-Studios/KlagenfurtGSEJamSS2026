@@ -87,6 +87,7 @@ margin = 0.2
 
 [node name="PlayerCamera" type="Camera3D" parent="CameraPivot/SpringArm3D" unique_id=1638251071]
 unique_name_in_owner = true
+transform = Transform3D(0.125, 0, 0, 0, 0.10825318, -0.0625, 0, 0.0625, 0.10825318, 0, 0, 0)
 cull_mask = 1048571
 environment = SubResource("Environment_6w6d5")
 
