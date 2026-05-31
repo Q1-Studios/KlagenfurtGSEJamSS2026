@@ -40,23 +40,38 @@ func setSteer(f: float) -> void:
 	
 
 func start_moving() -> void:
+	anim_tree[\"parameters/conditions/is_moving\"] = true
+	anim_tree[\"parameters/conditions/is_idle\"] = false
+	anim_tree[\"parameters/conditions/is_landing\"] = false
 	_playback().travel(\"locomotion\")
 
 func start_idling() -> void:
+	anim_tree[\"parameters/conditions/is_idle\"] = true
+	anim_tree[\"parameters/conditions/is_moving\"] = false
+	anim_tree[\"parameters/conditions/is_landing\"] = false
 	_playback().travel(\"IdleStanding\")
 
 func start_jump() -> void:
+	anim_tree[\"parameters/conditions/is_jumping\"] = true
+	anim_tree[\"parameters/conditions/is_landing\"] = false
+	anim_tree[\"parameters/conditions/is_grinding\"] = false
 	_playback().travel(\"jumpStart\")
 
 func land() -> void:
 	var current := _playback().get_current_node()
 	if current == \"inAir\" or current == \"jumpStart\":
+		anim_tree[\"parameters/conditions/is_landing\"] = true
+		anim_tree[\"parameters/conditions/is_jumping\"] = false
 		_playback().travel(\"jumpEnd\")
 
 func start_grind() -> void:
+	anim_tree[\"parameters/conditions/is_grinding\"] = true
+	anim_tree[\"parameters/conditions/is_jumping\"] = false
+	anim_tree[\"parameters/conditions/is_landing\"] = false
 	_playback().travel(\"grindRail\")
 
 func stop_grind() -> void:
+	anim_tree[\"parameters/conditions/is_grinding\"] = false
 	_playback().travel(\"locomotion\")
 "
 
@@ -168,6 +183,9 @@ advance_mode = 2
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_qieh0"]
 advance_condition = &"is_landing"
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_tybpf"]
+advance_condition = &"is_grinding"
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_tybpf"]
 states/IdleStanding/node = SubResource("AnimationNodeAnimation_2vb87")
 states/IdleStanding/position = Vector2(282.5, 109.36133)
@@ -182,7 +200,7 @@ states/jumpStart/node = SubResource("AnimationNodeAnimation_si1ny")
 states/jumpStart/position = Vector2(358.875, 287)
 states/locomotion/node = SubResource("AnimationNodeBlendTree_si1ny")
 states/locomotion/position = Vector2(526.65625, 109.319824)
-transitions = ["locomotion", "jumpStart", SubResource("AnimationNodeStateMachineTransition_vnfsl"), "grindRail", "jumpStart", SubResource("AnimationNodeStateMachineTransition_iicyg"), "Start", "IdleStanding", SubResource("AnimationNodeStateMachineTransition_8r73l"), "IdleStanding", "locomotion", SubResource("AnimationNodeStateMachineTransition_ye60r"), "locomotion", "IdleStanding", SubResource("AnimationNodeStateMachineTransition_covau"), "jumpStart", "grindRail", SubResource("AnimationNodeStateMachineTransition_qtmog"), "jumpEnd", "locomotion", SubResource("AnimationNodeStateMachineTransition_uuim4"), "jumpEnd", "grindRail", SubResource("AnimationNodeStateMachineTransition_bgmnx"), "jumpStart", "inAir", SubResource("AnimationNodeStateMachineTransition_m6v64"), "inAir", "jumpEnd", SubResource("AnimationNodeStateMachineTransition_qieh0")]
+transitions = ["locomotion", "jumpStart", SubResource("AnimationNodeStateMachineTransition_vnfsl"), "grindRail", "jumpStart", SubResource("AnimationNodeStateMachineTransition_iicyg"), "Start", "IdleStanding", SubResource("AnimationNodeStateMachineTransition_8r73l"), "IdleStanding", "locomotion", SubResource("AnimationNodeStateMachineTransition_ye60r"), "locomotion", "IdleStanding", SubResource("AnimationNodeStateMachineTransition_covau"), "jumpStart", "grindRail", SubResource("AnimationNodeStateMachineTransition_qtmog"), "jumpEnd", "locomotion", SubResource("AnimationNodeStateMachineTransition_uuim4"), "jumpEnd", "grindRail", SubResource("AnimationNodeStateMachineTransition_bgmnx"), "jumpStart", "inAir", SubResource("AnimationNodeStateMachineTransition_m6v64"), "inAir", "jumpEnd", SubResource("AnimationNodeStateMachineTransition_qieh0"), "inAir", "grindRail", SubResource("AnimationNodeStateMachineTransition_tybpf")]
 graph_offset = Vector2(0, 33.073944)
 
 [node name="Bertmodel" type="Node3D" unique_id=966477376]
