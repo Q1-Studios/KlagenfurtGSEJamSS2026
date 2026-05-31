@@ -5,30 +5,30 @@
 [ext_resource type="Material" uid="uid://b57lchwn2u3v6" path="res://assets/bertenna/antennamaterial.tres" id="2_q3ad5"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_q3ad5"]
-radius = 1.1206055
-height = 7.317383
+radius = 1.3481445
+height = 6.8876953
 
 [node name="bert" unique_id=751518164 instance=ExtResource("1_1bn65")]
 
-[node name="AtennaAttachL" type="BoneAttachment3D" parent="Base/SkateBert/board/BertRig/Skeleton3D" parent_id_path=PackedInt32Array(1828125513) index="6" unique_id=1846920139]
-transform = Transform3D(1, 2.568486e-10, 1.1178047e-08, -2.568486e-10, 0.9999999, -1.3351382e-09, -1.1177991e-08, 1.3351384e-09, 1.0000002, 1.465382, 9.986599, -0.22230053)
+[node name="AtennaAttachL" type="BoneAttachment3D" parent="Base/SkateBert/board/BertRig/Skeleton3D" parent_id_path=PackedInt32Array(127312231) index="6" unique_id=1846920139]
+transform = Transform3D(0.9999997, -2.3156756e-10, -3.7255248e-09, 2.3156752e-10, 1, 9.09494e-12, 3.7255528e-09, -9.094933e-12, 1, 1.0377793, 6.798136, -0.15651569)
 bone_name = "antennaL"
 bone_idx = 6
 
-[node name="AtennaAttachR" type="BoneAttachment3D" parent="Base/SkateBert/board/BertRig/Skeleton3D" parent_id_path=PackedInt32Array(1828125513) index="7" unique_id=1064434303]
-transform = Transform3D(1, 2.568486e-10, 1.1178047e-08, -2.568486e-10, 0.9999999, -1.3351382e-09, -1.1177991e-08, 1.3351384e-09, 1.0000002, -0.5986022, 9.986599, -0.22230051)
+[node name="AtennaAttachR" type="BoneAttachment3D" parent="Base/SkateBert/board/BertRig/Skeleton3D" parent_id_path=PackedInt32Array(127312231) index="7" unique_id=1064434303]
+transform = Transform3D(0.9999997, -2.3156756e-10, -3.7255248e-09, 2.3156752e-10, 1, 9.09494e-12, 3.7255528e-09, -9.094933e-12, 1, -1.0262042, 6.798137, -0.1565157)
 bone_name = "antennaR"
 bone_idx = 8
 
-[node name="Area3D" type="Area3D" parent="Base/SkateBert/board/BertRig" parent_id_path=PackedInt32Array(1515629682) index="1" unique_id=1174986218]
+[node name="Area3D" type="Area3D" parent="Base/SkateBert/board/BertRig" parent_id_path=PackedInt32Array(1661520558) index="1" unique_id=1174986218]
 transform = Transform3D(1.0000001, 0, 7.450581e-09, 1.1641532e-10, 1.0000004, -1.8626451e-09, 7.450581e-09, -9.313226e-10, 1.0000002, -2.8319204e-07, -2.26437e-06, 2.4303286e-08)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Base/SkateBert/board/BertRig/Area3D" index="0" unique_id=936411918]
-transform = Transform3D(1, 5.47152e-09, 7.450581e-09, -1.1641532e-10, 1.0000441, -1.8626451e-09, 7.450581e-09, 2.0489097e-08, 1.0000001, 0.43131185, 6.440736, -0.31076983)
+transform = Transform3D(1, 5.47152e-09, 7.450581e-09, -8.381903e-09, 1.0000441, 3.3527613e-08, 7.450581e-09, 2.0489097e-08, 1.0000001, 0.046018183, 3.6953814, -0.31665477)
 shape = SubResource("CapsuleShape3D_q3ad5")
 
-[node name="SoftBody3D" type="SoftBody3D" parent="Base/SkateBert/board/BertRig" parent_id_path=PackedInt32Array(1515629682) index="2" unique_id=1162743346]
-transform = Transform3D(2.6413832, -1.4223466, -0.0016147494, 1.4216279, 2.6396916, 0.034969836, -0.04547678, -0.094664305, 0.99938715, -0.60318106, 10.082059, -0.22065184)
+[node name="SoftBody3D" type="SoftBody3D" parent="Base/SkateBert/board/BertRig" parent_id_path=PackedInt32Array(1661520558) index="2" unique_id=1162743346]
+transform = Transform3D(2.6413822, -1.4223464, -0.0016147569, 1.4216286, 2.639692, 0.034969836, -0.04547678, -0.09466433, 0.99938715, -0.93531007, 6.9400597, -0.2177246)
 material_override = ExtResource("2_q3ad5")
 mesh = ExtResource("2_lu83w")
 parent_collision_ignore = NodePath("../Area3D")
@@ -39,34 +39,34 @@ damping_coefficient = 0.5
 pinned_points = [79, 78, 77, 76, 75, 74, 73, 71, 72]
 attachments/0/point_index = 79
 attachments/0/spatial_attachment_path = NodePath("../Skeleton3D/AtennaAttachR")
-attachments/0/offset = Vector3(-0.0045788884, 0.095458984, 0.0016486794)
+attachments/0/offset = Vector3(0.2694279, 0.23801035, -0.06428273)
 attachments/1/point_index = 78
 attachments/1/spatial_attachment_path = NodePath("../Skeleton3D/AtennaAttachR")
-attachments/1/offset = Vector3(-0.0045788884, 0.095458984, 0.0016486794)
+attachments/1/offset = Vector3(0.22479644, 0.2139891, -0.06351431)
 attachments/2/point_index = 77
 attachments/2/spatial_attachment_path = NodePath("../Skeleton3D/AtennaAttachR")
-attachments/2/offset = Vector3(-0.0045788884, 0.095458984, 0.0016486794)
+attachments/2/offset = Vector3(0.18016234, 0.18996641, -0.06274584)
 attachments/3/point_index = 76
 attachments/3/spatial_attachment_path = NodePath("../Skeleton3D/AtennaAttachR")
-attachments/3/offset = Vector3(-0.0045788884, 0.095458984, 0.0016486794)
+attachments/3/offset = Vector3(0.13552825, 0.16594373, -0.06197737)
 attachments/4/point_index = 75
 attachments/4/spatial_attachment_path = NodePath("../Skeleton3D/AtennaAttachR")
-attachments/4/offset = Vector3(-0.0045788884, 0.095458984, 0.0016486794)
+attachments/4/offset = Vector3(0.09089416, 0.14192104, -0.061208904)
 attachments/5/point_index = 74
 attachments/5/spatial_attachment_path = NodePath("../Skeleton3D/AtennaAttachR")
-attachments/5/offset = Vector3(-0.0045788884, 0.095458984, 0.0016486794)
+attachments/5/offset = Vector3(0.04626007, 0.11789836, -0.060440436)
 attachments/6/point_index = 73
 attachments/6/spatial_attachment_path = NodePath("../Skeleton3D/AtennaAttachR")
-attachments/6/offset = Vector3(-0.0045788884, 0.095458984, 0.0016486794)
+attachments/6/offset = Vector3(0.0016259775, 0.09387568, -0.05967197)
 attachments/7/point_index = 71
 attachments/7/spatial_attachment_path = NodePath("../Skeleton3D/AtennaAttachR")
-attachments/7/offset = Vector3(-0.0045788884, 0.095458984, 0.0016486794)
+attachments/7/offset = Vector3(-0.04300812, 0.06985299, -0.0589035)
 attachments/8/point_index = 72
 attachments/8/spatial_attachment_path = NodePath("../Skeleton3D/AtennaAttachR")
-attachments/8/offset = Vector3(-0.0045788884, 0.095458984, 0.0016486794)
+attachments/8/offset = Vector3(-0.087639555, 0.045831732, -0.05813508)
 
-[node name="SoftBody3D2" type="SoftBody3D" parent="Base/SkateBert/board/BertRig" parent_id_path=PackedInt32Array(1515629682) index="3" unique_id=862793243]
-transform = Transform3D(2.6924334, 1.3225595, -0.013493035, -1.3231759, 2.6909819, -0.02947928, -0.0026786327, 0.09722466, 0.99947435, 1.5430421, 9.972433, -0.06847584)
+[node name="SoftBody3D2" type="SoftBody3D" parent="Base/SkateBert/board/BertRig" parent_id_path=PackedInt32Array(1661520558) index="3" unique_id=862793243]
+transform = Transform3D(2.6924324, 1.3225589, -0.013493061, -1.3231764, 2.6909823, -0.029479288, -0.0026786327, 0.09722466, 0.99947435, 1.0432603, 6.89647, -0.07782842)
 material_override = ExtResource("2_q3ad5")
 mesh = ExtResource("2_lu83w")
 parent_collision_ignore = NodePath("../Area3D")
@@ -77,28 +77,28 @@ damping_coefficient = 0.5
 pinned_points = [79, 78, 77, 76, 75, 74, 73, 71, 72]
 attachments/0/point_index = 79
 attachments/0/spatial_attachment_path = NodePath("../Skeleton3D/AtennaAttachL")
-attachments/0/offset = Vector3(0.25964436, -0.10360258, 0.15364362)
+attachments/0/offset = Vector3(0.18746538, 0.008899488, 0.078506224)
 attachments/1/point_index = 78
 attachments/1/spatial_attachment_path = NodePath("../Skeleton3D/AtennaAttachL")
-attachments/1/offset = Vector3(0.21415031, -0.08124488, 0.15368888)
+attachments/1/offset = Vector3(0.14197133, 0.031257197, 0.078551486)
 attachments/2/point_index = 77
 attachments/2/spatial_attachment_path = NodePath("../Skeleton3D/AtennaAttachL")
-attachments/2/offset = Vector3(0.16865358, -0.05888585, 0.15373415)
+attachments/2/offset = Vector3(0.0964746, 0.053616233, 0.078596756)
 attachments/3/point_index = 76
 attachments/3/spatial_attachment_path = NodePath("../Skeleton3D/AtennaAttachL")
-attachments/3/offset = Vector3(0.12315683, -0.036526818, 0.1537794)
+attachments/3/offset = Vector3(0.050977863, 0.07597527, 0.07864202)
 attachments/4/point_index = 75
 attachments/4/spatial_attachment_path = NodePath("../Skeleton3D/AtennaAttachL")
-attachments/4/offset = Vector3(0.077660084, -0.014167786, 0.15382467)
+attachments/4/offset = Vector3(0.005481124, 0.09833431, 0.07868728)
 attachments/5/point_index = 74
 attachments/5/spatial_attachment_path = NodePath("../Skeleton3D/AtennaAttachL")
-attachments/5/offset = Vector3(0.03216334, 0.008191247, 0.15386994)
+attachments/5/offset = Vector3(-0.040015616, 0.120693356, 0.07873254)
 attachments/6/point_index = 73
 attachments/6/spatial_attachment_path = NodePath("../Skeleton3D/AtennaAttachL")
-attachments/6/offset = Vector3(-0.013333403, 0.030550279, 0.1539152)
+attachments/6/offset = Vector3(-0.085512355, 0.1430524, 0.078777805)
 attachments/7/point_index = 71
 attachments/7/spatial_attachment_path = NodePath("../Skeleton3D/AtennaAttachL")
-attachments/7/offset = Vector3(-0.058830142, 0.052909307, 0.15396047)
+attachments/7/offset = Vector3(-0.13100909, 0.16541143, 0.078823075)
 attachments/8/point_index = 72
 attachments/8/spatial_attachment_path = NodePath("../Skeleton3D/AtennaAttachL")
-attachments/8/offset = Vector3(-0.10432419, 0.07526701, 0.15400572)
+attachments/8/offset = Vector3(-0.17650314, 0.18776914, 0.07886834)
