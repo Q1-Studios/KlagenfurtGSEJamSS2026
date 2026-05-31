@@ -98,7 +98,11 @@ func rotate_player_for_grinding():
 	# must reset model_scale if it is not 1.0 by default 
 	#player_model.scale = model_scale
 	
+	
+	
+	
 	# rotate particle emitter
+	# old
 	var part_rot_angle = (PI / 2) if rail_grind_node.progress_direction < 0.0 else (3 * PI / 2)
 	var particle_rotation: Vector3 = path_forward.rotated(Vector3.UP, part_rot_angle)
 	var particles_looking_at = grind_particles_emitter.global_position + particle_rotation

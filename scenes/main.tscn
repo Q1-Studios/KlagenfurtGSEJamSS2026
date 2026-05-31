@@ -57,7 +57,7 @@ mesh = SubResource("BoxMesh_sgp6g")
 [node name="StairsSample" type="MeshInstance3D" parent="Florr" unique_id=1877437641]
 mesh = ExtResource("1_0wfyh")
 
-[node name="Sealskater" parent="." unique_id=1529588113 instance=ExtResource("1_o5qli")]
+[node name="Sealskater" parent="." unique_id=833053730 instance=ExtResource("1_o5qli")]
 transform = Transform3D(-0.038858686, 0, 0.9992447, 0, 1, 0, -0.9992447, 0, -0.038858686, 0, 9.539019, -5.5059776)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=72175676]
@@ -80,6 +80,12 @@ curve = SubResource("Curve3D_o6xl0")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.243734, 0.75127125, 0)
 curve = SubResource("Curve3D_rail2")
 
+[node name="GameTimer" type="Timer" parent="." unique_id=1514161683]
+unique_name_in_owner = true
+wait_time = 300.0
+one_shot = true
+
 [connection signal="spray_can_amount_consumed_for_points" from="Sealskater" to="." method="_on_sealskater_spray_can_amount_consumed_for_points"]
 [connection signal="spray_can_amount_updated" from="Sealskater" to="." method="_on_sealskater_graffiti_fuel_updated"]
 [connection signal="passPointsToParentSignal" from="PaintingMinigame" to="." method="_on_node_2d_pass_points"]
+[connection signal="timeout" from="GameTimer" to="." method="_on_game_timer_timeout"]

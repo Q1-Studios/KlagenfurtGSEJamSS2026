@@ -2,16 +2,22 @@ extends Node3D
 
 var playerPoints = 0
 @onready var pointsHUD = $HUD/PointsAmount
+@onready var game_timer = %GameTimer
+
+var sandbox = false
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	sandbox = GameManger.is_sandbox
+	if not sandbox:
+		game_timer.start(GameManger.game_time)
+		
+	
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func _input(event: InputEvent) -> void:
+	if  Input.is_key_pressed(KEY_ESCAPE):
+		get_tree().change_scene_to_file("res://scenes/meu3D.tscn")
 
 
 func _on_sealskater_graffiti_fuel_updated(amount: float) -> void:
@@ -26,3 +32,8 @@ func _on_node_2d_pass_points(pointsReached: int) -> void:
 	print("parent in 3d recieved points: ", pointsReached)
 	playerPoints += pointsReached
 	pointsHUD.text = str(int(playerPoints))
+
+
+func _on_game_timer_timeout() -> void:
+	get_tree().change_scene_to_file("res://scenes/meu3D.tscn")
+	ScoreManager.add_score("Guest", playerPoints)

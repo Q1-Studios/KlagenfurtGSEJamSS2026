@@ -1,16 +1,34 @@
 extends Node3D
 
+@onready var leaderboard_ppl_label = %LeaderboardPPL
+
+func _enter_tree() -> void:
+	ScoreManager.leaderboard_updated.connect(_update_leaderboard)
+
 @onready var tutorialSprite = $Sprite2D
 func _input(event: InputEvent) -> void:
 	if  Input.is_key_pressed(KEY_ESCAPE):
 		tutorialSprite.hide()
+
+func _update_leaderboard() -> void:
+	print("changes?!")
+	print(ScoreManager.scoreboard["scores"])
+	print(typeof(ScoreManager.scoreboard["scores"]))
+	var score_board = ScoreManager.scoreboard["scores"]
+	var leaderboard_text = ""
+	for i in range(5):
+		leaderboard_text += "%d) %s: %d\n" % [i, score_board[i]["name"], round(score_board[i]["score"])]
+	leaderboard_ppl_label.text = leaderboard_text
 		
 func _on_play_button_pressed() -> void:
+	GameManger.is_sandbox = false
 	get_tree().change_scene_to_file("res://scenes/main.tscn")
+	
 
 # please change later for sandbox mode, this is currently pointing to standard game
 
 func _on_sandbox_button_pressed() -> void:
+	GameManger.is_sandbox = true
 	get_tree().change_scene_to_file("res://scenes/main.tscn")
 
 

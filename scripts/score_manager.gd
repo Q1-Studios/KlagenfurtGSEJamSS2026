@@ -26,16 +26,18 @@ func _ready() -> void:
 	
 func add_score(username: String, score: int):
 	load_local_scoreboard()
-	scoreboard["scores"].append({
+	scoreboard["scores"].push_front({
 		"name": username,
 		"score": score
 	})
 	save_local_scoreboard()
 	post_score_online(username, score) 
 	leaderboard_updated.emit()
+	fetch_online_scoreboard()
 	
 func load_local_scoreboard():
 	if !FileAccess.file_exists(local_path):
+		print("AAAAAAAAAAAAAAAAAAAAAAAAAaa")
 		return
 	
 	var file = FileAccess.open(local_path, FileAccess.READ)
@@ -80,10 +82,11 @@ func post_score_online(username: String, score: int):
 		"score": score
 	}
 	var json_string = JSON.stringify(data_to_send)
-	post_request
+	
 	var error = post_request.request(url, headers, HTTPClient.METHOD_POST, json_string)
 	if error != OK:
 		push_warning("Online save failed. Score only saved locally, will be overwritten on next online - sync.")
+	
 
 func _on_post_completed(result: int, response_code: int, _headers: PackedStringArray, _body: PackedByteArray):
 	if result == HTTPRequest.RESULT_SUCCESS and response_code == 200:

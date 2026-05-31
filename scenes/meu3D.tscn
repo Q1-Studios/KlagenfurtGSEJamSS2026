@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://dv77uy2r2t6sb"]
+[gd_scene format=3 uid="uid://cbcus7pe5vr8r"]
 
 [ext_resource type="Script" uid="uid://d60ssqmhdy3p" path="res://scripts/mainMenu.gd" id="1_2wk7i"]
 [ext_resource type="Texture2D" uid="uid://bluqesp2rcmbo" path="res://assets/menu/black/BlackStartGame.png" id="2_m7j83"]
@@ -77,13 +77,38 @@ position = Vector2(962.24994, 540.125)
 scale = Vector2(0.6506454, 0.6145419)
 texture = ExtResource("10_rbirm")
 
-[node name="LeaderboardTitle" type="Label" parent="." unique_id=1748266149]
-offset_left = 1541.0
-offset_top = 40.0
-offset_right = 1828.0
-offset_bottom = 109.0
+[node name="Leaderboard" type="Control" parent="." unique_id=774526505]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 3162.0
+offset_top = 1566.0
+offset_right = 3202.0
+offset_bottom = 1606.0
+
+[node name="LeaderboardTitle" type="Label" parent="Leaderboard" unique_id=1748266149]
+layout_mode = 0
+offset_left = -1621.0
+offset_top = -1526.0
+offset_right = -1334.0
+offset_bottom = -1457.0
 theme_override_font_sizes/font_size = 40
 text = "Leaderboard"
+vertical_alignment = 1
+uppercase = true
+
+[node name="LeaderboardPPL" type="Label" parent="Leaderboard" unique_id=1142817734]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = -1625.0
+offset_top = -1514.0
+offset_right = -1418.0
+offset_bottom = -1111.0
+theme_override_font_sizes/font_size = 30
+text = "1
+2
+3
+4
+5"
 vertical_alignment = 1
 uppercase = true
 

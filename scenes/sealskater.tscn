@@ -8,7 +8,7 @@
 [ext_resource type="Script" uid="uid://cgkvem2x6eets" path="res://scripts/trick_mode_controller.gd" id="6_n4d43"]
 [ext_resource type="PackedScene" uid="uid://dwvfoe6b1lusu" path="res://scenes/FuelBarScene2.tscn" id="6_vuft4"]
 [ext_resource type="PackedScene" uid="uid://bpj7o4myywyq7" path="res://scenes/bertmodel.tscn" id="7_n4d43"]
-[ext_resource type="PackedScene" path="res://scenes/trick_sequence_display.tscn" id="8_ew7ux"]
+[ext_resource type="PackedScene" uid="uid://beikiclpngb51" path="res://scenes/trick_sequence_display.tscn" id="8_ew7ux"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_n4d43"]
 radius = 1.1640625
@@ -119,7 +119,7 @@ script = ExtResource("5_ew7ux")
 
 [node name="GrindUpdateSprayCanTimer" type="Timer" parent="." unique_id=498531919]
 unique_name_in_owner = true
-wait_time = 0.3
+wait_time = 0.66
 
 [node name="SprayFuelSubviewPort" type="SubViewport" parent="." unique_id=1718909834]
 disable_3d = true
