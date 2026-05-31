@@ -2,20 +2,20 @@
 
 [ext_resource type="PackedScene" uid="uid://cgaffi0rppyqx" path="res://assets/bert/bert.glb" id="1_covau"]
 [ext_resource type="Animation" uid="uid://muyw5b32ttqx" path="res://assets/bert/bertAnimations/BoardSteerLeft.res" id="2_qtmog"]
-[ext_resource type="Animation" uid="uid://bdu31fuwe3avx" path="res://assets/bert/bertAnimations/BoardSteerRight.res" id="3_tybpf"]
-[ext_resource type="Animation" uid="uid://bi702utkm27sq" path="res://assets/bert/bertAnimations/BoardSteerStraight.res" id="4_s00k6"]
-[ext_resource type="Animation" uid="uid://l8fmfyd6i0qa" path="res://assets/bert/bertAnimations/GrindRail.res" id="5_3km1t"]
-[ext_resource type="Animation" uid="uid://ctrj6crri3egb" path="res://assets/bert/bertAnimations/IdleRolling.res" id="6_t45of"]
-[ext_resource type="Animation" uid="uid://c7x5l0ew5ly3i" path="res://assets/bert/bertAnimations/IdleStanding.res" id="7_a4cmt"]
-[ext_resource type="Animation" uid="uid://cpjnbjlrb8vio" path="res://assets/bert/bertAnimations/InAir.res" id="8_si1ny"]
-[ext_resource type="Animation" uid="uid://bqjvdmcgxr3ax" path="res://assets/bert/bertAnimations/JumpEnd.res" id="9_2vb87"]
-[ext_resource type="Animation" uid="uid://cklhgm8k7mxrf" path="res://assets/bert/bertAnimations/JumpStart.res" id="10_1o7ov"]
-[ext_resource type="Animation" uid="uid://brqljngq8jufc" path="res://assets/bert/bertAnimations/TPose.res" id="11_vnfsl"]
-[ext_resource type="Animation" uid="uid://dpkygiy2ecyf" path="res://assets/bert/bertAnimations/Trick1.res" id="12_m6v64"]
-[ext_resource type="Animation" uid="uid://c8l1ais8dypfo" path="res://assets/bert/bertAnimations/Trick2.res" id="13_uuim4"]
-[ext_resource type="Animation" uid="uid://d16nj4e4ceymc" path="res://assets/bert/bertAnimations/TrickPose1.res" id="14_qieh0"]
-[ext_resource type="Animation" uid="uid://bta2q4jq6jbtb" path="res://assets/bert/bertAnimations/TrickPose2.res" id="15_bgmnx"]
-[ext_resource type="Animation" uid="uid://drss1ucd2tcqr" path="res://assets/bert/bertAnimations/TrickPose3.res" id="16_iicyg"]
+[ext_resource type="Animation" uid="uid://b4u1jkgdrawi0" path="res://assets/bert/bertAnimations/BoardSteerRight.res" id="3_tybpf"]
+[ext_resource type="Animation" uid="uid://8jmiy0x4afv8" path="res://assets/bert/bertAnimations/BoardSteerStraight.res" id="4_s00k6"]
+[ext_resource type="Animation" uid="uid://bisik30mlvig4" path="res://assets/bert/bertAnimations/GrindRail.res" id="5_3km1t"]
+[ext_resource type="Animation" uid="uid://dbhdco0a40kyi" path="res://assets/bert/bertAnimations/IdleRolling.res" id="6_t45of"]
+[ext_resource type="Animation" uid="uid://bbuu3522lv3wg" path="res://assets/bert/bertAnimations/IdleStanding.res" id="7_a4cmt"]
+[ext_resource type="Animation" uid="uid://bvl654tohhye0" path="res://assets/bert/bertAnimations/InAir.res" id="8_si1ny"]
+[ext_resource type="Animation" uid="uid://blio3kjkvntf1" path="res://assets/bert/bertAnimations/JumpEnd.res" id="9_2vb87"]
+[ext_resource type="Animation" uid="uid://yta2wx5q8hbb" path="res://assets/bert/bertAnimations/JumpStart.res" id="10_1o7ov"]
+[ext_resource type="Animation" uid="uid://dpw8g2nxku0g2" path="res://assets/bert/bertAnimations/TPose.res" id="11_vnfsl"]
+[ext_resource type="Animation" uid="uid://bd3wqagtsujak" path="res://assets/bert/bertAnimations/Trick1.res" id="12_m6v64"]
+[ext_resource type="Animation" uid="uid://85ftlf55fipd" path="res://assets/bert/bertAnimations/Trick2.res" id="13_uuim4"]
+[ext_resource type="Animation" uid="uid://ln0om2vqjejj" path="res://assets/bert/bertAnimations/TrickPose1.res" id="14_qieh0"]
+[ext_resource type="Animation" uid="uid://0xeei75t42xu" path="res://assets/bert/bertAnimations/TrickPose2.res" id="15_bgmnx"]
+[ext_resource type="Animation" uid="uid://bggs647ju1ig1" path="res://assets/bert/bertAnimations/TrickPose3.res" id="16_iicyg"]
 
 [sub_resource type="GDScript" id="GDScript_6pu0d"]
 resource_name = "animationTreeInterface"
@@ -51,8 +51,13 @@ _data = {
 &"TrickPose3": ExtResource("16_iicyg")
 }
 
+[sub_resource type="AnimationNodeAdd2" id="AnimationNodeAdd2_covau"]
+
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ye60r"]
 animation = &"bertLibrary/BoardSteerRight"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_qtmog"]
+animation = &"bertLibrary/IdleRolling"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_hvwgq"]
 animation = &"bertLibrary/BoardSteerLeft"
@@ -60,14 +65,18 @@ animation = &"bertLibrary/BoardSteerLeft"
 [sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_1xn5g"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_ypo84"]
-graph_offset = Vector2(-505.69632, 81.77737)
+graph_offset = Vector2(-627.7329, 176.71944)
 nodes/boardBlendMichael/node = SubResource("AnimationNodeBlend2_1xn5g")
 nodes/boardBlendMichael/position = Vector2(27.275482, 202.18683)
 nodes/Animation/node = SubResource("AnimationNodeAnimation_hvwgq")
 nodes/Animation/position = Vector2(-333.33334, 80)
 "nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_ye60r")
 "nodes/Animation 2/position" = Vector2(-400, 386.66666)
-node_connections = [&"output", 0, &"boardBlendMichael", &"boardBlendMichael", 0, &"Animation", &"boardBlendMichael", 1, &"Animation 2"]
+nodes/Add2/node = SubResource("AnimationNodeAdd2_covau")
+nodes/Add2/position = Vector2(300.05997, 357.87997)
+"nodes/Animation 3/node" = SubResource("AnimationNodeAnimation_qtmog")
+"nodes/Animation 3/position" = Vector2(-80, 573.3333)
+node_connections = [&"output", 0, &"Add2", &"boardBlendMichael", 0, &"Animation", &"boardBlendMichael", 1, &"Animation 2", &"Add2", 0, &"boardBlendMichael", &"Add2", 1, &"Animation 3"]
 
 [node name="Bertmodel" type="Node3D" unique_id=966477376]
 script = SubResource("GDScript_6pu0d")
@@ -81,3 +90,4 @@ libraries/bertLibrary = SubResource("AnimationLibrary_8r73l")
 tree_root = SubResource("AnimationNodeBlendTree_ypo84")
 anim_player = NodePath("../AnimationPlayer2")
 parameters/boardBlendMichael/blend_amount = 0.5
+parameters/Add2/add_amount = 1.0
