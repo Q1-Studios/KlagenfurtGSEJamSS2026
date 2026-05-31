@@ -1,6 +1,10 @@
 extends Node3D
 
 @onready var leaderboard_ppl_label = %LeaderboardPPL
+@onready var username_input = %username
+
+func _ready() -> void:
+	username_input.text = GameManger.username
 
 func _enter_tree() -> void:
 	ScoreManager.leaderboard_updated.connect(_update_leaderboard)
@@ -22,6 +26,10 @@ func _update_leaderboard() -> void:
 		
 func _on_play_button_pressed() -> void:
 	GameManger.is_sandbox = false
+	if username_input.text == "":
+		username_input.text = GameManger.default_username
+	
+	GameManger.username = username_input.text
 	get_tree().change_scene_to_file("res://scenes/main.tscn")
 	
 

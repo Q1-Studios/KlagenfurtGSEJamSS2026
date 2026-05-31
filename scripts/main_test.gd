@@ -36,4 +36,4 @@ func _on_node_2d_pass_points(pointsReached: int) -> void:
 
 func _on_game_timer_timeout() -> void:
 	get_tree().change_scene_to_file("res://scenes/meu3D.tscn")
-	ScoreManager.add_score("Guest", playerPoints)
+	ScoreManager.add_score(GameManger.username, playerPoints)

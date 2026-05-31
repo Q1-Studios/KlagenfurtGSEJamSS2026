@@ -2,7 +2,7 @@ extends Node
 
 signal leaderboard_updated
 
-var centrifuge = "https://skaterboy42069.q1studios.at/"
+var centrifuge = "https://artfromtheblock.q1studios.at/"
 var fetch_endpoint = "get_scores"
 var post_endpoint = "add_score"
 var fetch_request: HTTPRequest

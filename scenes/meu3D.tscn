@@ -70,6 +70,17 @@ texture_normal = ExtResource("8_ee28s")
 texture_pressed = ExtResource("9_mecc7")
 texture_hover = ExtResource("9_mecc7")
 
+[node name="username" type="LineEdit" parent="Control" unique_id=1474954011]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 411.0
+offset_top = 911.0
+offset_right = 811.0
+offset_bottom = 1002.0
+theme_override_font_sizes/font_size = 60
+placeholder_text = "Username"
+alignment = 1
+
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1246877616]
 visible = false
 z_index = 10
